@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Esqueleto.iml" filepath="$PROJECT_DIR$/Esqueleto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" filepath="$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" filepath="$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" filepath="$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" />
+    </modules>
+  </component>
+</project>
+

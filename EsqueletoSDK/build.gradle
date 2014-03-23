@@ -1,0 +1,72 @@
+apply plugin: 'android-library'
+apply plugin: 'robolectric'
+
+android {
+
+    compileSdkVersion 19
+    buildToolsVersion '19.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../distribution/debug.keystore')
+        }
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            runProguard false
+            packageNameSuffix ".debug"
+            signingConfig signingConfigs.debug
+            versionNameSuffix "-debug"
+        }
+
+        staging {
+            packageNameSuffix ".staging"
+            versionNameSuffix "-staging"
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+        }
+        debug {
+            java.srcDirs += ['src/debug/java']
+            setRoot('build-types/debug')
+        }
+        staging.setRoot('build-types/staging')
+        release.setRoot('build-types/release')
+
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    androidTestCompile 'junit:junit:4.10'
+    androidTestCompile 'org.robolectric:robolectric:2.+'
+}

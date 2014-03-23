@@ -1,0 +1,75 @@
+test {
+    // Robolectric expects to find AndroidManifest.xml and res/ in the working directory
+    workingDir androidManifestDir(project(':EsqueletoSDK'), 'main')
+}
+
+
+dependencies {
+    androidTestCompile project(':EsqueletoSDK')
+    androidTestCompile androidProjectClassesDependency(project(':EsqueletoSDK'), 'debug')
+    androidTestCompile 'junit:junit:4.11'
+    androidTestCompile 'org.robolectric:robolectric:2.2'
+    androidTestCompile 'org.mockito:mockito-all:1.9.5'
+    androidTestCompile androidSdkDependency(project(':EsqueletoSDK'))
+}
+
+/**
+ * Creates a FileCollection for expressing a dependency on the Android compileSdkVersion of the
+ * specified project instance. Intended to be used in a dependencies:
+ *
+ * <code>
+ *     dependencies {
+ *          testCompile androidSdkDependency(project(':app'))
+ *          // ...
+ *     }
+ * </code>
+ *
+ * @param androidProject a reference to a gradle Android project, such as project(':app')
+ *
+ * @return a FileCollection that references the appropriate android.jar
+ */
+def androidSdkDependency(androidProject) {
+    return files([androidProject.android.plugin.sdkDirectory, 'platforms',
+                  androidProject.android.compileSdkVersion, 'android.jar'].join(File.separator))
+}
+
+/**
+ * Creates a FileCollection for expressing a dependency on the classes of the the specified
+ * project/variant combination. For example:
+ *
+ * <code>
+ *     dependencies {
+ *         testCompile androidProjectClassesDependency(project(':app'), 'debug')
+ *         // ...
+ *     }
+ * </code>
+ *
+ * @param androidProject a reference to a gradle Android project, such as project(':app')
+ * @param variant the build variant, such as 'debug' or a flavor
+ *
+ * @return a FileCollection that references the build output directory for the Android project variant
+ */
+def androidProjectClassesDependency(androidProject, variant) {
+    return files([androidProject.buildDir, 'classes', variant].join(File.separator))
+}
+
+/**
+ * Returns the directory that contains the AndroidManifest.xml for the specified project source set.
+ * Intended to be used to set the workingDir of a test closure so that Robolectric can find the
+ * manifest file:
+ *
+ * <code>
+ *     test {
+ *         workingDir androidManifestDir(project(':app'), 'main')
+ *     }
+ * </code>
+ *
+ * @param androidProject a reference to a gradle Android project, such as project(':app')
+ * @param sourceSetName the name of the source set
+ *
+ * @return the directory as a string
+ */
+def androidManifestDir(androidProject, sourceSetName) {
+    def manifest = androidProject.android.sourceSets[sourceSetName].manifest.getSrcFile()
+    return manifest.getParentFile().getAbsolutePath()
+}
