@@ -4,7 +4,10 @@
     <application android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@drawable/ic_launcher">
-
+        <provider
+            android:name="com.esqueleto.esqueletosdk.provider.AppContentProvider"
+            android:authorities="com.esqueleto.esqueletosdk.provider"
+            android:syncable="true" />
     </application>
 
 </manifest>

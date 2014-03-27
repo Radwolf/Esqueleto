@@ -16,11 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider
-            android:name="com.esqueleto.esqueletoui.provider.AppContentProvider"
-            android:authorities="com.esqueleto.esqueletoui.provider"
-            android:exported="true"
-            android:syncable="true" />
+
     </application>
 
 </manifest>
