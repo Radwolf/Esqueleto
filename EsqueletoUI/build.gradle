@@ -1,8 +1,6 @@
 apply plugin: 'android'
 
 android {
-    final PROVIDER_DEBUG = "com.esqueleto.esqueletoui.debug.provider"
-    final PROVIDER_RELEASE = "com.esqueleto.esqueletoui.provider"
 
     compileSdkVersion 19
     buildToolsVersion "19.0.2"
@@ -34,13 +32,13 @@ android {
 
     buildTypes {
         release {
-            resValue "string", "authority", PROVIDER_RELEASE
+
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
 
         debug {
-            resValue "string", "authority", PROVIDER_DEBUG
+
             runProguard false
             packageNameSuffix ".debug"
             signingConfig signingConfigs.debug
