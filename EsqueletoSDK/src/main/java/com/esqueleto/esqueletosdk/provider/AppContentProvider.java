@@ -1,4 +1,4 @@
-package com.esqueleto.esqueletoui.provider;
+package com.esqueleto.esqueletosdk.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -17,7 +17,7 @@ public class AppContentProvider  extends ContentProvider {
 
     private static UriMatcher sUriMatcher;
     private SQLiteDatabase db;
-    public static final String AUTHORITY = "com.esqueleto.esqueletoui.provider";
+    public static final String AUTHORITY = "com.esqueleto.esqueletosdk.provider";
     public static final Uri CONTENT_URI_USUARIO = Uri.parse("content://" + AUTHORITY + "/" + UsuarioCursor.TABLE);
     public static final Uri CONTENT_ITEM_URI_USUARIO = Uri.parse("content://" + AUTHORITY + "/" + UsuarioCursor.TABLE + "/#");
 //    public static final Uri CONTENT_URI_ACTIVIDAD = Uri.parse("content://" + AUTHORITY + "/" + ActividadCursor.TABLE);

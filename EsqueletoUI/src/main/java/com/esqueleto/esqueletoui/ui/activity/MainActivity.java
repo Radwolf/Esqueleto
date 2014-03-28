@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.database.cursor.UsuarioCursor;
 import com.esqueleto.esqueletosdk.model.Usuario;
-import com.esqueleto.esqueletoui.provider.AppContentProvider;
+import com.esqueleto.esqueletosdk.provider.AppContentProvider;
 import com.esqueleto.esqueletoui.R;
 
 import java.util.ArrayList;

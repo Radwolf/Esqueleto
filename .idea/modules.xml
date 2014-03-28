@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Esqueleto.iml" filepath="$PROJECT_DIR$/Esqueleto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esqueleto2.iml" filepath="$PROJECT_DIR$/Esqueleto2.iml" />
       <module fileurl="file://$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" filepath="$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" />
       <module fileurl="file://$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" filepath="$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" filepath="$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" />
