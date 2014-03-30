@@ -29,7 +29,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6c7f17-ed95-4d2c-8924-9e8547c2fc3d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Esqueleto2.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/provider/AppContentProvider.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/provider/AppContentProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" afterPath="$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" afterPath="$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" afterPath="$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/GenericDAO.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/GenericDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/UsuarioDAO.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/UsuarioDAO.java" />
+      <change type="MODIFICATION" beforePath="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\.idea\libraries\android_rest_1_2_1_SNAPSHOT.xml" afterPath="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\.idea\libraries\android_rest_1_2_1_SNAPSHOT.xml" />
+      <change type="MODIFICATION" beforePath="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\.idea\libraries\appcompat_v7_19_0_1.xml" afterPath="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\.idea\libraries\appcompat_v7_19_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\.idea\libraries\support_v4_19_0_1.xml" afterPath="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\.idea\libraries\support_v4_19_0_1.xml" />
     </list>
     <ignored path="Esqueleto.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -131,8 +143,8 @@
       <file leaf-file-name="AppContentProvider.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/provider/AppContentProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="3604">
-              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.24853802" vertical-offset="153" max-vertical-offset="2907">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -141,8 +153,8 @@
       <file leaf-file-name="DatabaseHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="884">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="867">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -161,7 +173,7 @@
       <file leaf-file-name="UsuarioDAO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/UsuarioDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="2601">
+            <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="2482">
               <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
               <folding />
             </state>
@@ -171,7 +183,7 @@
       <file leaf-file-name="GenericDAO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/GenericDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="1598">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="1819">
               <caret line="67" column="0" selection-start-line="67" selection-start-column="2" selection-end-line="73" selection-end-column="7" />
               <folding />
             </state>
@@ -215,24 +227,6 @@
         <entry key=":EsqueletoSDK/Esqueleto/" value="true" />
         <entry key="Esqueleto/" value="true" />
       </map>
-    </option>
-    <option name="recentTasks">
-      <list>
-        <ExternalTaskExecutionInfo>
-          <option name="executorId" value="Run" />
-          <option name="settings">
-            <ExternalSystemSettings>
-              <option name="externalProjectPath" value="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\EsqueletoSDK" />
-              <option name="externalSystemIdString" value="GRADLE" />
-              <option name="taskNames">
-                <list>
-                  <option value="assembleDebugTest" />
-                </list>
-              </option>
-            </ExternalSystemSettings>
-          </option>
-        </ExternalTaskExecutionInfo>
-      </list>
     </option>
     <option name="availableProjects">
       <map>
@@ -2684,6 +2678,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3028,7 +3023,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3237,6 +3231,19 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -3262,19 +3269,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3438,12 +3432,11 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3424191" sideWeight="0.8895613" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3270869" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.40620273" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26701966" sideWeight="0.5008518" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.59379727" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3459,6 +3452,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -3478,7 +3472,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/Radwolf/Esqueleto&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Radwolf/Esqueleto&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3486,6 +3481,14 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="527">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
@@ -3829,8 +3832,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="765">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="867">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3877,8 +3880,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/provider/AppContentProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="3604">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.24853802" vertical-offset="153" max-vertical-offset="2907">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
         </state>
       </provider>
