@@ -1,14 +1,21 @@
 package com.esqueleto.esqueletosdk.model;
 
+import com.j256.ormlite.field.DatabaseField;
+
 /**
  * Created by Raúl on 27/03/2014.
  */
 public class Basic {
 
+    @DatabaseField(generatedId = true)
     private long _id;
+    @DatabaseField
     private String dateCreate;
+    @DatabaseField
     private String dateUpdate;
+    @DatabaseField
     private String userCreate;
+    @DatabaseField
     private String userUpdate;
 
     public Basic() {

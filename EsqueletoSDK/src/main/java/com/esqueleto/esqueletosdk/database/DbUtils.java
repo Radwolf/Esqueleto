@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import android.provider.BaseColumns;
 
+import com.esqueleto.esqueletosdk.database.columns.BasicColumns;
+
 public class DbUtils {
 	private String table;
     private HashMap<String, String> params;
@@ -34,11 +36,21 @@ public class DbUtils {
      * Method to add new param into the script.
      *
      * @param String col: column name.
-     * @param String type: type of column: TEXT, INTEGER; NUMBER, ...
      */
     public DbUtils addParam(String col) {
         params.put(col, "text");
         return this;
+    }
+
+    /**
+     * Method to add params audit into the script.
+     *
+     */
+    public void addParamAudit() {
+        this.addParam(BasicColumns.DATE_CREATE, "TIMESTAMP");
+        this.addParam(BasicColumns.DATE_UPDATE, "TIMESTAMP");
+        this.addParam(BasicColumns.USER_CREATE);
+        this.addParam(BasicColumns.USER_UPDATE);
     }
 
     /**
