@@ -1,10 +1,15 @@
 package com.esqueleto.esqueletosdk.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by rgonzalez on 20/02/14.
  */
+@DatabaseTable(tableName = "usuario")
 public class Usuario extends Basic {
 
+    @DatabaseField
     private String email;
 
     public Usuario() {

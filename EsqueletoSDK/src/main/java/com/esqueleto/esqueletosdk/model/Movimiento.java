@@ -1,16 +1,27 @@
 package com.esqueleto.esqueletosdk.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by Raúl on 03/04/2014.
  */
+@DatabaseTable(tableName = "movimiento")
 public class Movimiento extends Basic {
 
+    @DatabaseField
     private long cuentaId;
+    @DatabaseField
     private String tipoMovimiento;
+    @DatabaseField
     private double importe;
+    @DatabaseField
     private long momento;
+    @DatabaseField
     private String categoria;
+    @DatabaseField
     private String concepto;
+    @DatabaseField
     private String email;
 
     public Movimiento() {

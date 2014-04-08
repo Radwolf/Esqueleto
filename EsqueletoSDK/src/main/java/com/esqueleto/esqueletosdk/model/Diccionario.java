@@ -1,12 +1,19 @@
 package com.esqueleto.esqueletosdk.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by Raúl on 03/04/2014.
  */
+@DatabaseTable(tableName = "diccionario")
 public class Diccionario extends Basic {
 
+    @DatabaseField
     private String clave;
+    @DatabaseField
     private String valor;
+    @DatabaseField
     private String tipo;
 
     public Diccionario() {

@@ -1,22 +1,39 @@
 package com.esqueleto.esqueletosdk.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by rgonzalez on 20/02/14.
  */
+@DatabaseTable(tableName = "resumen")
 public class Resumen extends Basic {
 
+    @DatabaseField
     private long cuentaId;
+    @DatabaseField
     private double ingreso;
+    @DatabaseField
     private double gasto;
+    @DatabaseField
     private double ahorro;
+    @DatabaseField
     private double saldo;
+    @DatabaseField
     private String anyMes;
+    @DatabaseField
     private String inicioPeriodo;
+    @DatabaseField
     private String finPeriodo;
+    @DatabaseField
     private double ingresoEstimado;
+    @DatabaseField
     private double gastoEstimado;
+    @DatabaseField
     private double ahorroEstimado;
+    @DatabaseField
     private double saldoEstimado;
+    @DatabaseField
     private double saldoAnterior;
 
     public Resumen() {
