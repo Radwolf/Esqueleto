@@ -13,7 +13,6 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
  */
 public class DatabaseManager {
 
-
     private DatabaseHelper databaseHelper = null;
 
     //gets a helper once one is created ensures it doesnt create a new one

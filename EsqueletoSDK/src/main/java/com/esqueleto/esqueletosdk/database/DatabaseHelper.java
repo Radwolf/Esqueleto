@@ -17,7 +17,7 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
-public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
+public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
     // name of the database file for your application -- change to something appropriate for your app
     private static final String DATABASE_NAME = "ormLiteTutorial.db";
@@ -25,6 +25,7 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // the DAO object we use to access the SimpleData table
+    private RuntimeExceptionDao<T, ID> runtimeDao = null;
     private Dao<Cuenta, Integer> cuentaDao = null;
     private RuntimeExceptionDao<Cuenta, Integer> cuentaRuntimeDao = null;
     private Dao<Diccionario, Integer> diccionarioDao = null;
@@ -54,12 +55,12 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
             throw new RuntimeException(e);
         }
 
-        // here we try inserting data in the on-create as a test
-        RuntimeExceptionDao<Cuenta, Integer> dao = getCuentaDataDao();
-        // create some entries in the onCreate
-        Cuenta cuenta = new Cuenta();
-        dao.create(cuenta);
-        Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate");
+//        // here we try inserting data in the on-create as a test
+//        RuntimeExceptionDao<Cuenta, Integer> dao = getCuentaDataDao();
+//        // create some entries in the onCreate
+//        Cuenta cuenta = new Cuenta();
+//        dao.create(cuenta);
+//        Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate");
     }
 
     /**
@@ -71,6 +72,10 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, Cuenta.class, true);
+            TableUtils.dropTable(connectionSource, Diccionario.class, true);
+            TableUtils.dropTable(connectionSource, Movimiento.class, true);
+            TableUtils.dropTable(connectionSource, Resumen.class, true);
+            TableUtils.dropTable(connectionSource, Usuario.class, true);
             // after we drop the old databases, we create the new ones
             onCreate(db, connectionSource);
         } catch (SQLException e) {
