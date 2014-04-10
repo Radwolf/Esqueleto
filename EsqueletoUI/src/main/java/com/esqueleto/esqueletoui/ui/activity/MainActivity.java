@@ -1,7 +1,5 @@
 package com.esqueleto.esqueletoui.ui.activity;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -14,24 +12,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.esqueleto.esqueletosdk.database.cursor.UsuarioCursor;
 import com.esqueleto.esqueletosdk.model.Usuario;
-import com.esqueleto.esqueletosdk.provider.AppContentProvider;
+import com.esqueleto.esqueletosdk.repository.UsuarioRepositoryDB;
+import com.esqueleto.esqueletosdk.repository.impl.UsuarioRepositoryDBImpl;
 import com.esqueleto.esqueletoui.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static UsuarioRepositoryDB usuarioRepositoryDB;
+    public static String mailRul = "rul@rul.rul";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ContentValues values = new ContentValues();
-        values.put(UsuarioCursor.Columns.EMAIL, "rul@rul.rul");
-        getContentResolver().insert(AppContentProvider.CONTENT_URI_USUARIO, values);
+        usuarioRepositoryDB = new UsuarioRepositoryDBImpl(this);
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail(mailRul);
+        usuarioRepositoryDB.create(usuario);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new MainFragment())
@@ -70,17 +69,18 @@ public class MainActivity extends ActionBarActivity {
                     TextView textView = (TextView) rootView.findViewById(R.id.textView);
                     EditText editText = (EditText) rootView.findViewById(R.id.editText);
 
-                    Cursor cUsuarios = getActivity().getContentResolver().query(
-                            AppContentProvider.CONTENT_URI_USUARIO, null, null, null,
-                            null);
-                    List<Usuario> usuario = new ArrayList<Usuario>(
-                            cUsuarios.getCount());
-                    String email = "DbError";
-                    if (cUsuarios != null && cUsuarios.moveToFirst()) {
-                        email = cUsuarios.getString(cUsuarios
-                                .getColumnIndex(UsuarioCursor.Columns.EMAIL));
-                    }
-                    textView.setText(String.format("Hello, %s!", email));
+//                    Cursor cUsuarios = getActivity().getContentResolver().query(
+//                            AppContentProvider.CONTENT_URI_USUARIO, null, null, null,
+//                            null);
+//                    List<Usuario> usuario = new ArrayList<Usuario>(
+//                            cUsuarios.getCount());
+//                    String email = "DbError";
+//                    if (cUsuarios != null && cUsuarios.moveToFirst()) {
+//                        email = cUsuarios.getString(cUsuarios
+//                                .getColumnIndex(UsuarioCursor.Columns.EMAIL));
+//                    }
+                    Usuario usuario = usuarioRepositoryDB.findByEmail(mailRul);
+                    textView.setText(String.format("Hello, %s!", usuario.getEmail()));
                 }
             });
 

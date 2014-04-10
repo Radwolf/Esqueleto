@@ -7,7 +7,7 @@ import com.j256.ormlite.field.DatabaseField;
  */
 public class Basic {
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, canBeNull = false)
     private long _id;
     @DatabaseField
     private String dateCreate;

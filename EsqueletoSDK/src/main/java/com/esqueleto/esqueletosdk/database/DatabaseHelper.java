@@ -39,8 +39,16 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
 
+//        DatabaseInitializer initializer = new DatabaseInitializer(context);
+//        try {
+//            initializer.createDatabase();
+//            initializer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+    }
     /**
      * This is called when the database is first created. Usually you should call createTable statements here to create
      * the tables that will store your data.
@@ -50,6 +58,11 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTable(connectionSource, Cuenta.class);
+            TableUtils.createTable(connectionSource, Diccionario.class);
+            TableUtils.createTable(connectionSource, Movimiento.class);
+            TableUtils.createTable(connectionSource, Resumen.class);
+            TableUtils.createTable(connectionSource, Usuario.class);
+            Log.i(DatabaseHelper.class.getName(), "Tablas creadas con exito");
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);

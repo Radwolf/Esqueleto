@@ -25,23 +25,20 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.esqueleto.esqueletoui.debug" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6c7f17-ed95-4d2c-8924-9e8547c2fc3d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/StorageAbstractImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/UsuarioStorageImpl.java" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\dao\GenericDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\dao\UsuarioDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database\DbUtils.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database\columns\BasicColumns.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database\cursor\CuentaCursor.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database\cursor\ResumenCursor.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database\cursor\UsuarioCursor.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\provider\AppContentProvider.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseInitializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java" />
+      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\storage\impl\StorageAbstractImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\storage\impl\UsuarioStorageImpl.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseManager.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/build.gradle" afterPath="$PROJECT_DIR$/EsqueletoSDK/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="326b31c1-9137-4575-ae52-73d5c505144c" name="Rejected commit: Default" comment="Refactorizado el provider al proyecto SDK" />
@@ -112,21 +109,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DatabaseManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="680">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DatabaseHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.4285715" vertical-offset="136" max-vertical-offset="3366">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="577" max-vertical-offset="3587">
+              <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -135,37 +122,93 @@
       <file leaf-file-name="OrmLiteSqliteOpenHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/apptools/OrmLiteSqliteOpenHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4073" max-vertical-offset="5185">
-              <caret line="274" column="59" selection-start-line="274" selection-start-column="45" selection-end-line="274" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2940" max-vertical-offset="5185">
+              <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StorageAbstractImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/StorageAbstractImpl.java">
+      <file leaf-file-name="SQLiteOpenHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/database/sqlite/SQLiteOpenHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="1258">
-              <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2256" max-vertical-offset="6205">
+              <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidConnectionSource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/AndroidConnectionSource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="662" max-vertical-offset="1666">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseDaoImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.46/768a6d8eb022ed7e564a23ce281ea1ba918b12a3/ormlite-core-4.46-sources.jar!/com/j256/ormlite/dao/BaseDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4334" max-vertical-offset="16422">
+              <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioRepositoryDBImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="1853">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-                <element signature="e#1348#1349#0" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1420#1421#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsuarioStorageImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/UsuarioStorageImpl.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.697201" vertical-offset="100" max-vertical-offset="493">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.682266" vertical-offset="97" max-vertical-offset="1615">
+              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Activity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/app/Activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="85560" max-vertical-offset="89556">
+              <caret line="5234" column="0" selection-start-line="5234" selection-start-column="0" selection-end-line="5234" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseInitializer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseInitializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1734">
+              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContextWrapper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/content/ContextWrapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2341" max-vertical-offset="8942">
+              <caret line="255" column="0" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1726,11 +1769,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/example/esqueleto/esqueletosdk/Constants.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/helper/DBHelper.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/helper/config/SQLiteMap.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/config/SQLiteMap.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/test/java/com/esqueleto/esqueletosdk/database/SQLiteFileTestRunner.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/test/java/com/esqueleto/esqueletosdk/database/ProfileTest.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/usuario.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/test/java/com/esqueleto/esqueletosdk/database/RoleTest.java" />
@@ -1758,12 +1796,10 @@
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/androidTest/java/com/esqueleto/esqueletosdk/test/database/DbStore.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/androidTest/java/com/esqueleto/esqueletosdk/test/database/InMemoryDbTest.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletoui/provider/AppContentProvider.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/build.gradle" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/provider/AppContentProvider.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/provider/AppContentProvider.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/GenericDAO.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/dao/UsuarioDAO.java" />
@@ -1774,9 +1810,16 @@
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/androidTest/java/com/esqueleto/esqueletosdk/test/database/AndroidConnectionSourceTest.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/build.gradle" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseManager.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/StorageAbstractImpl.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/UsuarioStorageImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioStorageImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseInitializer.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -1915,6 +1958,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -1944,7 +1988,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
+              <option name="myItemId" value="EsqueletoUI" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1958,7 +2002,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
+              <option name="myItemId" value="EsqueletoUI" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1980,41 +2024,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletosdk" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto2" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
+              <option name="myItemId" value="EsqueletoUI" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2030,137 +2040,12 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletosdk" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto2" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletosdk" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exception" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto2" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletosdk" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto2" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletosdk" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constant" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto2" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoSDK" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2210,15 +2095,18 @@
       <recent name="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\distribution" />
       <recent name="C:\des\android\Workspace\Esqueleto\EsqueletoUI\src\main\java\com\example\esqueleto" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.esqueleto.esqueletosdk.repository" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.esqueleto.esqueletosdk.repository.impl" />
       <recent name="com.esqueleto.esqueletosdk.provider" />
       <recent name="com.esqueleto.esqueletoui.provider" />
       <recent name="com.esqueleto.esqueletosdk" />
       <recent name="com.esqueleto.esqueletoui.database.helper" />
-      <recent name="com.esqueleto.esqueletoui.database" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DBConnection">
+  <component name="RunManager" selected="Android Application.EsqueletoUI">
     <configuration default="false" name="EsqueletoSDK - App Engine DevAppServer" type="AppEngineRunConfiguration" factoryName="App Engine DevAppServer" temporary="true">
       <module name="EsqueletoSDK" />
       <setting name="serverAddress" value="" />
@@ -2372,19 +2260,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -2410,6 +2285,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2482,7 +2370,7 @@
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -2543,10 +2431,10 @@
     </configuration>
     <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Android Application.EsqueletoUI" />
-      <item index="1" class="java.lang.String" itemvalue="App Engine DevAppServer.EsqueletoSDK - App Engine DevAppServer" />
-      <item index="2" class="java.lang.String" itemvalue="Gradle.EsqueletoSDK" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DBConnection" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All test" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DBConnection" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All test" />
+      <item index="3" class="java.lang.String" itemvalue="App Engine DevAppServer.EsqueletoSDK - App Engine DevAppServer" />
+      <item index="4" class="java.lang.String" itemvalue="Gradle.EsqueletoSDK" />
       <item index="5" class="java.lang.String" itemvalue="JUnit.RoboTest" />
       <item index="6" class="java.lang.String" itemvalue="JUnit.InMemoryDbTest" />
       <item index="7" class="java.lang.String" itemvalue="JUnit.All in EsqueletoSDK" />
@@ -2590,7 +2478,11 @@
       <created>1396974166461</created>
       <updated>1396974166461</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Repository">
+      <created>1397059635850</created>
+      <updated>1397059635850</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2623,13 +2515,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819906" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34241706" sideWeight="0.65453076" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5011848" sideWeight="0.4644013" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3921801" sideWeight="0.40695792" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938388" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.40620273" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26701966" sideWeight="0.5008518" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819906" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22867298" sideWeight="0.5930421" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.485782" sideWeight="0.5930421" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2637,7 +2529,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2669903" sideWeight="0.49914822" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5011848" sideWeight="0.5355987" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5011848" sideWeight="0.5355987" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2665,7 +2557,8 @@
     <MESSAGE value="Refactorizado el provider al proyecto SDK" />
     <MESSAGE value="GenericDAO + ContentProvider" />
     <MESSAGE value="Modelo mas daos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modelo mas daos" />
+    <MESSAGE value="Repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2688,39 +2581,17 @@
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="23" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/charla">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="442">
-          <caret line="19" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="366">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="366">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/exception/RecordNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
@@ -2821,40 +2692,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12615955" vertical-offset="0" max-vertical-offset="539">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3153989" vertical-offset="0" max-vertical-offset="539">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/content/ContentValues.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33206832" vertical-offset="216" max-vertical-offset="7667">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/com/android/internal/os/ZygoteInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12212" max-vertical-offset="12835">
-          <caret line="781" column="0" selection-start-line="781" selection-start-column="0" selection-end-line="781" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2900,20 +2741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85679" max-vertical-offset="89556">
-          <caret line="5241" column="0" selection-start-line="5241" selection-start-column="0" selection-end-line="5241" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="21351" max-vertical-offset="82518">
-          <caret line="1404" column="0" selection-start-line="1404" selection-start-column="0" selection-end-line="1404" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/os/Looper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33206832" vertical-offset="1848" max-vertical-offset="4675">
@@ -2949,19 +2776,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="717" max-vertical-offset="1530">
-          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Diccionario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="782">
           <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2977,7 +2795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1258">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3009,65 +2826,156 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34605598" vertical-offset="17" max-vertical-offset="1071">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/apptools/OrmLiteSqliteOpenHelper.java">
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4073" max-vertical-offset="5185">
-          <caret line="274" column="59" selection-start-line="274" selection-start-column="45" selection-end-line="274" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.25123152" vertical-offset="0" max-vertical-offset="406">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/apptools/OpenHelperManager.java">
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33157894" vertical-offset="911" max-vertical-offset="4505">
-          <caret line="72" column="69" selection-start-line="72" selection-start-column="69" selection-end-line="72" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.12807882" vertical-offset="16" max-vertical-offset="476">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="969">
+          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="680">
+        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="680">
           <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/StorageAbstractImpl.java">
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/content/ContextWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="1258">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2341" max-vertical-offset="8942">
+          <caret line="255" column="0" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4516129" vertical-offset="12308" max-vertical-offset="12835">
+          <caret line="782" column="0" selection-start-line="782" selection-start-column="0" selection-end-line="782" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33268481" vertical-offset="34373" max-vertical-offset="82518">
+          <caret line="2194" column="0" selection-start-line="2194" selection-start-column="0" selection-end-line="2194" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/apptools/OpenHelperManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33268481" vertical-offset="883" max-vertical-offset="4505">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1734">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1348#1349#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.4285715" vertical-offset="136" max-vertical-offset="3366">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="577" max-vertical-offset="3587">
+          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/UsuarioStorageImpl.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/apptools/OrmLiteSqliteOpenHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.697201" vertical-offset="100" max-vertical-offset="493">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2940" max-vertical-offset="5185">
+          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/database/sqlite/SQLiteOpenHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2256" max-vertical-offset="6205">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.46/e5e3717efbb303d55f8d249a2213925cbd2ccb31/ormlite-android-4.46-sources.jar!/com/j256/ormlite/android/AndroidConnectionSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="662" max-vertical-offset="1666">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.46/768a6d8eb022ed7e564a23ce281ea1ba918b12a3/ormlite-core-4.46-sources.jar!/com/j256/ormlite/dao/BaseDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4334" max-vertical-offset="16422">
+          <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="1853">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-19/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="85560" max-vertical-offset="89556">
+          <caret line="5234" column="0" selection-start-line="5234" selection-start-column="0" selection-end-line="5234" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.682266" vertical-offset="97" max-vertical-offset="1615">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
