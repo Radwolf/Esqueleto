@@ -10,32 +10,65 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.esqueleto.esqueletosdk.command.impl.AddUsuario;
+import com.esqueleto.esqueletosdk.command.impl.GetUsuario;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Usuario;
-import com.esqueleto.esqueletosdk.repository.UsuarioRepositoryDB;
-import com.esqueleto.esqueletosdk.repository.impl.UsuarioRepositoryDBImpl;
 import com.esqueleto.esqueletoui.R;
+import com.esqueleto.esqueletoui.renderers.CustomApplication;
+import com.pedrogomez.renderers.RendererAdapter;
+
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static UsuarioRepositoryDB usuarioRepositoryDB;
+//    public static UsuarioRepositoryDB usuarioRepositoryDB;
     public static String mailRul = "rul@rul.rul";
+    public static GetUsuario getUsuario;
+    public static AddUsuario addUsuario;
+    public static GestorUsuario gestorUsuario;
+
+    /*
+     * Attributes
+     */
+
+    @Inject
+    RendererAdapter<Cuenta> adapter;
+
+    /*
+     * Widgets
+     */
+    @InjectView(R.id.lv_cuentas)
+    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usuarioRepositoryDB = new UsuarioRepositoryDBImpl(this);
+        gestorUsuario = new GestorUsuario();
+        addUsuario = new AddUsuario(gestorUsuario, mailRul);
+        addUsuario.execute(this);
 
-        Usuario usuario = new Usuario();
-        usuario.setEmail(mailRul);
-        usuarioRepositoryDB.create(usuario);
+        getUsuario = new GetUsuario(gestorUsuario, mailRul);
+
+
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new MainFragment())
                     .commit();
         }
+
+        initInjection();
+        initListView();
     }
 
     @Override
@@ -79,7 +112,9 @@ public class MainActivity extends ActionBarActivity {
 //                        email = cUsuarios.getString(cUsuarios
 //                                .getColumnIndex(UsuarioCursor.Columns.EMAIL));
 //                    }
-                    Usuario usuario = usuarioRepositoryDB.findByEmail(mailRul);
+
+
+                    Usuario usuario = getUsuario.execute(getActivity().getApplicationContext());
                     textView.setText(String.format("Hello, %s!", usuario.getEmail()));
                 }
             });
@@ -102,6 +137,22 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+    }
+
+    /**
+     * Initialize ListVideo with our RendererAdapter.
+     */
+    private void initListView() {
+        listView.setAdapter(adapter);
+    }
+
+    /**
+     * Initialize injection from SampleApplication
+     */
+    private void initInjection() {
+        CustomApplication application = (CustomApplication) getApplication();
+        application.inject(this);
+        ButterKnife.inject(this);
     }
 
 }

@@ -19,8 +19,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     private DatabaseHelper db;
     Dao<Usuario, Integer> usuarioDao;
 
-    public UsuarioRepositoryDBImpl(Context ctx)
-    {
+    public UsuarioRepositoryDBImpl(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
@@ -33,8 +32,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     }
 
     @Override
-    public int create(Usuario usuario)
-    {
+    public int create(Usuario usuario){
         try {
             return usuarioDao.create(usuario);
         } catch (SQLException e) {
@@ -44,8 +42,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         return 0;
     }
     @Override
-    public int update(Usuario usuario)
-    {
+    public int update(Usuario usuario){
         try {
             return usuarioDao.update(usuario);
         } catch (SQLException e) {
@@ -55,8 +52,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         return 0;
     }
     @Override
-    public int delete(Usuario usuario)
-    {
+    public int delete(Usuario usuario){
         try {
             return usuarioDao.delete(usuario);
         } catch (SQLException e) {
@@ -67,8 +63,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     }
 
     @Override
-    public List<Usuario> getAll()
-    {
+    public List<Usuario> getAll(){
         try {
             return usuarioDao.queryForAll();
         } catch (SQLException e) {

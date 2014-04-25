@@ -75,4 +75,7 @@ dependencies {
         transitive = true
         changing = true
     }
+    compile 'com.github.pedrovgs:renderers:1.0.9'
+    compile 'com.jakewharton:butterknife:4.0.1'
+    compile 'com.squareup.dagger:dagger:1.2.1'
 }

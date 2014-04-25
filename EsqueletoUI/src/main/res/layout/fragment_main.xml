@@ -26,6 +26,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"/>
 
+    <ListView
+        android:id="@+id/lv_cuentas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
