@@ -11,9 +11,9 @@ import com.esqueleto.esqueletosdk.command.impl.AddCuenta;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletoui.EsqueletoApplication;
 import com.esqueleto.esqueletoui.model.CuentaCollection;
-import com.esqueleto.esqueletoui.renderers.CustomApplication;
-import com.esqueleto.esqueletoui.renderers.builder.CuentaRedererBuilder;
+import com.esqueleto.esqueletoui.builder.CuentaRedererBuilder;
 import com.esqueleto.esqueletoui.ui.activity.MainActivity;
 import com.pedrogomez.renderers.RendererAdapter;
 
@@ -26,7 +26,7 @@ import dagger.Provides;
  * @author Pedro Vicente Gómez Sánchez.
  */
 @Module(injects = {
-        CustomApplication.class,
+        EsqueletoApplication.class,
         MainActivity.class,
 })
 public class MainModule {

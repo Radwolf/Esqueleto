@@ -18,8 +18,8 @@ import com.esqueleto.esqueletosdk.command.impl.GetUsuario;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Usuario;
+import com.esqueleto.esqueletoui.EsqueletoApplication;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.renderers.CustomApplication;
 import com.pedrogomez.renderers.RendererAdapter;
 
 import javax.inject.Inject;
@@ -150,7 +150,7 @@ public class MainActivity extends ActionBarActivity {
      * Initialize injection from SampleApplication
      */
     private void initInjection() {
-        CustomApplication application = (CustomApplication) getApplication();
+        EsqueletoApplication application = (EsqueletoApplication) getApplication();
         application.inject(this);
         ButterKnife.inject(this);
     }

@@ -1,4 +1,4 @@
-package com.esqueleto.esqueletoui.renderers.renderer;
+package com.esqueleto.esqueletoui.renderer;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.esqueleto.esqueletoui.renderers;
+package com.esqueleto.esqueletoui;
 
 import android.app.Application;
 
@@ -9,7 +9,7 @@ import dagger.ObjectGraph;
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public class CustomApplication extends Application {
+public class EsqueletoApplication extends Application {
 
     /*
      * Attributes

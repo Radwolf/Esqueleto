@@ -1,7 +1,7 @@
-package com.esqueleto.esqueletoui.renderers.builder;
+package com.esqueleto.esqueletoui.builder;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletoui.renderers.renderer.CuentaRenderer;
+import com.esqueleto.esqueletoui.renderer.CuentaRenderer;
 import com.pedrogomez.renderers.Renderer;
 import com.pedrogomez.renderers.RendererBuilder;
 
