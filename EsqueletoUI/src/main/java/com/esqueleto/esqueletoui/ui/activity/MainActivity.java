@@ -13,14 +13,24 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.esqueleto.esqueletosdk.command.impl.AddCuenta;
 import com.esqueleto.esqueletosdk.command.impl.AddUsuario;
+import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
 import com.esqueleto.esqueletosdk.command.impl.GetUsuario;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletoui.EsqueletoApplication;
 import com.esqueleto.esqueletoui.R;
+import com.esqueleto.esqueletoui.builder.CuentaRendererBuilder;
+import com.esqueleto.esqueletoui.model.CuentaCollection;
+import com.esqueleto.esqueletoui.renderer.CuentaRenderer;
+import com.pedrogomez.renderers.Renderer;
 import com.pedrogomez.renderers.RendererAdapter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,7 +44,17 @@ public class MainActivity extends ActionBarActivity {
     public static GetUsuario getUsuario;
     public static AddUsuario addUsuario;
     public static GestorUsuario gestorUsuario;
+    /*
+     * Constants
+     */
+    private static final String MAIL_RUL = "rul@rul.rul";
 
+    /*
+     * Attributes
+     */
+    public static GestorCuenta gestorCuenta;
+    public static GetCuentas getCuentas;
+    public static AddCuenta addCuenta;
     /*
      * Attributes
      */
@@ -53,11 +73,26 @@ public class MainActivity extends ActionBarActivity {
 
         getUsuario = new GetUsuario(gestorUsuario, mailRul);
 
+        gestorCuenta = new GestorCuenta();
+        addCuenta = new AddCuenta(gestorCuenta, "Casa", MAIL_RUL);
+        addCuenta.execute(this);
+
+        getCuentas = new GetCuentas(gestorCuenta, MAIL_RUL);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new MainFragment())
                     .commit();
         }
+
+        List<Renderer<Cuenta>> prototypes = new LinkedList<Renderer<Cuenta>>();
+        CuentaRenderer cuentaRenderer = new CuentaRenderer(this);
+        prototypes.add(cuentaRenderer);
+
+        CuentaRendererBuilder rendererBuilder = new CuentaRendererBuilder(prototypes);
+
+        CuentaCollection cuentaCollection = new CuentaCollection(getCuentas.execute(this));
+        adapter = new RendererAdapter<Cuenta>(getLayoutInflater(), rendererBuilder, cuentaCollection);
 
         initInjection();
 

@@ -10,6 +10,8 @@ import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
 import com.pedrogomez.renderers.Renderer;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -20,6 +22,7 @@ public class CuentaRenderer extends Renderer<Cuenta> {
 
     private final Context context;
 
+    @Inject
     public CuentaRenderer(Context context) {
         this.context = context;
     }

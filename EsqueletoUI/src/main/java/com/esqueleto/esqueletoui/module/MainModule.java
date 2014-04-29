@@ -31,9 +31,10 @@ import dagger.Provides;
  * @author Pedro Vicente Gómez Sánchez.
  */
 @Module(injects = {
-        EsqueletoApplication.class,
-        MainActivity.class
-})
+            EsqueletoApplication.class,
+            MainActivity.class
+        },
+        library = true)
 public class MainModule {
 
     /*

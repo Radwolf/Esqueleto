@@ -14,7 +14,7 @@ public class AddCuenta implements AddCommand {
     String nombre;
     String email;
 
-    public AddCuenta(CuentaInteractor cuentaInteractor, String nommbre, String email) {
+    public AddCuenta(CuentaInteractor cuentaInteractor, String nombre, String email) {
         this.cuentaInteractor = cuentaInteractor;
         this.nombre = nombre;
         this.email = email;
