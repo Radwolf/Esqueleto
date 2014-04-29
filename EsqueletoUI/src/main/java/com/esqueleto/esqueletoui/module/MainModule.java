@@ -12,10 +12,15 @@ import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.EsqueletoApplication;
+import com.esqueleto.esqueletoui.builder.CuentaRendererBuilder;
 import com.esqueleto.esqueletoui.model.CuentaCollection;
-import com.esqueleto.esqueletoui.builder.CuentaRedererBuilder;
+import com.esqueleto.esqueletoui.renderer.CuentaRenderer;
 import com.esqueleto.esqueletoui.ui.activity.MainActivity;
+import com.pedrogomez.renderers.Renderer;
 import com.pedrogomez.renderers.RendererAdapter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,7 +32,7 @@ import dagger.Provides;
  */
 @Module(injects = {
         EsqueletoApplication.class,
-        MainActivity.class,
+        MainActivity.class
 })
 public class MainModule {
 
@@ -62,18 +67,17 @@ public class MainModule {
      */
 
     @Provides
-    RendererAdapter<Cuenta> provideCuentaRendererAdapter(LayoutInflater layoutInflater, CuentaRedererBuilder rendererBuilder) {
+    RendererAdapter<Cuenta> provideCuentaRendererAdapter(LayoutInflater layoutInflater, CuentaRendererBuilder rendererBuilder) {
         CuentaCollection cuentaCollection = new CuentaCollection(getCuentas.execute(this.context));
         RendererAdapter<Cuenta> adapter = new RendererAdapter<Cuenta>(layoutInflater, rendererBuilder, cuentaCollection);
         return adapter;
     }
 
-
-//    @Provides
-//    VideoRendererBuilder provideVideoRendererBuilder(OnVideoClickedListener onVideoClickListener) {
-//        List<Renderer<Video>> prototypes = getPrototypes(onVideoClickListener);
-//        return new VideoRendererBuilder(prototypes);
-//    }
+    @Provides
+    CuentaRendererBuilder provideCuentaRendererBuilder() {
+        List<Renderer<Cuenta>> prototypes = getPrototypes();
+        return new CuentaRendererBuilder(prototypes);
+    }
 
     @Provides
     LayoutInflater provideLayoutInflater() {
@@ -95,22 +99,13 @@ public class MainModule {
      *
      * @return Renderer<Video> prototypes for RendererBuilder.
      */
-//    private List<Renderer<Video>> getPrototypes(VideoRenderer.OnVideoClicked onVideoClickedListener) {
-//        List<Renderer<Video>> prototypes = new LinkedList<Renderer<Video>>();
-//        LikeVideoRenderer likeVideoRenderer = new LikeVideoRenderer(context);
-//        likeVideoRenderer.setListener(onVideoClickedListener);
-//        prototypes.add(likeVideoRenderer);
-//
-//        FavoriteVideoRenderer favoriteVideoRenderer = new FavoriteVideoRenderer(context);
-//        favoriteVideoRenderer.setListener(onVideoClickedListener);
-//        prototypes.add(favoriteVideoRenderer);
-//
-//        LiveVideoRenderer liveVideoRenderer = new LiveVideoRenderer(context);
-//        liveVideoRenderer.setListener(onVideoClickedListener);
-//        prototypes.add(liveVideoRenderer);
-//
-//        return prototypes;
-//    }
+    private List<Renderer<Cuenta>> getPrototypes() {
+        List<Renderer<Cuenta>> prototypes = new LinkedList<Renderer<Cuenta>>();
+        CuentaRenderer cuentaRenderer = new CuentaRenderer(context);
+        prototypes.add(cuentaRenderer);
+
+        return prototypes;
+    }
 
 
 }

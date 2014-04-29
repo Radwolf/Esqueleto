@@ -40,13 +40,7 @@ public class MainActivity extends ActionBarActivity {
      */
 
     @Inject
-    RendererAdapter<Cuenta> adapter;
-
-    /*
-     * Widgets
-     */
-    @InjectView(R.id.lv_cuentas)
-    ListView listView;
+    public static RendererAdapter<Cuenta> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +53,6 @@ public class MainActivity extends ActionBarActivity {
 
         getUsuario = new GetUsuario(gestorUsuario, mailRul);
 
-
-
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new MainFragment())
@@ -68,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         initInjection();
-        initListView();
+
     }
 
     @Override
@@ -92,59 +84,73 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public static class MainFragment extends Fragment {
+
+       /*
+        * Widgets
+        */
+        @InjectView(R.id.lv_cuentas)
+        ListView listView;
+        @InjectView(R.id.button)
+        Button button;
+        @InjectView(R.id.textView)
+        TextView textView;
+        @InjectView(R.id.editText)
+        EditText editText;
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            Button button = (Button) rootView.findViewById(R.id.button);
+            ButterKnife.inject(this, rootView);
+            initListView();
+
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    TextView textView = (TextView) rootView.findViewById(R.id.textView);
-                    EditText editText = (EditText) rootView.findViewById(R.id.editText);
-
-//                    Cursor cUsuarios = getActivity().getContentResolver().query(
-//                            AppContentProvider.CONTENT_URI_USUARIO, null, null, null,
-//                            null);
-//                    List<Usuario> usuario = new ArrayList<Usuario>(
-//                            cUsuarios.getCount());
-//                    String email = "DbError";
-//                    if (cUsuarios != null && cUsuarios.moveToFirst()) {
-//                        email = cUsuarios.getString(cUsuarios
-//                                .getColumnIndex(UsuarioCursor.Columns.EMAIL));
-//                    }
-
-
-                    Usuario usuario = getUsuario.execute(getActivity().getApplicationContext());
-                    textView.setText(String.format("Hello, %s!", usuario.getEmail()));
+                  Usuario usuario = getUsuario.execute(getActivity().getApplicationContext());
+                  textView.setText(String.format("Hello, %s!", usuario.getEmail()));
                 }
             });
 
             return rootView;
+        }
+
+        /**
+         * Initialize ListVideo with our RendererAdapter.
+         */
+        private void initListView() {
+            listView.setAdapter(adapter);
         }
     }
 
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+//    public static class PlaceholderFragment extends Fragment {
+//
+//       /*
+//        * Widgets
+//        */
+//        @InjectView(R.id.lv_cuentas)
+//        ListView listView;
+//
+//        public PlaceholderFragment() {
+//        }
+//
+//        @Override
+//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                                 Bundle savedInstanceState) {
+//            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+//            ButterKnife.inject(this, rootView);
+//            return rootView;
+//        }
+//    }
 
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-    }
-
-    /**
-     * Initialize ListVideo with our RendererAdapter.
-     */
-    private void initListView() {
-        listView.setAdapter(adapter);
-    }
+//    /**
+//     * Initialize ListVideo with our RendererAdapter.
+//     */
+//    private void initListView() {
+//        listView.setAdapter(adapter);
+//    }
 
     /**
      * Initialize injection from SampleApplication
@@ -154,5 +160,6 @@ public class MainActivity extends ActionBarActivity {
         application.inject(this);
         ButterKnife.inject(this);
     }
+
 
 }

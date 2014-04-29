@@ -7,13 +7,15 @@ import com.pedrogomez.renderers.RendererBuilder;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public class CuentaRedererBuilder  extends RendererBuilder<Cuenta> {
+public class CuentaRendererBuilder  extends RendererBuilder<Cuenta> {
 
-
-    public CuentaRedererBuilder(List<Renderer<Cuenta>> prototypes) {
+    @Inject
+    public CuentaRendererBuilder(List<Renderer<Cuenta>> prototypes) {
         super(prototypes);
     }
 

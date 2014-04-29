@@ -16,7 +16,7 @@ import butterknife.InjectView;
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public abstract class CuentaRenderer extends Renderer<Cuenta> {
+public class CuentaRenderer extends Renderer<Cuenta> {
 
     private final Context context;
 
@@ -26,6 +26,16 @@ public abstract class CuentaRenderer extends Renderer<Cuenta> {
 
     @InjectView(R.id.tvCuenta)
     TextView label;
+
+    @Override
+    protected void setUpView(View rootView) {
+
+    }
+
+    @Override
+    protected void hookListeners(View rootView) {
+
+    }
 
     @Override
     protected View inflate(LayoutInflater inflater, ViewGroup parent) {
