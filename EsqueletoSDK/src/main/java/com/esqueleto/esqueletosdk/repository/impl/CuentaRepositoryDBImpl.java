@@ -53,7 +53,13 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
     }
 
     @Override
-    public Cuenta getCuenta(long id) {
+    public Cuenta getCuenta(Integer id) {
+        try {
+            Cuenta cuenta = cuentaDao.queryForId(id);
+            return cuenta;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

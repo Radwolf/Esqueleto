@@ -26,8 +26,8 @@ public class GestorCuenta implements CuentaInteractor {
     }
 
     @Override
-    public Cuenta getCuenta(Context ctx, long id) {
-        return null;
+    public Cuenta getCuenta(Context ctx, Integer id) {
+        return cuentaRepositoryDB.getCuenta(id);
     }
 
     @Override

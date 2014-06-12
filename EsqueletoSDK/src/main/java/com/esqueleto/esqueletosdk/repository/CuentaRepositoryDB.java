@@ -15,7 +15,7 @@ public interface CuentaRepositoryDB {
 
     int delete(Cuenta cuenta);
 
-    Cuenta getCuenta(long id);
+    Cuenta getCuenta(Integer id);
 
     List<Cuenta> getCuentas(String email);
 }

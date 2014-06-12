@@ -3,6 +3,8 @@ package com.esqueleto.esqueletosdk.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Date;
+
 /**
  * Created by Raúl on 03/04/2014.
  */
@@ -10,40 +12,39 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Movimiento extends Basic {
 
     @DatabaseField
-    private long cuentaId;
+    private long resumenId;
     @DatabaseField
     private String tipoMovimiento;
     @DatabaseField
     private double importe;
     @DatabaseField
-    private long momento;
+    private Date fechaEstimada;
+    @DatabaseField
+    private Date fechaMovimiento;
     @DatabaseField
     private String categoria;
     @DatabaseField
     private String concepto;
-    @DatabaseField
-    private String email;
 
     public Movimiento() {
     }
 
-    public Movimiento(long _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, long cuentaId, String tipoMovimiento, double importe, long momento, String categoria, String concepto, String email) {
-        super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
-        this.cuentaId = cuentaId;
+    public Movimiento(long resumenId, String tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
+        this.resumenId = resumenId;
         this.tipoMovimiento = tipoMovimiento;
         this.importe = importe;
-        this.momento = momento;
+        this.fechaEstimada = fechaEstimada;
+        this.fechaMovimiento = fechaMovimiento;
         this.categoria = categoria;
         this.concepto = concepto;
-        this.email = email;
     }
 
-    public long getCuentaId() {
-        return cuentaId;
+    public long getResumenId() {
+        return resumenId;
     }
 
-    public void setCuentaId(long cuentaId) {
-        this.cuentaId = cuentaId;
+    public void setResumenId(long resumenId) {
+        this.resumenId = resumenId;
     }
 
     public String getTipoMovimiento() {
@@ -62,12 +63,20 @@ public class Movimiento extends Basic {
         this.importe = importe;
     }
 
-    public long getMomento() {
-        return momento;
+    public Date getFechaEstimada() {
+        return fechaEstimada;
     }
 
-    public void setMomento(long momento) {
-        this.momento = momento;
+    public void setFechaEstimada(Date fechaEstimada) {
+        this.fechaEstimada = fechaEstimada;
+    }
+
+    public Date getFechaMovimiento() {
+        return fechaMovimiento;
+    }
+
+    public void setFechaMovimiento(Date fechaMovimiento) {
+        this.fechaMovimiento = fechaMovimiento;
     }
 
     public String getCategoria() {
@@ -84,13 +93,5 @@ public class Movimiento extends Basic {
 
     public void setConcepto(String concepto) {
         this.concepto = concepto;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

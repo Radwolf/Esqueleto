@@ -12,7 +12,7 @@ import java.util.List;
 public interface CuentaInteractor {
 
     void addCuenta(Context ctx, String nombre, String email);
-    Cuenta getCuenta(Context ctx, long id);
+    Cuenta getCuenta(Context ctx, Integer id);
     List<Cuenta> getCuentas(Context ctx, String email);
 
 }
