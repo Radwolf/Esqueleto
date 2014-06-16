@@ -40,7 +40,6 @@ import butterknife.InjectView;
 public class MainActivity extends ActionBarActivity {
 
 //    public static UsuarioRepositoryDB usuarioRepositoryDB;
-    public static String mailRul = "rul@rul.rul";
     public static GetUsuario getUsuario;
     public static AddUsuario addUsuario;
     public static GestorUsuario gestorUsuario;
@@ -68,10 +67,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         gestorUsuario = new GestorUsuario();
-        addUsuario = new AddUsuario(gestorUsuario, mailRul);
+        addUsuario = new AddUsuario(gestorUsuario, MAIL_RUL);
         addUsuario.execute(this);
 
-        getUsuario = new GetUsuario(gestorUsuario, mailRul);
+        getUsuario = new GetUsuario(gestorUsuario, MAIL_RUL);
 
         gestorCuenta = new GestorCuenta();
         addCuenta = new AddCuenta(gestorCuenta, "Casa", MAIL_RUL);
@@ -195,6 +194,5 @@ public class MainActivity extends ActionBarActivity {
         application.inject(this);
         ButterKnife.inject(this);
     }
-
 
 }

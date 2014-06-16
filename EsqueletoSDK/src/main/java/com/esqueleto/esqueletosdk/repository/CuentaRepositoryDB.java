@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletosdk.repository;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Usuario;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface CuentaRepositoryDB {
 
     Cuenta getCuenta(Integer id);
 
-    List<Cuenta> getCuentas(String email);
+    List<Cuenta> getCuentas(Usuario usuario);
 }

@@ -3,49 +3,64 @@ package com.esqueleto.esqueletosdk.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Date;
+
 /**
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "resumen")
 public class Resumen extends Basic {
 
-    @DatabaseField
-    private long cuentaId;
-    @DatabaseField
+    private static final String COLUMN_NAME_INGRESO = "INGRESO";
+    private static final String COLUMN_NAME_GASTO = "GASTO";
+    private static final String COLUMN_NAME_AHORRO = "AHORRO";
+    private static final String COLUMN_NAME_SALDO = "SALDO";
+    public static final String COLUMN_NAME_ANYMES = "ANY_MES";
+    private static final String COLUMN_NAME_INICIOPERIODO = "INICIO_PERIODO";
+    private static final String COLUMN_NAME_FINPERIODO = "FIN_PERIODO";
+    private static final String COLUMN_NAME_INGRESOESTIMADO = "INGRESO_ESTIMADO";
+    private static final String COLUMN_NAME_GASTOESTIMADO = "GASTO_ESTIMADO";
+    private static final String COLUMN_NAME_AHORROESTIMADO = "AHORRO_ESTIMADO";
+    private static final String COLUMN_NAME_SALDOESTIMADO = "SALDO_ESTIMADO";
+    private static final String COLUMN_NAME_SALDOANTERIOR = "SALDO_ANTERIOR";
+
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Cuenta cuenta;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_INGRESO)
     private double ingreso;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_GASTO)
     private double gasto;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_AHORRO)
     private double ahorro;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_SALDO)
     private double saldo;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_ANYMES)
     private String anyMes;
-    @DatabaseField
-    private String inicioPeriodo;
-    @DatabaseField
-    private String finPeriodo;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_INICIOPERIODO)
+    private Date inicioPeriodo;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FINPERIODO)
+    private Date finPeriodo;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_INGRESOESTIMADO)
     private double ingresoEstimado;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_GASTOESTIMADO)
     private double gastoEstimado;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_AHORROESTIMADO)
     private double ahorroEstimado;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_SALDOESTIMADO)
     private double saldoEstimado;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_SALDOANTERIOR)
     private double saldoAnterior;
 
     public Resumen() {
     }
 
-    public Resumen(long _id, String dateCreate, String dateUpdate, String userCreate,
-                   String userUpdate, long cuentaId, double ingreso, double gasto, double ahorro,
-                   double saldo, String anyMes, String inicioPeriodo, String finPeriodo,
+    public Resumen(int _id, String dateCreate, String dateUpdate, String userCreate,
+                   String userUpdate, Cuenta cuenta, double ingreso, double gasto, double ahorro,
+                   double saldo, String anyMes, Date inicioPeriodo, Date finPeriodo,
                    double ingresoEstimado, double gastoEstimado, double ahorroEstimado,
                    double saldoEstimado, double saldoAnterior) {
         super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
-        this.cuentaId = cuentaId;
+        this.cuenta = cuenta;
         this.ingreso = ingreso;
         this.gasto = gasto;
         this.ahorro = ahorro;
@@ -60,12 +75,12 @@ public class Resumen extends Basic {
         this.saldoAnterior = saldoAnterior;
     }
 
-    public long getCuentaId() {
-        return cuentaId;
+    public Cuenta getCuenta() {
+        return cuenta;
     }
 
-    public void setCuentaId(long cuentaId) {
-        this.cuentaId = cuentaId;
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 
     public double getIngreso() {
@@ -108,19 +123,19 @@ public class Resumen extends Basic {
         this.anyMes = anyMes;
     }
 
-    public String getInicioPeriodo() {
+    public Date getInicioPeriodo() {
         return inicioPeriodo;
     }
 
-    public void setInicioPeriodo(String inicioPeriodo) {
+    public void setInicioPeriodo(Date inicioPeriodo) {
         this.inicioPeriodo = inicioPeriodo;
     }
 
-    public String getFinPeriodo() {
+    public Date getFinPeriodo() {
         return finPeriodo;
     }
 
-    public void setFinPeriodo(String finPeriodo) {
+    public void setFinPeriodo(Date finPeriodo) {
         this.finPeriodo = finPeriodo;
     }
 

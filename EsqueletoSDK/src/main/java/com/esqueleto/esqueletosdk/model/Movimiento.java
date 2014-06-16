@@ -11,26 +11,34 @@ import java.util.Date;
 @DatabaseTable(tableName = "movimiento")
 public class Movimiento extends Basic {
 
-    @DatabaseField
-    private long resumenId;
-    @DatabaseField
-    private String tipoMovimiento;
-    @DatabaseField
+    private static final String COLUMN_NAME_IMPORTE = "IMPORTE";
+    private static final String COLUMN_NAME_FECHAESTIMADA = "FECHA_ESTIMADA";
+    private static final String COLUMN_NAME_FECHAMOVIMIENTO = "FECHA_MOVIMIENTO";
+    private static final String COLUMN_NAME_CONCEPTO = "CONCEPTO";
+
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Resumen resumen;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Diccionario tipoMovimiento;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_IMPORTE)
     private double importe;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FECHAESTIMADA)
     private Date fechaEstimada;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FECHAMOVIMIENTO)
     private Date fechaMovimiento;
-    @DatabaseField
-    private String categoria;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Diccionario categoria;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_CONCEPTO)
     private String concepto;
 
     public Movimiento() {
     }
 
-    public Movimiento(long resumenId, String tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
-        this.resumenId = resumenId;
+    public Movimiento(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate,
+                      Resumen resumen, Diccionario tipoMovimiento, double importe, Date fechaEstimada,
+                      Date fechaMovimiento, Diccionario categoria, String concepto) {
+        super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
+        this.resumen = resumen;
         this.tipoMovimiento = tipoMovimiento;
         this.importe = importe;
         this.fechaEstimada = fechaEstimada;
@@ -39,19 +47,19 @@ public class Movimiento extends Basic {
         this.concepto = concepto;
     }
 
-    public long getResumenId() {
-        return resumenId;
+    public Resumen getResumen() {
+        return resumen;
     }
 
-    public void setResumenId(long resumenId) {
-        this.resumenId = resumenId;
+    public void setResumen(Resumen resumen) {
+        this.resumen = resumen;
     }
 
-    public String getTipoMovimiento() {
+    public Diccionario getTipoMovimiento() {
         return tipoMovimiento;
     }
 
-    public void setTipoMovimiento(String tipoMovimiento) {
+    public void setTipoMovimiento(Diccionario tipoMovimiento) {
         this.tipoMovimiento = tipoMovimiento;
     }
 
@@ -79,11 +87,11 @@ public class Movimiento extends Basic {
         this.fechaMovimiento = fechaMovimiento;
     }
 
-    public String getCategoria() {
+    public Diccionario getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Diccionario categoria) {
         this.categoria = categoria;
     }
 

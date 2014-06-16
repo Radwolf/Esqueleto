@@ -9,13 +9,15 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "usuario")
 public class Usuario extends Basic {
 
-    @DatabaseField
+    public static final String COLUMN_NAME_EMAIL = "EMAIL";
+
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_EMAIL)
     private String email;
 
     public Usuario() {
     }
 
-    public Usuario(long _id, String email, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
+    public Usuario(int _id, String email, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
         super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
         this.email = email;
     }

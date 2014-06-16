@@ -9,17 +9,21 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "diccionario")
 public class Diccionario extends Basic {
 
-    @DatabaseField
+    public static final String COLUMN_NAME_CLAVE = "CLAVE";
+    private static final String COLUMN_NAME_VALOR = "VALOR";
+    private static final String COLUMN_NAME_TIPO = "TIPO";
+
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_CLAVE)
     private String clave;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_VALOR)
     private String valor;
-    @DatabaseField
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_TIPO)
     private String tipo;
 
     public Diccionario() {
     }
 
-    public Diccionario(long _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, String clave, String valor, String tipo) {
+    public Diccionario(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, String clave, String valor, String tipo) {
         super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
         this.clave = clave;
         this.valor = valor;

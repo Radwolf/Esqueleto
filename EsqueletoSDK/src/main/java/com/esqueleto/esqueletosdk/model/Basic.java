@@ -8,7 +8,7 @@ import com.j256.ormlite.field.DatabaseField;
 public class Basic {
 
     @DatabaseField(generatedId = true, canBeNull = false)
-    private long _id;
+    private int _id;
     @DatabaseField
     private String dateCreate;
     @DatabaseField
@@ -21,7 +21,7 @@ public class Basic {
     public Basic() {
     }
 
-    public Basic(long _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
+    public Basic(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
         this._id = _id;
         this.dateCreate = dateCreate;
         this.dateUpdate = dateUpdate;
@@ -29,11 +29,11 @@ public class Basic {
         this.userUpdate = userUpdate;
     }
 
-    public long get_id() {
+    public int get_id() {
         return _id;
     }
 
-    public void set_id(long _id) {
+    public void set_id(int _id) {
         this._id = _id;
     }
 

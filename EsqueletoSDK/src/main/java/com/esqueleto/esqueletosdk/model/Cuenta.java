@@ -9,29 +9,33 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "cuenta")
 public class Cuenta extends Basic {
 
-    @DatabaseField
-    private String email;
-    @DatabaseField
+    public static final String COLUMN_NAME_USUARIO = "USUARIO_ID";
+    private static final String COLUMN_NAME_DATESINC = "DATE_SINC";
+    private static final String COLUMN_NAME_NOMBRE = "NOMBRE";
+
+    @DatabaseField(foreign = true, columnName = COLUMN_NAME_USUARIO)
+    private Usuario usuario;
+    @DatabaseField(columnName = COLUMN_NAME_DATESINC)
     private String dateSinc;
-    @DatabaseField
+    @DatabaseField(columnName = COLUMN_NAME_NOMBRE)
     private String nombre;
 
     public Cuenta() {
     }
 
-    public Cuenta(long _id, String email, String dateSinc, String nombre, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
+    public Cuenta(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, Usuario usuario, String dateSinc, String nombre) {
         super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
-        this.email = email;
+        this.usuario = usuario;
         this.dateSinc = dateSinc;
         this.nombre = nombre;
     }
 
-    public String getEmail() {
-        return email;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getDateSinc() {

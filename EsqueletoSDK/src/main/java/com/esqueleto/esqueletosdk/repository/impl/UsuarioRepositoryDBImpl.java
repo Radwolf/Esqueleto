@@ -86,7 +86,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     @Override
     public Usuario findByEmail(String email){
         try {
-            List<Usuario> usuarios = usuarioDao.queryForEq("email", email);
+            List<Usuario> usuarios = usuarioDao.queryForEq(Usuario.COLUMN_NAME_EMAIL, email);
             if(usuarios.size()>0){
                 return usuarios.get(0);
             }

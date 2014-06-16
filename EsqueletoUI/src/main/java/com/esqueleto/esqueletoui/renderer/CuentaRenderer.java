@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletoui.R;
 import com.pedrogomez.renderers.Renderer;
 
@@ -14,6 +15,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by rgonzalez on 25/04/2014.
@@ -21,6 +23,7 @@ import butterknife.InjectView;
 public class CuentaRenderer extends Renderer<Cuenta> {
 
     private final Context context;
+    private OnCuentaClicked listener;
 
     @Inject
     public CuentaRenderer(Context context) {
@@ -29,6 +32,7 @@ public class CuentaRenderer extends Renderer<Cuenta> {
 
     @InjectView(R.id.tvCuenta)
     TextView label;
+    Usuario usuario;
 
     @Override
     protected void setUpView(View rootView) {
@@ -74,8 +78,22 @@ public class CuentaRenderer extends Renderer<Cuenta> {
 
     private void renderLabel(Cuenta cuenta){
         this.label.setText(cuenta.getNombre());
+        this.usuario = cuenta.getUsuario();
     }
 
+    public void setListener(OnCuentaClicked listener) {
+        this.listener = listener;
+    }
 
+    public interface OnCuentaClicked {
+        void onCuentaClicked(final Cuenta cuenta);
+    }
+
+    @OnClick(R.id.tvCuenta) void onCuentaClicked() {
+        if (listener != null) {
+            Cuenta cuenta = getContent();
+            listener.onCuentaClicked(cuenta);
+        }
+    }
 
 }

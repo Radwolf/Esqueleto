@@ -5,6 +5,7 @@ import android.content.Context;
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletosdk.repository.CuentaRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 
@@ -64,9 +65,10 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
     }
 
     @Override
-    public List<Cuenta> getCuentas(String email) {
+    public List<Cuenta> getCuentas(Usuario usuario) {
         try {
-            List<Cuenta> cuentas = cuentaDao.queryForEq("email", email);
+
+            List<Cuenta> cuentas = cuentaDao.queryForEq(Cuenta.COLUMN_NAME_USUARIO, usuario);
             return cuentas;
         } catch (SQLException e) {
             e.printStackTrace();
