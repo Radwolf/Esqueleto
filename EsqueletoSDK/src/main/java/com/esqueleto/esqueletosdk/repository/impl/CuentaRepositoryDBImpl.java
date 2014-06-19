@@ -8,6 +8,7 @@ import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletosdk.repository.CuentaRepositoryDB;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,12 +20,14 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
 
     private DatabaseHelper db;
     Dao<Cuenta, Integer> cuentaDao;
+    Dao<Usuario, Integer> usuarioDao;
 
     public CuentaRepositoryDBImpl(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
             cuentaDao = db.getCuentaDao();
+            usuarioDao = db.getUsuarioDao();
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -66,13 +69,17 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
 
     @Override
     public List<Cuenta> getCuentas(Usuario usuario) {
+        List<Cuenta> cuentas = null;
         try {
 
-            List<Cuenta> cuentas = cuentaDao.queryForEq(Cuenta.COLUMN_NAME_USUARIO, usuario);
-            return cuentas;
+            QueryBuilder<Usuario, Integer> usuarioQb = usuarioDao.queryBuilder();
+            usuarioQb.where().eq(Usuario.COLUMN_NAME_EMAIL, usuario.getEmail());
+            QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
+            // join with the order query
+            cuentas = cuentaQb.join(usuarioQb).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return cuentas;
     }
 }

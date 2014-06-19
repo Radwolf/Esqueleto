@@ -5,13 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.AddCuenta;
 import com.esqueleto.esqueletosdk.command.impl.AddUsuario;
@@ -21,22 +21,16 @@ import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Usuario;
-import com.esqueleto.esqueletoui.EsqueletoApplication;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.builder.CuentaRendererBuilder;
-import com.esqueleto.esqueletoui.model.CuentaCollection;
-import com.esqueleto.esqueletoui.renderer.CuentaRenderer;
-import com.pedrogomez.renderers.Renderer;
-import com.pedrogomez.renderers.RendererAdapter;
+import com.esqueleto.esqueletoui.adapter.CuentaAdapter;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 
+import static android.widget.Toast.LENGTH_SHORT;
 public class MainActivity extends ActionBarActivity {
 
 //    public static UsuarioRepositoryDB usuarioRepositoryDB;
@@ -57,9 +51,7 @@ public class MainActivity extends ActionBarActivity {
     /*
      * Attributes
      */
-
-    @Inject
-    public static RendererAdapter<Cuenta> adapter;
+    public static CuentaAdapter cuentaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,17 +76,10 @@ public class MainActivity extends ActionBarActivity {
                     .commit();
         }
 
-        List<Renderer<Cuenta>> prototypes = new LinkedList<Renderer<Cuenta>>();
-        CuentaRenderer cuentaRenderer = new CuentaRenderer(this);
-        prototypes.add(cuentaRenderer);
+    }
 
-        CuentaRendererBuilder rendererBuilder = new CuentaRendererBuilder(prototypes);
-
-        CuentaCollection cuentaCollection = new CuentaCollection(getCuentas.execute(this));
-        adapter = new RendererAdapter<Cuenta>(getLayoutInflater(), rendererBuilder, cuentaCollection);
-
-        initInjection();
-
+    @OnItemClick(R.id.lv_cuentas) void onItemClick(int position) {
+        Toast.makeText(this, "You clicked: " + cuentaAdapter.getItem(position), LENGTH_SHORT).show();
     }
 
     @Override
@@ -105,17 +90,17 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        switch (item.getItemId()) {
+//            case R.id.action_settings:
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public static class MainFragment extends Fragment {
 
@@ -135,7 +120,7 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             ButterKnife.inject(this, rootView);
-            initListView();
+            initListView(getCuentas.execute(getActivity().getApplicationContext()));
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -151,48 +136,10 @@ public class MainActivity extends ActionBarActivity {
         /**
          * Initialize ListVideo with our RendererAdapter.
          */
-        private void initListView() {
-            listView.setAdapter(adapter);
+        private void initListView(List<Cuenta> cuentas) {
+            cuentaAdapter = new CuentaAdapter(getActivity().getApplicationContext(), R.layout.cuenta_item, cuentas);
+            listView.setAdapter(cuentaAdapter);
         }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-//    public static class PlaceholderFragment extends Fragment {
-//
-//       /*
-//        * Widgets
-//        */
-//        @InjectView(R.id.lv_cuentas)
-//        ListView listView;
-//
-//        public PlaceholderFragment() {
-//        }
-//
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-//            ButterKnife.inject(this, rootView);
-//            return rootView;
-//        }
-//    }
-
-//    /**
-//     * Initialize ListVideo with our RendererAdapter.
-//     */
-//    private void initListView() {
-//        listView.setAdapter(adapter);
-//    }
-
-    /**
-     * Initialize injection from SampleApplication
-     */
-    private void initInjection() {
-        EsqueletoApplication application = (EsqueletoApplication) getApplication();
-        application.inject(this);
-        ButterKnife.inject(this);
     }
 
 }

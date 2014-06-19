@@ -1,5 +1,4 @@
 apply plugin: 'android-library'
-apply plugin: 'robolectric'
 
 android {
     final PROVIDER_DEBUG = "com.esqueleto.esqueletosdk.debug.provider"
@@ -71,7 +70,7 @@ android {
 
 dependencies {
     androidTestCompile 'junit:junit:4.10'
-    androidTestCompile 'org.robolectric:robolectric:2.+'
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile 'com.j256.ormlite:ormlite-android:4.46'
+    compile 'com.squareup.dagger:dagger-compiler:1.2.1'
 }
