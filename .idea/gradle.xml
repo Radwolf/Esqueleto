@@ -7,10 +7,10 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\des\android\Workspace\Esqueleto2" />
-            <option value="C:\des\android\Workspace\Esqueleto2\EsqueletoCore" />
-            <option value="C:\des\android\Workspace\Esqueleto2\EsqueletoSDK" />
-            <option value="C:\des\android\Workspace\Esqueleto2\EsqueletoUI" />
+            <option value="C:\Users\RUL\AndroidStudioProjects\Esqueleto" />
+            <option value="C:\Users\RUL\AndroidStudioProjects\Esqueleto\EsqueletoCore" />
+            <option value="C:\Users\RUL\AndroidStudioProjects\Esqueleto\EsqueletoSDK" />
+            <option value="C:\Users\RUL\AndroidStudioProjects\Esqueleto\EsqueletoUI" />
           </set>
         </option>
       </GradleProjectSettings>

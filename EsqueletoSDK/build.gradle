@@ -1,12 +1,11 @@
 apply plugin: 'android-library'
-apply plugin: 'robolectric'
 
 android {
     final PROVIDER_DEBUG = "com.esqueleto.esqueletosdk.debug.provider"
     final PROVIDER_RELEASE = "com.esqueleto.esqueletosdk.provider"
 
     compileSdkVersion 19
-    buildToolsVersion '19.0.2'
+    buildToolsVersion '19.1.0'
 
     defaultConfig {
         minSdkVersion 14
@@ -71,7 +70,6 @@ android {
 
 dependencies {
     androidTestCompile 'junit:junit:4.10'
-    androidTestCompile 'org.robolectric:robolectric:2.+'
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile 'com.j256.ormlite:ormlite-android:4.46'
 }
