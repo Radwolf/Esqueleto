@@ -8,9 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -19,25 +22,29 @@ import butterknife.InjectView;
 /**
  * Created by rgonzalez on 19/06/2014.
  */
-public class MovimientoAdapter extends ArrayAdapter<Cuenta> {
+public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
 
-    private List<Cuenta> cuentas;
+    private List<Movimiento> movimientos;
     private final LayoutInflater inflater;
 
 
     public MovimientoAdapter(Context context, int textViewResourceId,
-                             List<Cuenta> cuentas) {
-        super(context, textViewResourceId, cuentas);
-        this.cuentas = new ArrayList<Cuenta>();
-        this.cuentas.addAll(cuentas);
+                             List<Movimiento> movimientos) {
+        super(context, textViewResourceId, movimientos);
+        this.movimientos = new ArrayList<Movimiento>();
+        this.movimientos.addAll(movimientos);
         inflater = LayoutInflater.from(context);
     }
 
     static class ViewHolder {
-        @InjectView(R.id.tv_nombre_cuenta)
-        TextView tvNombreCuenta;
-        @InjectView(R.id.tv_usuario_cuenta)
-        TextView tvUsuarioCuenta;
+        @InjectView(R.id.tv_data_movimiento)
+        TextView tvDataMovimiento;
+        @InjectView(R.id.tv_concepto)
+        TextView tvConcepto;
+        @InjectView(R.id.tv_otros_datos)
+        TextView tvOtrosDatos;
+        @InjectView(R.id.tv_importe_movimiento)
+        TextView tvImporteMovimiento;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
@@ -49,28 +56,37 @@ public class MovimientoAdapter extends ArrayAdapter<Cuenta> {
         if (view != null) {
             holder = (ViewHolder) view.getTag();
         } else {
-            view = inflater.inflate(R.layout.cuenta_item, parent, false);
+            view = inflater.inflate(R.layout.movimiento_item_list, parent, false);
             holder = new ViewHolder(view);
             view.setTag(holder);
         }
 
-        Cuenta cuenta = getItem(position);
-        holder.tvNombreCuenta.setText(cuenta.getNombre());
-        holder.tvUsuarioCuenta.setText(cuenta.getUsuario().getEmail());
-        // Note: don't actually do string concatenation like this in an adapter's getView.
+        Movimiento movimiento = getItem(position);
+        holder.tvDataMovimiento.setText(getFechaMovimientoCalculada(movimiento).toString());
+        holder.tvConcepto.setText(movimiento.getConcepto());
+        holder.tvOtrosDatos.setText(movimiento.getCategoria().getValor());
+        holder.tvImporteMovimiento.setText((CharSequence) BigDecimal.valueOf(movimiento.getImporte()));
 
         return view;
     }
 
     @Override public int getCount() {
-        return cuentas.size();
+        return movimientos.size();
     }
 
-    @Override public Cuenta getItem(int position) {
-        return cuentas.get(position);
+    @Override public Movimiento getItem(int position) {
+        return movimientos.get(position);
     }
 
     @Override public long getItemId(int position) {
         return position;
+    }
+
+    private Date getFechaMovimientoCalculada(Movimiento movimiento){
+        Date fechaMovimientoCalculada = movimiento.getFechaMovimiento();
+        if(fechaMovimientoCalculada == null){
+            fechaMovimientoCalculada = movimiento.getFechaEstimada();
+        }
+        return fechaMovimientoCalculada;
     }
 }

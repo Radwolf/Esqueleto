@@ -68,12 +68,12 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
     }
 
     @Override
-    public List<Cuenta> getCuentas(Usuario usuario) {
+    public List<Cuenta> getCuentas(String email) {
         List<Cuenta> cuentas = null;
         try {
 
             QueryBuilder<Usuario, Integer> usuarioQb = usuarioDao.queryBuilder();
-            usuarioQb.where().eq(Usuario.COLUMN_NAME_EMAIL, usuario.getEmail());
+            usuarioQb.where().eq(Usuario.COLUMN_NAME_EMAIL, email);
             QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
             // join with the order query
             cuentas = cuentaQb.join(usuarioQb).query();

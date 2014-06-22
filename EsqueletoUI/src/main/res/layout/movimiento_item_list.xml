@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/bg_corner_importe">
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1.2"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="03/06/2014"
+            android:id="@+id/tv_data_movimiento"
+            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:layout_weight="2.5"
+        android:padding="10dp"
+        android:background="@drawable/bg_border_movimiento">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/tv_concepto"
+                android:text="Nómina"
+                android:layout_marginLeft="15dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:id="@+id/tv_otros_datos"
+                android:text="Connectis Raúl"
+                android:layout_marginLeft="15dp" />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2.250,00"
+            android:id="@+id/tv_importe_movimiento"
+            android:textAlignment="center"
+            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="bold"
+            android:textColor="#ffffff" />
+    </LinearLayout>
 </LinearLayout>

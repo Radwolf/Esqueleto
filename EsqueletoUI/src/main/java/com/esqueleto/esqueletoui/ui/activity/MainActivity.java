@@ -58,13 +58,13 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gestorUsuario = new GestorUsuario();
+        gestorUsuario = new GestorUsuario(getApplicationContext());
         addUsuario = new AddUsuario(gestorUsuario, MAIL_RUL);
         addUsuario.execute(this);
 
         getUsuario = new GetUsuario(gestorUsuario, MAIL_RUL);
 
-        gestorCuenta = new GestorCuenta();
+        gestorCuenta = new GestorCuenta(getApplicationContext());
         addCuenta = new AddCuenta(gestorCuenta, "Casa", MAIL_RUL);
         addCuenta.execute(this);
 

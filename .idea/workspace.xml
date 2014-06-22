@@ -23,59 +23,41 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/movimiento_item_list.xml">
+        <config>
+          <device>Nexus 4</device>
+          <theme>@style/Theme.AppCompat.Light</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.esqueleto.esqueletoui.debug" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e6c7f17-ed95-4d2c-8924-9e8547c2fc3d" name="Default" comment="Nuevos commands">
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\ant_1_8_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\ant_launcher_1_8_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\asm_5_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\asm_analysis_5_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\asm_commons_5_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\asm_tree_5_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\asm_util_5_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\backport_util_concurrent_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\classworlds_1_1_alpha_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\commons_codec_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\fest_reflect_1_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\fest_util_1_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_ant_tasks_2_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_artifact_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_artifact_manager_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_error_diagnostics_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_model_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_plugin_registry_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_profile_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_project_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_repository_metadata_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\maven_settings_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\nekohtml_1_9_6_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\objenesis_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\plexus_container_default_1_0_alpha_9_stable_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\plexus_interpolation_1_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\plexus_utils_1_5_15.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\robolectric_2_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\sqlite4java_0_282.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\support_v4_19_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\vtd_xml_2_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\wagon_file_1_0_beta_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\wagon_http_lightweight_1_0_beta_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\wagon_http_shared_1_0_beta_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\wagon_provider_api_1_0_beta_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\RUL\AndroidStudioProjects\Esqueleto\.idea\libraries\xercesMinimal_1_9_6_2.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Esqueleto.iml" afterPath="$PROJECT_DIR$/Esqueleto.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" afterPath="$PROJECT_DIR$/EsqueletoCore/EsqueletoCore.iml" />
+    <list default="true" id="2e6c7f17-ed95-4d2c-8924-9e8547c2fc3d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" afterPath="$PROJECT_DIR$/EsqueletoSDK/EsqueletoSDK.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" afterPath="$PROJECT_DIR$/EsqueletoUI/EsqueletoUI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_rest_1_2_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_rest_1_2_1_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/build.gradle" afterPath="$PROJECT_DIR$/EsqueletoSDK/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/build.gradle" afterPath="$PROJECT_DIR$/EsqueletoUI/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorMovimiento.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorMovimiento.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Movimiento.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Movimiento.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/MovimientoAdapter.java" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/MovimientoAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/MovimientoRepositoryDB.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/MovimientoRepositoryDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/MovimientoRepositoryDBImpl.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/MovimientoRepositoryDBImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/ResumenRepositoryDB.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/ResumenRepositoryDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/ResumenRepositoryDBImpl.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/ResumenRepositoryDBImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java" afterPath="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_border_movimiento.xml" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_border_movimiento.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_fecha_in.xml" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_fecha_in.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_importe.xml" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_importe.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/movimiento_item_list.xml" afterPath="$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/movimiento_item_list.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="326b31c1-9137-4575-ae52-73d5c505144c" name="Rejected commit: Default" comment="Refactorizado el provider al proyecto SDK" />
@@ -145,32 +127,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainModule.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/module/MainModule.java">
+      <file leaf-file-name="CuentaAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/CuentaAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7270642" vertical-offset="743" max-vertical-offset="1615">
-              <caret line="104" column="68" selection-start-line="104" selection-start-column="68" selection-end-line="104" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="1020">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EsqueletoApplication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/EsqueletoApplication.java">
+      <file leaf-file-name="GestorMovimiento.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorMovimiento.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="850">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OnCuentaClickedListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/listener/OnCuentaClickedListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="544">
-              <caret line="23" column="21" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="31" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+              <folding>
+                <element signature="e#1778#1779#0" expanded="true" />
+                <element signature="e#1805#1806#0" expanded="true" />
+                <element signature="e#1901#1902#0" expanded="true" />
+                <element signature="e#1928#1929#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,8 +155,43 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2329" max-vertical-offset="3468">
-              <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1951" max-vertical-offset="2516">
+              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movimiento_item_list.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/movimiento_item_list.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.358736" vertical-offset="0" max-vertical-offset="1156">
+              <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Basic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="986">
+              <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetCuentas.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetCuentas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -188,18 +200,41 @@
       <file leaf-file-name="GestorCuenta.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="867">
-              <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="115" max-vertical-offset="680">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CuentaRenderer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/renderer/CuentaRenderer.java">
+      <file leaf-file-name="GestorUsuario.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1105" max-vertical-offset="1768">
-              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+              <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+              <folding>
+                <element signature="e#543#544#0" expanded="true" />
+                <element signature="e#613#614#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CuentaRepositoryDBImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="727" max-vertical-offset="1292">
+              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CuentaRepositoryDB.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -1332,7 +1367,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="8417732445775" />
+        <entry key="$PROJECT_DIR$" value="8418077537569" />
         <entry key="$PROJECT_DIR$/../Example1" value="1379400256041" />
         <entry key="$PROJECT_DIR$/../capsulecorp/gradle" value="1389691128821" />
       </map>
@@ -1742,22 +1777,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/storage/impl/UsuarioStorageImpl.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioStorageImpl.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseInitializer.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/Usuario.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/UsuarioIteractor.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/invoker/GestorCommand.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/Command.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetCommand.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/AddUsuario.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetUsuario.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetCuentas.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/GetCommand.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/cuenta_renderer.xml" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/renderer/builder/CuentaRedererBuilder.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/model/CuentaCollection.java" />
@@ -1775,24 +1794,40 @@
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/DeleteMovimiento.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetCuenta.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/UpdateMovimiento.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Movimiento.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/listener/OnCuentaClickedListener.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Diccionario.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Resumen.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Usuario.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Cuenta.java" />
-        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/fragment_main.xml" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/renderer/CuentaRenderer.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/EsqueletoSDK/build.gradle" />
         <option value="$PROJECT_DIR$/EsqueletoUI/build.gradle" />
-        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/module/MainModule.java" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/EsqueletoApplication.java" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/xml/backgroun_corner.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/backgroun_corner.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_fecha_in.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_border_movimiento.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_importe.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/movimiento_item_list.xml" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/MovimientoAdapter.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/MovimientoRepositoryDB.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/MovimientoRepositoryDB.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/ResumenRepositoryDB.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/ResumenRepositoryDBImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Movimiento.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/MovimientoRepositoryDBImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorMovimiento.java" />
+        <option value="$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java" />
+        <option value="$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java" />
       </list>
     </option>
   </component>
@@ -1821,7 +1856,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>Abstraction issues</id>
+            <id>AndroidDomInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -1854,6 +1889,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1930,11 +1966,37 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Esqueleto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Esqueleto" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletoui" />
+              <option name="myItemId" value="EsqueletoUI" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1965,152 +2027,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="esqueletoui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoUI" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletoui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="renderer" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoUI" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletoui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoUI" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletoui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Esqueleto" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EsqueletoUI" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="esqueletoui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="listener" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2119,7 +2040,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -2158,16 +2079,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.esqueleto.esqueletosdk.repository" />
+      <recent name="com.esqueleto.esqueletosdk.repository.impl" />
+      <recent name="com.esqueleto.esqueletosdk.iteractor.impl" />
+      <recent name="com.esqueleto.esqueletoui.adapter" />
       <recent name="com.esqueleto.esqueletosdk.command.impl" />
-      <recent name="com.esqueleto.esqueletosdk.command" />
-      <recent name="com.esqueleto.esqueletosdk.iteractor" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\RUL\AndroidStudioProjects\Esqueleto\EsqueletoUI\src\main\res\drawable" />
       <recent name="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\provider" />
       <recent name="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database\cursor" />
       <recent name="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\EsqueletoSDK\src\main\java\com\esqueleto\esqueletosdk\database" />
       <recent name="C:\Users\Raúl\AndroidStudioProjects\Esqueleto\distribution" />
-      <recent name="C:\des\android\Workspace\Esqueleto\EsqueletoUI\src\main\java\com\example\esqueleto" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.esqueleto.esqueletosdk.repository" />
@@ -2178,6 +2101,9 @@
       <recent name="com.esqueleto.esqueletosdk.provider" />
       <recent name="com.esqueleto.esqueletoui.provider" />
       <recent name="com.esqueleto.esqueletosdk" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RUL\AndroidStudioProjects\Esqueleto\EsqueletoUI\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.EsqueletoUI">
@@ -2334,19 +2260,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -2372,6 +2285,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2580,7 +2506,15 @@
       <created>1402588763505</created>
       <updated>1402588763505</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="PC sobremesa&#10;">
+      <created>1403302217475</created>
+      <updated>1403302217475</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Cambios en cuentas y usuarios&#10;Y añadido movimientos">
+      <created>1403472081690</created>
+      <updated>1403472081690</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2610,12 +2544,13 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3418708" sideWeight="0.6540512" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34111112" sideWeight="0.6540512" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31777778" sideWeight="0.40724948" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938388" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31777778" sideWeight="0.40724948" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26701966" sideWeight="0.5008518" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2626,17 +2561,47 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31663114" sideWeight="0.49914822" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5011136" sideWeight="0.5676972" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31663114" sideWeight="0.49914822" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5" sideWeight="0.5676972" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819906" sideWeight="0.55097085" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31777778" sideWeight="0.40724948" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26701966" sideWeight="0.5008518" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31777778" sideWeight="0.40724948" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31663114" sideWeight="0.49914822" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5" sideWeight="0.5676972" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819906" sideWeight="0.55097085" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34111112" sideWeight="0.6540512" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31777778" sideWeight="0.59275055" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -2661,7 +2626,9 @@
     <MESSAGE value="DAgger, renderer, command" />
     <MESSAGE value="DAgger, renderer, command (Problema con Dagger, no consigo inyectar)" />
     <MESSAGE value="Nuevos commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nuevos commands" />
+    <MESSAGE value="PC sobremesa&#10;" />
+    <MESSAGE value="Cambios en cuentas y usuarios&#10;Y añadido movimientos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios en cuentas y usuarios&#10;Y añadido movimientos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2714,45 +2681,35 @@
           <properties />
           <option name="timeStamp" value="53" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/CuentaAdapter.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java</url>
+          <line>139</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java</url>
+          <line>78</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="54" />
+      <option name="time" value="60" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/module/MainModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2006">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/listener/OnCuentaClickedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="544">
-          <caret line="26" column="0" selection-start-line="23" selection-start-column="16" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/fragment_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
-          <caret line="38" column="35" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="3468">
-          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/EsqueletoApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="850">
@@ -2776,25 +2733,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/renderer/CuentaRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="1411">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/database/DatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3587">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -2882,56 +2824,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/MovimientoInteractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/builder/CuentaRendererBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="595">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/model/CuentaCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="748">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/cuenta_renderer.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.4074073" vertical-offset="0" max-vertical-offset="272">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Diccionario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="833">
           <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Movimiento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -2949,38 +2845,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1017" max-vertical-offset="1615">
-          <caret line="88" column="84" selection-start-line="88" selection-start-column="84" selection-end-line="88" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="969">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/AddCuenta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="578">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetCuentas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Cuenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="833">
-          <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -3001,20 +2869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="833">
           <caret line="38" column="35" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/CuentaInteractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3548387" vertical-offset="0" max-vertical-offset="527">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61290324" vertical-offset="0" max-vertical-offset="527">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -3043,60 +2897,219 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42123893" vertical-offset="901" max-vertical-offset="1513">
           <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="663">
-          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/renderer/CuentaRenderer.java">
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_border_movimiento.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="791" max-vertical-offset="1377">
-          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/listener/OnCuentaClickedListener.java">
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_fecha_in.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/drawable/bg_corner_importe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/EsqueletoApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="748">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/MovimientoAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/MovimientoInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/CuentaInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/UsuarioRepositoryDBImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6245733" vertical-offset="0" max-vertical-offset="1615">
+          <caret line="65" column="36" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/UsuarioRepositoryDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49317408" vertical-offset="0" max-vertical-offset="586">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/MovimientoRepositoryDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/ResumenRepositoryDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Cuenta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Movimiento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1428">
+          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/MovimientoRepositoryDBImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1904">
+          <caret line="105" column="27" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/ResumenRepositoryDBImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+          <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/CuentaRepositoryDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+          <folding>
+            <element signature="e#543#544#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorMovimiento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding>
+            <element signature="e#1778#1779#0" expanded="true" />
+            <element signature="e#1805#1806#0" expanded="true" />
+            <element signature="e#1901#1902#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/command/impl/GetCuentas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/model/Basic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="986">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/repository/impl/CuentaRepositoryDBImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18771331" vertical-offset="434" max-vertical-offset="1190">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="727" max-vertical-offset="1292">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoSDK/src/main/java/com/esqueleto/esqueletosdk/iteractor/impl/GestorCuenta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="115" max-vertical-offset="680">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/ui/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="2822">
-          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1951" max-vertical-offset="2516">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/adapter/CuentaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="1020">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/java/com/esqueleto/esqueletoui/module/MainModule.java">
+    <entry file="file://$PROJECT_DIR$/EsqueletoUI/src/main/res/layout/movimiento_item_list.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7270642" vertical-offset="743" max-vertical-offset="1615">
-          <caret line="104" column="68" selection-start-line="104" selection-start-column="68" selection-end-line="104" selection-end-column="68" />
+        <state vertical-scroll-proportion="1.358736" vertical-offset="0" max-vertical-offset="1156">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
           <folding />
         </state>
       </provider>

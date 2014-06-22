@@ -20,11 +20,14 @@ public class GestorCuenta implements CuentaInteractor {
     public static CuentaRepositoryDB cuentaRepositoryDB;
     public static UsuarioRepositoryDB usuarioRepositoryDB;
 
-    @Override
-    public void addCuenta(Context ctx, String nombre, String email) {
+    public GestorCuenta(Context ctx) {
         cuentaRepositoryDB = new CuentaRepositoryDBImpl(ctx);
         usuarioRepositoryDB = new UsuarioRepositoryDBImpl(ctx);
-        Usuario usuario = usuarioRepositoryDB.findByEmail(email);
+    }
+
+    @Override
+    public void addCuenta(Context ctx, String nombre, String email) {
+        Usuario usuario = usuarioRepositoryDB.getUsuario(email);
         Cuenta cuenta = new Cuenta();
         cuenta.setUsuario(usuario);
         cuenta.setNombre(nombre);
@@ -38,8 +41,6 @@ public class GestorCuenta implements CuentaInteractor {
 
     @Override
     public List<Cuenta> getCuentas(Context ctx, String email) {
-        cuentaRepositoryDB = new CuentaRepositoryDBImpl(ctx);
-        Usuario usuario = usuarioRepositoryDB.findByEmail(email);
-        return cuentaRepositoryDB.getCuentas(usuario);
+        return cuentaRepositoryDB.getCuentas(email);
     }
 }

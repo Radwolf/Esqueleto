@@ -63,7 +63,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     }
 
     @Override
-    public List<Usuario> getAll(){
+    public List<Usuario> getUsuarios(){
         try {
             return usuarioDao.queryForAll();
         } catch (SQLException e) {
@@ -74,7 +74,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     }
 
     @Override
-    public Usuario findById(Integer idUsuario){
+    public Usuario getUsuario(Integer idUsuario){
         try {
             return usuarioDao.queryForId(idUsuario);
         } catch (SQLException e) {
@@ -84,7 +84,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
     }
 
     @Override
-    public Usuario findByEmail(String email){
+    public Usuario getUsuario(String email){
         try {
             List<Usuario> usuarios = usuarioDao.queryForEq(Usuario.COLUMN_NAME_EMAIL, email);
             if(usuarios.size()>0){

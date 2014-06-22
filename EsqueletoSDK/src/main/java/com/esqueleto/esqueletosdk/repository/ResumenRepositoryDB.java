@@ -1,6 +1,8 @@
 package com.esqueleto.esqueletosdk.repository;
 
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.List;
 
@@ -9,18 +11,14 @@ import java.util.List;
  */
 public interface ResumenRepositoryDB {
 
-    int create(Movimiento movimiento);
+    int create(Resumen resumen);
 
-    int update(Movimiento movimiento);
+    int update(Resumen movimiento);
 
-    int delete(Movimiento movimiento);
+    int delete(Resumen movimiento);
 
-    Movimiento getMovimiento(Integer id);
+    Resumen getResumen(Integer id);
 
-    List<Movimiento> getMovimientosByMesAny(String anyMes);
-
-    List<Movimiento> getMovimientosByCategoria(String claveDiccionario);
-
-    List<Movimiento> getMovimientosByTipo(String claveDiccionario);
+    List<Resumen> getResumenes(Cuenta cuenta);
 
 }

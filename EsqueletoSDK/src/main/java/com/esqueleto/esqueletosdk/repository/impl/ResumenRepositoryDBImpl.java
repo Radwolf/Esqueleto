@@ -4,10 +4,13 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
+import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Diccionario;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
+import com.esqueleto.esqueletosdk.repository.ResumenRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
@@ -17,12 +20,13 @@ import java.util.List;
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public class ResumenRepositoryDBImpl implements MovimientoRepositoryDB {
+public class ResumenRepositoryDBImpl implements ResumenRepositoryDB {
 
     private DatabaseHelper db;
-    Dao<Movimiento, Integer> movimientoDao;
-    Dao<Usuario, Integer> diccionarioDao;
     Dao<Resumen, Integer> resumenDao;
+    Dao<Movimiento, Integer> movimientoDao;
+    Dao<Diccionario, Integer> diccionarioDao;
+    Dao<Cuenta, Integer> cuentaDao;
 
     public ResumenRepositoryDBImpl(Context ctx){
         try {
@@ -31,6 +35,7 @@ public class ResumenRepositoryDBImpl implements MovimientoRepositoryDB {
             movimientoDao = db.getMovimientoDao();
             diccionarioDao = db.getDiccionarioDao();
             resumenDao = db.getResumenDao();
+            cuentaDao = db.getCuentaDao();
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -39,9 +44,9 @@ public class ResumenRepositoryDBImpl implements MovimientoRepositoryDB {
     }
 
     @Override
-    public int create(Movimiento movimiento) {
+    public int create(Resumen resumen) {
         try {
-            return movimientoDao.create(movimiento);
+            return resumenDao.create(resumen);
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -50,20 +55,20 @@ public class ResumenRepositoryDBImpl implements MovimientoRepositoryDB {
     }
 
     @Override
-    public int update(Movimiento movimiento) {
+    public int update(Resumen resumen) {
         return 0;
     }
 
     @Override
-    public int delete(Movimiento movimiento) {
+    public int delete(Resumen resumen) {
         return 0;
     }
 
     @Override
-    public Movimiento getMovimiento(Integer id) {
+    public Resumen getResumen(Integer id) {
         try {
-            Movimiento movimiento = movimientoDao.queryForId(id);
-            return movimiento;
+            Resumen resumen = resumenDao.queryForId(id);
+            return resumen;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,28 +76,19 @@ public class ResumenRepositoryDBImpl implements MovimientoRepositoryDB {
     }
 
     @Override
-    public List<Movimiento> getMovimientosByMesAny(String mesAny) {
-        List<Movimiento> movimientos = null;
+    public List<Resumen> getResumenes(Cuenta cuenta) {
+        List<Resumen> resumenes = null;
         try {
 
+            QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
+            cuentaQb.where().eq(Cuenta.COLUMN_NAME_USUARIO, cuenta.getUsuario());
             QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
-            resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, mesAny);
-            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
             // join with the order query
-            movimientos = movimientoQb.join(resumenQb).query();
+            resumenes = resumenQb.join(cuentaQb).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return movimientos;
+        return resumenes;
     }
 
-    @Override
-    public List<Movimiento> getMovimientosByCategoria(String claveDiccionario) {
-        return null;
-    }
-
-    @Override
-    public List<Movimiento> getMovimientosByTipo(String claveDiccionario) {
-        return null;
-    }
 }

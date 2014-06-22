@@ -15,10 +15,12 @@ public class Movimiento extends Basic {
     private static final String COLUMN_NAME_FECHAESTIMADA = "FECHA_ESTIMADA";
     private static final String COLUMN_NAME_FECHAMOVIMIENTO = "FECHA_MOVIMIENTO";
     private static final String COLUMN_NAME_CONCEPTO = "CONCEPTO";
+    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "TIPO_MOVIMIENTO";
+    public static final String COLUMN_NAME_CATEGORIA = "CATEGORIA";
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_CATEGORIA)
     private Resumen resumen;
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_TIPOMOVIMIENTO)
     private Diccionario tipoMovimiento;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_IMPORTE)
     private double importe;

@@ -14,9 +14,9 @@ public interface UsuarioRepositoryDB {
 
     int delete(Usuario usuario);
 
-    List<Usuario> getAll();
+    Usuario getUsuario(Integer idUsuario);
 
-    Usuario findById(Integer idUsuario);
+    Usuario getUsuario(String email);
 
-    Usuario findByEmail(String email);
+    List<Usuario> getUsuarios();
 }

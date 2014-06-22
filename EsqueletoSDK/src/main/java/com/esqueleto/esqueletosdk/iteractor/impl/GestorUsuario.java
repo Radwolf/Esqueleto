@@ -14,9 +14,12 @@ public class GestorUsuario implements UsuarioInteractor {
 
     public static UsuarioRepositoryDB usuarioRepositoryDB;
 
+    public GestorUsuario(Context ctx) {
+        usuarioRepositoryDB = new UsuarioRepositoryDBImpl(ctx);
+    }
+
     @Override
     public void addUsuario(Context ctx, String email) {
-        usuarioRepositoryDB = new UsuarioRepositoryDBImpl(ctx);
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
         usuarioRepositoryDB.create(usuario);
@@ -24,7 +27,6 @@ public class GestorUsuario implements UsuarioInteractor {
 
     @Override
     public Usuario getUsuario(Context ctx, String email) {
-        usuarioRepositoryDB = new UsuarioRepositoryDBImpl(ctx);
-        return usuarioRepositoryDB.findByEmail(email);
+        return usuarioRepositoryDB.getUsuario(email);
     }
 }
