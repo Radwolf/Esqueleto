@@ -13,7 +13,8 @@ public class Cuenta extends Basic {
     private static final String COLUMN_NAME_DATESINC = "DATE_SINC";
     private static final String COLUMN_NAME_NOMBRE = "NOMBRE";
 
-    @DatabaseField(foreign = true, columnName = COLUMN_NAME_USUARIO)
+    @DatabaseField(foreign = true, columnName = COLUMN_NAME_USUARIO, foreignAutoRefresh=true, canBeNull=true,
+            maxForeignAutoRefreshLevel=2)
     private Usuario usuario;
     @DatabaseField(columnName = COLUMN_NAME_DATESINC)
     private String dateSinc;

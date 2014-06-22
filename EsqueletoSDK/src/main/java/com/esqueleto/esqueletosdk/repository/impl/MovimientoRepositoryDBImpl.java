@@ -16,13 +16,13 @@ import java.util.List;
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
+public class MovimientoRepositoryDBImpl implements CuentaRepositoryDB {
 
     private DatabaseHelper db;
     Dao<Cuenta, Integer> cuentaDao;
     Dao<Usuario, Integer> usuarioDao;
 
-    public CuentaRepositoryDBImpl(Context ctx){
+    public MovimientoRepositoryDBImpl(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
