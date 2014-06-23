@@ -8,8 +8,6 @@ import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Diccionario;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
-import com.esqueleto.esqueletosdk.model.Usuario;
-import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.ResumenRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -76,15 +74,29 @@ public class ResumenRepositoryDBImpl implements ResumenRepositoryDB {
     }
 
     @Override
+    public Resumen getResumen(Cuenta cuenta, String anyMes) {
+        try {
+            QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
+            resumenQb.where().eq(Resumen.COLUMN_NAME_CUENTA, cuenta);
+            resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
+            List<Resumen> resumenes = resumenQb.query();
+            if(resumenes.size()>0) {
+                return resumenes.get(0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public List<Resumen> getResumenes(Cuenta cuenta) {
         List<Resumen> resumenes = null;
         try {
-
-            QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
-            cuentaQb.where().eq(Cuenta.COLUMN_NAME_USUARIO, cuenta.getUsuario());
             QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
+            resumenQb.where().eq(Resumen.COLUMN_NAME_CUENTA, cuenta);
             // join with the order query
-            resumenes = resumenQb.join(cuentaQb).query();
+            resumenes = resumenQb.query();
         } catch (SQLException e) {
             e.printStackTrace();
         }

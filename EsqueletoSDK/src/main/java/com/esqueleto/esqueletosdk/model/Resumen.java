@@ -11,6 +11,7 @@ import java.util.Date;
 @DatabaseTable(tableName = "resumen")
 public class Resumen extends Basic {
 
+    public static final String COLUMN_NAME_CUENTA = "CUENTA";
     private static final String COLUMN_NAME_INGRESO = "INGRESO";
     private static final String COLUMN_NAME_GASTO = "GASTO";
     private static final String COLUMN_NAME_AHORRO = "AHORRO";
@@ -24,7 +25,7 @@ public class Resumen extends Basic {
     private static final String COLUMN_NAME_SALDOESTIMADO = "SALDO_ESTIMADO";
     private static final String COLUMN_NAME_SALDOANTERIOR = "SALDO_ANTERIOR";
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_CUENTA)
     private Cuenta cuenta;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_INGRESO)
     private double ingreso;
@@ -75,6 +76,7 @@ public class Resumen extends Basic {
         this.saldoAnterior = saldoAnterior;
     }
 
+    //<editor-fold desc="SETTERS Y GETTERS">
     public Cuenta getCuenta() {
         return cuenta;
     }
@@ -178,4 +180,5 @@ public class Resumen extends Basic {
     public void setSaldoAnterior(double saldoAnterior) {
         this.saldoAnterior = saldoAnterior;
     }
+    //</editor-fold>
 }

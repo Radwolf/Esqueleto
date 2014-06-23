@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface MovimientoInteractor {
 
-    long addMovimiento(Context ctx, long resumenId, String tipoMovimiento, double importe,
+    int addMovimiento(Context ctx, Integer resumenId, String tipoMovimiento, double importe,
                        Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto);
     Movimiento getMovimiento(Context ctx, Integer id);
     List<Movimiento> getMovimientosByMesAny(Context ctx, String anyMes);

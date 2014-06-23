@@ -13,8 +13,8 @@ import java.util.Date;
 public class AddMovimiento implements AddCommand {
 
     MovimientoInteractor movimientoInteractor;
-    long _id;
-    long resumenId;
+    Integer _id;
+    Integer resumenId;
     String tipoMovimiento;
     double importe;
     Date fechaEstimada;
@@ -22,7 +22,7 @@ public class AddMovimiento implements AddCommand {
     String categoria;
     String concepto;
 
-    public AddMovimiento(MovimientoInteractor movimientoInteractor, long resumenId, String tipoMovimiento,
+    public AddMovimiento(MovimientoInteractor movimientoInteractor, Integer resumenId, String tipoMovimiento,
                          double importe, Date fechaEstimada, Date fechaMovimiento, String categoria,
                          String concepto) {
         this.movimientoInteractor = movimientoInteractor;

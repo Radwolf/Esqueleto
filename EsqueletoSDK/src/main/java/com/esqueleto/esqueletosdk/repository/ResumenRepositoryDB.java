@@ -1,7 +1,6 @@
 package com.esqueleto.esqueletosdk.repository;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.List;
@@ -18,6 +17,8 @@ public interface ResumenRepositoryDB {
     int delete(Resumen movimiento);
 
     Resumen getResumen(Integer id);
+
+    Resumen getResumen(Cuenta cuenta, String anyMes);
 
     List<Resumen> getResumenes(Cuenta cuenta);
 

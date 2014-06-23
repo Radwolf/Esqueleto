@@ -14,16 +14,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.AddCuenta;
+import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
+import com.esqueleto.esqueletosdk.command.impl.AddResumen;
 import com.esqueleto.esqueletosdk.command.impl.AddUsuario;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
+import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
+import com.esqueleto.esqueletosdk.command.impl.GetResumen;
 import com.esqueleto.esqueletosdk.command.impl.GetUsuario;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.CuentaAdapter;
+import com.esqueleto.esqueletoui.adapter.MovimientoAdapter;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -48,10 +60,20 @@ public class MainActivity extends ActionBarActivity {
     public static GestorCuenta gestorCuenta;
     public static GetCuentas getCuentas;
     public static AddCuenta addCuenta;
+
+    public static GestorMovimiento gestorMovimiento;
+    public static AddMovimiento addMovimiento;
+    public static GetMovimientos getMovimientos;
+
+    public static GestorResumen gestorResumen;
+    public static AddResumen addResumen;
+    public static GetResumen getResumen;
+
     /*
      * Attributes
      */
     public static CuentaAdapter cuentaAdapter;
+    public static MovimientoAdapter movimientoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +91,27 @@ public class MainActivity extends ActionBarActivity {
         addCuenta.execute(this);
 
         getCuentas = new GetCuentas(gestorCuenta, MAIL_RUL);
+        List<Cuenta> cuentas = getCuentas.execute(getApplicationContext());
+        gestorResumen = new GestorResumen(getApplicationContext());
+
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateIni = null;
+        Date dateFin = null;
+        try {
+            dateIni = formatter.parse("01/06/2014");
+            dateFin = formatter.parse("30/06/2014");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        addResumen = new AddResumen(gestorResumen, cuentas.get(0).get_id(), "2014/06", dateIni, dateFin);
+        addResumen.execute(getApplicationContext());
+        getResumen = new GetResumen(gestorResumen, cuentas.get(0).get_id(), "2014/06");
+        Resumen resumen = getResumen.execute(getApplicationContext());
+
+        //Falta añadir categorías y tipos, habrá que crear clase que inserte datos fijos en la instalación.
+        //Falta añadir movimientos para probar movimientoAdapter
+        gestorMovimiento = new GestorMovimiento(getApplicationContext());
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
