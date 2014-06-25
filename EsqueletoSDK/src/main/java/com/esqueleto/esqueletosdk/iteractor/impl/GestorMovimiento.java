@@ -44,6 +44,8 @@ public class GestorMovimiento implements MovimientoInteractor {
         movimiento.setResumen(resumen);
         movimiento.setFechaEstimada(fechaEstimada);
         movimiento.setFechaMovimiento(fechaMovimiento);
+        movimiento.setImporte(importe);
+        //Faltará la lógica para actualizar el resumen.
         return movimientoRepositoryDB.create(movimiento);
     }
 
@@ -53,8 +55,8 @@ public class GestorMovimiento implements MovimientoInteractor {
     }
 
     @Override
-    public List<Movimiento> getMovimientosByMesAny(Context ctx, String anyMes) {
-        return movimientoRepositoryDB.getMovimientosByMesAny(anyMes);
+    public List<Movimiento> getMovimientosByAnyMes(Context ctx, String anyMes) {
+        return movimientoRepositoryDB.getMovimientosByAnyMes(anyMes);
     }
 
     @Override

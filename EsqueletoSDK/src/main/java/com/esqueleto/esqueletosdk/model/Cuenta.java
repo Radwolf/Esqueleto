@@ -3,6 +3,8 @@ package com.esqueleto.esqueletosdk.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Date;
+
 /**
  * Created by rgonzalez on 20/02/14.
  */
@@ -17,14 +19,14 @@ public class Cuenta extends Basic {
             maxForeignAutoRefreshLevel=2)
     private Usuario usuario;
     @DatabaseField(columnName = COLUMN_NAME_DATESINC)
-    private String dateSinc;
+    private Date dateSinc;
     @DatabaseField(columnName = COLUMN_NAME_NOMBRE)
     private String nombre;
 
     public Cuenta() {
     }
 
-    public Cuenta(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, Usuario usuario, String dateSinc, String nombre) {
+    public Cuenta(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, Usuario usuario, Date dateSinc, String nombre) {
         super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
         this.usuario = usuario;
         this.dateSinc = dateSinc;
@@ -39,11 +41,11 @@ public class Cuenta extends Basic {
         this.usuario = usuario;
     }
 
-    public String getDateSinc() {
+    public Date getDateSinc() {
         return dateSinc;
     }
 
-    public void setDateSinc(String dateSinc) {
+    public void setDateSinc(Date dateSinc) {
         this.dateSinc = dateSinc;
     }
 

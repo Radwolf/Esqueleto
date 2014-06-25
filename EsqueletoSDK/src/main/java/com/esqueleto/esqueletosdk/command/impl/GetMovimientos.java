@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class GetMovimientos implements GetCommand<List<Movimiento>> {
 
+    //TODO: Sacarlo a un fichero de Constants para compartir con la ui
     private final String SEARCH_BY_ANYMES = "ANYMES";
     private final String SEARCH_BY_TIPOMOVIMIENTO = "TIPOMOVIMIENTO";
     private final String SEARCH_BY_CATEGORIA = "CATEGORIA";
@@ -32,7 +33,7 @@ public class GetMovimientos implements GetCommand<List<Movimiento>> {
     public List<Movimiento> execute(Context ctx) {
         List<Movimiento> movimientos = new ArrayList<Movimiento>();
         if(SEARCH_BY_ANYMES.equals(typeSearch)){
-            movimientos = this.movimientoInteractor.getMovimientosByMesAny(ctx, filtro);
+            movimientos = this.movimientoInteractor.getMovimientosByAnyMes(ctx, filtro);
         }else if (SEARCH_BY_CATEGORIA.equals(typeSearch)){
             movimientos = this.movimientoInteractor.getMovimientosByCategoria(ctx, filtro);
         }else if (SEARCH_BY_TIPOMOVIMIENTO.equals(typeSearch)){

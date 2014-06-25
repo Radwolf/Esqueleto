@@ -18,7 +18,7 @@ public class Movimiento extends Basic {
     public static final String COLUMN_NAME_TIPOMOVIMIENTO = "TIPO_MOVIMIENTO";
     public static final String COLUMN_NAME_CATEGORIA = "CATEGORIA";
 
-    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_CATEGORIA)
+    @DatabaseField(canBeNull = false, foreign = true)
     private Resumen resumen;
     @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_TIPOMOVIMIENTO)
     private Diccionario tipoMovimiento;
@@ -28,7 +28,7 @@ public class Movimiento extends Basic {
     private Date fechaEstimada;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FECHAMOVIMIENTO)
     private Date fechaMovimiento;
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_CATEGORIA)
     private Diccionario categoria;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_CONCEPTO)
     private String concepto;

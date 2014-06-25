@@ -12,7 +12,9 @@ import java.util.List;
  */
 public interface ResumenInteractor {
     void addResumen(Context ctx, Integer cuentaId, String anyMes, Date inicioPeriodo,
-                    Date finPeriodo);
+                    Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
+                    double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
+                    double saldoAnterior, double saldoEstimado);
 
     Resumen getResumen(Context ctx, Integer id);
 

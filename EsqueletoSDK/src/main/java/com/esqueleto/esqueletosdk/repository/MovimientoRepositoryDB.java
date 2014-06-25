@@ -19,7 +19,7 @@ public interface MovimientoRepositoryDB {
 
     Movimiento getMovimiento(Integer id);
 
-    List<Movimiento> getMovimientosByMesAny(String anyMes);
+    List<Movimiento> getMovimientosByAnyMes(String anyMes);
 
     List<Movimiento> getMovimientosByCategoria(String claveDiccionario);
 

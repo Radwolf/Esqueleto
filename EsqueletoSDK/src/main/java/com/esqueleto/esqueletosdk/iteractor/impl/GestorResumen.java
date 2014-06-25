@@ -21,8 +21,6 @@ public class GestorResumen implements ResumenInteractor {
     public static CuentaRepositoryDB cuentaRepositoryDB;
     public static ResumenRepositoryDB resumenRepositoryDB;
 
-    public static final double CERO_DOUBLE = (Double.valueOf("0,00")).doubleValue();
-
     public GestorResumen(Context ctx) {
         cuentaRepositoryDB = new CuentaRepositoryDBImpl(ctx);
         resumenRepositoryDB = new ResumenRepositoryDBImpl(ctx);
@@ -32,19 +30,21 @@ public class GestorResumen implements ResumenInteractor {
 
     @Override
     public void addResumen(Context ctx, Integer cuentaId, String anyMes, Date inicioPeriodo,
-                           Date finPeriodo) {
+                           Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
+                           double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
+                           double saldoAnterior, double saldoEstimado) {
         Cuenta cuenta = cuentaRepositoryDB.getCuenta(cuentaId);
         Resumen resumen = new Resumen();
 
-        resumen.setAhorro(CERO_DOUBLE);
-        resumen.setAhorroEstimado(CERO_DOUBLE);
-        resumen.setGasto(CERO_DOUBLE);
-        resumen.setGastoEstimado(CERO_DOUBLE);
-        resumen.setIngreso(CERO_DOUBLE);
-        resumen.setIngresoEstimado(CERO_DOUBLE);
-        resumen.setSaldo(CERO_DOUBLE);
-        resumen.setSaldoAnterior(CERO_DOUBLE);
-        resumen.setSaldoEstimado(CERO_DOUBLE);
+        resumen.setAhorro(ahorro);
+        resumen.setAhorroEstimado(ahorroEstimado);
+        resumen.setGasto(gasto);
+        resumen.setGastoEstimado(gastoEstimado);
+        resumen.setIngreso(ingreso);
+        resumen.setIngresoEstimado(ingresoEstimado);
+        resumen.setSaldo(saldo);
+        resumen.setSaldoAnterior(saldoAnterior);
+        resumen.setSaldoEstimado(saldoEstimado);
 
         resumen.setAnyMes(anyMes);
         resumen.setCuenta(cuenta);

@@ -26,6 +26,7 @@ import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletoui.R;
@@ -47,26 +48,26 @@ public class MainActivity extends ActionBarActivity {
 
 //    public static UsuarioRepositoryDB usuarioRepositoryDB;
     public static GetUsuario getUsuario;
-    public static AddUsuario addUsuario;
+//    public static AddUsuario addUsuario;
     public static GestorUsuario gestorUsuario;
     /*
      * Constants
      */
-    private static final String MAIL_RUL = "rul@rul.rul";
+    private static final String MAIL_RUL = "raul.gomo@gmail.com";
 
     /*
      * Attributes
      */
     public static GestorCuenta gestorCuenta;
     public static GetCuentas getCuentas;
-    public static AddCuenta addCuenta;
+//    public static AddCuenta addCuenta;
 
     public static GestorMovimiento gestorMovimiento;
-    public static AddMovimiento addMovimiento;
+//    public static AddMovimiento addMovimiento;
     public static GetMovimientos getMovimientos;
 
     public static GestorResumen gestorResumen;
-    public static AddResumen addResumen;
+//    public static AddResumen addResumen;
     public static GetResumen getResumen;
 
     /*
@@ -81,37 +82,19 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         gestorUsuario = new GestorUsuario(getApplicationContext());
-        addUsuario = new AddUsuario(gestorUsuario, MAIL_RUL);
-        addUsuario.execute(this);
-
         getUsuario = new GetUsuario(gestorUsuario, MAIL_RUL);
 
         gestorCuenta = new GestorCuenta(getApplicationContext());
-        addCuenta = new AddCuenta(gestorCuenta, "Casa", MAIL_RUL);
-        addCuenta.execute(this);
-
         getCuentas = new GetCuentas(gestorCuenta, MAIL_RUL);
-        List<Cuenta> cuentas = getCuentas.execute(getApplicationContext());
+//        List<Cuenta> cuentas = getCuentas.execute(getApplicationContext());
+
         gestorResumen = new GestorResumen(getApplicationContext());
+//        getResumen = new GetResumen(gestorResumen, cuentas.get(0).get_id(), "2014/06");
+//        Resumen resumen = getResumen.execute(getApplicationContext());
 
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateIni = null;
-        Date dateFin = null;
-        try {
-            dateIni = formatter.parse("01/06/2014");
-            dateFin = formatter.parse("30/06/2014");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        addResumen = new AddResumen(gestorResumen, cuentas.get(0).get_id(), "2014/06", dateIni, dateFin);
-        addResumen.execute(getApplicationContext());
-        getResumen = new GetResumen(gestorResumen, cuentas.get(0).get_id(), "2014/06");
-        Resumen resumen = getResumen.execute(getApplicationContext());
-
-        //Falta añadir categorías y tipos, habrá que crear clase que inserte datos fijos en la instalación.
-        //Falta añadir movimientos para probar movimientoAdapter
         gestorMovimiento = new GestorMovimiento(getApplicationContext());
+        getMovimientos = new GetMovimientos(gestorMovimiento, "ANYMES", "2014/06");
+//        List<Movimiento> movimientos = getMovimientos.execute(getApplicationContext());
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -152,6 +135,8 @@ public class MainActivity extends ActionBarActivity {
         */
         @InjectView(R.id.lv_cuentas)
         ListView listView;
+        @InjectView(R.id.lv_movimientos)
+        ListView movimientoListView;
         @InjectView(R.id.button)
         Button button;
         @InjectView(R.id.textView)
@@ -163,7 +148,8 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             ButterKnife.inject(this, rootView);
-            initListView(getCuentas.execute(getActivity().getApplicationContext()));
+            initListViewCuentas(getCuentas.execute(getActivity().getApplicationContext()));
+            initListViewMovimientos(getMovimientos.execute(getActivity().getApplicationContext()));
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -176,10 +162,15 @@ public class MainActivity extends ActionBarActivity {
             return rootView;
         }
 
+        private void initListViewMovimientos(List<Movimiento> movimientos) {
+            movimientoAdapter = new MovimientoAdapter(getActivity().getApplicationContext(), R.layout.movimiento_item_list, movimientos);
+            movimientoListView.setAdapter(movimientoAdapter);
+        }
+
         /**
          * Initialize ListVideo with our RendererAdapter.
          */
-        private void initListView(List<Cuenta> cuentas) {
+        private void initListViewCuentas(List<Cuenta> cuentas) {
             cuentaAdapter = new CuentaAdapter(getActivity().getApplicationContext(), R.layout.cuenta_item, cuentas);
             listView.setAdapter(cuentaAdapter);
         }

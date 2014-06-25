@@ -12,10 +12,16 @@ import com.esqueleto.esqueletosdk.model.Usuario;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
@@ -68,12 +74,131 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
             throw new RuntimeException(e);
         }
 
+        RuntimeExceptionDao<Diccionario, Integer> diccionarioDao = getDiccionarioDataDao();
+        loadDataDiccionary(diccionarioDao);
+
+        createDataTest();
+
 //        // here we try inserting data in the on-create as a test
 //        RuntimeExceptionDao<Cuenta, Integer> dao = getCuentaDataDao();
 //        // create some entries in the onCreate
 //        Cuenta cuenta = new Cuenta();
 //        dao.create(cuenta);
-//        Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate");
+        Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate");
+    }
+
+    private void createDataTest() {
+        double CERO_DOUBLE = 0.00;
+
+        RuntimeExceptionDao<Cuenta, Integer> cuentaDao = getCuentaDataDao();
+        RuntimeExceptionDao<Usuario, Integer> usuarioDao = getUsuarioDataDao();
+        RuntimeExceptionDao<Resumen, Integer> resumenDao = getResumenDataDao();
+        RuntimeExceptionDao<Movimiento, Integer> movimientoDao = getMovimientoDataDao();
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail("raul.gomo@gmail.com");
+        usuarioDao.create(usuario);
+
+        Cuenta cuenta = new Cuenta();
+        cuenta.setDateSinc(new Date());
+        cuenta.setNombre("Cuenta de casa");
+        cuenta.setUsuario(usuario);
+        cuentaDao.create(cuenta);
+
+        Resumen resumen = new Resumen();
+        resumen.setAhorro(CERO_DOUBLE);
+        resumen.setAhorroEstimado(CERO_DOUBLE);
+        resumen.setGasto(CERO_DOUBLE);
+        resumen.setGastoEstimado(CERO_DOUBLE);
+        resumen.setIngreso(CERO_DOUBLE);
+        resumen.setIngresoEstimado(CERO_DOUBLE);
+        resumen.setSaldo(CERO_DOUBLE);
+        resumen.setSaldoAnterior(CERO_DOUBLE);
+        resumen.setSaldoEstimado(CERO_DOUBLE);
+        resumen.setAnyMes("2014/06");
+        resumen.setCuenta(cuenta);
+        resumen.setInicioPeriodo(createDateFormat("01/06/2014"));
+        resumen.setFinPeriodo(createDateFormat("30/06/2014"));
+        resumenDao.create(resumen);
+
+        createDataMovimientosTest(movimientoDao, resumen);
+
+    }
+
+    private Date createDateFormat(String s) {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return formatter.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void createDataMovimientosTest(RuntimeExceptionDao<Movimiento, Integer> movimientoDao, Resumen resumen) {
+        Diccionario dCategoriaNomina = getDiccionarioByClave("CATEGORIA_NOMINA");
+        Diccionario dCategoriaCombustible = getDiccionarioByClave("CATEGORIA_COMBUSTIBLE");
+        Diccionario dTipoIngreso = getDiccionarioByClave("TIPO_INGRESO");
+        Diccionario dTipoGasto = getDiccionarioByClave("TIPO_GASTO");
+
+
+        Movimiento movimiento = new Movimiento();
+        movimiento.setCategoria(dCategoriaNomina);
+        movimiento.setTipoMovimiento(dTipoIngreso);
+        movimiento.setConcepto("Raúl");
+        movimiento.setResumen(resumen);
+        movimiento.setImporte(1235.42);
+        movimiento.setFechaEstimada(createDateFormat("01/06/2014"));
+        movimiento.setFechaMovimiento(createDateFormat("01/06/2014"));
+        movimientoDao.create(movimiento);
+
+        movimiento.setCategoria(dCategoriaCombustible);
+        movimiento.setTipoMovimiento(dTipoGasto);
+        movimiento.setConcepto("Coche");
+        movimiento.setResumen(resumen);
+        movimiento.setImporte(120);
+        movimiento.setFechaEstimada(createDateFormat("01/06/2014"));
+        movimiento.setFechaMovimiento(createDateFormat("01/06/2014"));
+        movimientoDao.create(movimiento);
+
+    }
+
+    private Diccionario getDiccionarioByClave(String clave) {
+
+        RuntimeExceptionDao<Diccionario, Integer> diccionarioDao = getDiccionarioDataDao();
+        try {
+            QueryBuilder<Diccionario, Integer> diccionarioQb = diccionarioDao.queryBuilder();
+            diccionarioQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, clave);
+            List<Diccionario> diccionarios = diccionarioQb.query();
+            if(diccionarios.size()>0){
+                return diccionarios.get(0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void loadDataDiccionary(RuntimeExceptionDao<Diccionario, Integer> diccionarioDao) {
+        //TODO: Faltará tratamiento de acento para las claves
+        String[] tipoMovimientos = new String[]{"Ingreso", "Gasto", "Ahorro"};
+        String[] categorias = new String[]{"Nomina", "Recibo", "Prestamo", "Combustible", "Farmacia"};
+
+        for (String tipoMovimiento: tipoMovimientos){
+            Diccionario diccionario = new Diccionario();
+            diccionario.setValor(tipoMovimiento);
+            diccionario.setClave(String.format("TIPO_%s", tipoMovimiento.toUpperCase()));
+            diccionario.setTipo("CADENA");
+            diccionarioDao.create(diccionario);
+        }
+
+        for (String categoria: categorias){
+            Diccionario diccionario = new Diccionario();
+            diccionario.setValor(categoria);
+            diccionario.setClave(String.format("CATEGORIA_%s", categoria.toUpperCase()));
+            diccionario.setTipo("CADENA");
+            diccionarioDao.create(diccionario);
+        }
     }
 
     /**
