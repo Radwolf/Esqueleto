@@ -15,12 +15,15 @@ public class Movimiento extends Basic {
     private static final String COLUMN_NAME_FECHAESTIMADA = "FECHA_ESTIMADA";
     private static final String COLUMN_NAME_FECHAMOVIMIENTO = "FECHA_MOVIMIENTO";
     private static final String COLUMN_NAME_CONCEPTO = "CONCEPTO";
-    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "TIPO_MOVIMIENTO";
-    public static final String COLUMN_NAME_CATEGORIA = "CATEGORIA";
+    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "TIPO_MOVIMIENTO_ID";
+    public static final String COLUMN_NAME_CATEGORIA = "CATEGORIA_ID";
+    public static final String COLUMN_NAME_RESUMEN = "RESUMEN_ID";
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(foreign = true, columnName = COLUMN_NAME_RESUMEN, foreignAutoRefresh=true, canBeNull=true,
+            maxForeignAutoRefreshLevel=2)
     private Resumen resumen;
-    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_TIPOMOVIMIENTO)
+    @DatabaseField(foreign = true, columnName = COLUMN_NAME_TIPOMOVIMIENTO, foreignAutoRefresh=true, canBeNull=true,
+            maxForeignAutoRefreshLevel=2)
     private Diccionario tipoMovimiento;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_IMPORTE)
     private double importe;
@@ -28,7 +31,8 @@ public class Movimiento extends Basic {
     private Date fechaEstimada;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FECHAMOVIMIENTO)
     private Date fechaMovimiento;
-    @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_CATEGORIA)
+    @DatabaseField(foreign = true, columnName = COLUMN_NAME_CATEGORIA, foreignAutoRefresh=true, canBeNull=true,
+            maxForeignAutoRefreshLevel=2)
     private Diccionario categoria;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_CONCEPTO)
     private String concepto;
