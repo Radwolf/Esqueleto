@@ -15,13 +15,11 @@ public class Movimiento extends Basic {
     private static final String COLUMN_NAME_FECHAESTIMADA = "FECHA_ESTIMADA";
     private static final String COLUMN_NAME_FECHAMOVIMIENTO = "FECHA_MOVIMIENTO";
     private static final String COLUMN_NAME_CONCEPTO = "CONCEPTO";
-    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "TIPO_MOVIMIENTO_ID";
-    public static final String COLUMN_NAME_CATEGORIA = "CATEGORIA_ID";
-    public static final String COLUMN_NAME_RESUMEN = "RESUMEN_ID";
+    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "tipoMovimient_id";
+    public static final String COLUMN_NAME_CATEGORIA = "categoria_id";
+    public static final String COLUMN_NAME_RESUMEN = "resumen_id";
 
-    @DatabaseField(foreign = true, columnName = COLUMN_NAME_RESUMEN, foreignAutoRefresh=true, canBeNull=true,
-            maxForeignAutoRefreshLevel=2)
-    private Resumen resumen;
+
     @DatabaseField(foreign = true, columnName = COLUMN_NAME_TIPOMOVIMIENTO, foreignAutoRefresh=true, canBeNull=true,
             maxForeignAutoRefreshLevel=2)
     private Diccionario tipoMovimiento;
@@ -36,6 +34,9 @@ public class Movimiento extends Basic {
     private Diccionario categoria;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_CONCEPTO)
     private String concepto;
+    @DatabaseField(foreign = true, columnName = COLUMN_NAME_RESUMEN, foreignAutoRefresh=true, canBeNull=true,
+            maxForeignAutoRefreshLevel=2)
+    private Resumen resumen;
 
     public Movimiento() {
     }

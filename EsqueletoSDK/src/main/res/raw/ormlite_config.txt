@@ -1,0 +1,295 @@
+#
+# generated on 2014/06/26 11:13:47
+#
+# --table-start--
+dataClass=com.esqueleto.esqueletosdk.model.Basic
+tableName=basic
+# --table-fields-start--
+# --field-start--
+fieldName=_id
+columnName=_id
+canBeNull=false
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=dateCreate
+# --field-end--
+# --field-start--
+fieldName=dateUpdate
+# --field-end--
+# --field-start--
+fieldName=userCreate
+# --field-end--
+# --field-start--
+fieldName=userUpdate
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.esqueleto.esqueletosdk.model.Cuenta
+tableName=cuenta
+# --table-fields-start--
+# --field-start--
+fieldName=usuario
+columnName=USUARIO_ID
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=dateSinc
+columnName=DATE_SINC
+# --field-end--
+# --field-start--
+fieldName=nombre
+columnName=NOMBRE
+# --field-end--
+# --field-start--
+fieldName=_id
+columnName=_id
+canBeNull=false
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=dateCreate
+# --field-end--
+# --field-start--
+fieldName=dateUpdate
+# --field-end--
+# --field-start--
+fieldName=userCreate
+# --field-end--
+# --field-start--
+fieldName=userUpdate
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.esqueleto.esqueletosdk.model.Diccionario
+tableName=diccionario
+# --table-fields-start--
+# --field-start--
+fieldName=clave
+columnName=CLAVE
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=valor
+columnName=VALOR
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=tipo
+columnName=TIPO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=_id
+columnName=_id
+canBeNull=false
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=dateCreate
+# --field-end--
+# --field-start--
+fieldName=dateUpdate
+# --field-end--
+# --field-start--
+fieldName=userCreate
+# --field-end--
+# --field-start--
+fieldName=userUpdate
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.esqueleto.esqueletosdk.model.Movimiento
+tableName=movimiento
+# --table-fields-start--
+# --field-start--
+fieldName=resumen
+columnName=RESUMEN_ID
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=tipoMovimiento
+columnName=TIPO_MOVIMIENTO_ID
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=importe
+columnName=IMPORTE
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=fechaEstimada
+columnName=FECHA_ESTIMADA
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=fechaMovimiento
+columnName=FECHA_MOVIMIENTO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=categoria
+columnName=CATEGORIA_ID
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=concepto
+columnName=CONCEPTO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=_id
+columnName=_id
+canBeNull=false
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=dateCreate
+# --field-end--
+# --field-start--
+fieldName=dateUpdate
+# --field-end--
+# --field-start--
+fieldName=userCreate
+# --field-end--
+# --field-start--
+fieldName=userUpdate
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.esqueleto.esqueletosdk.model.Resumen
+tableName=resumen
+# --table-fields-start--
+# --field-start--
+fieldName=cuenta
+columnName=CUENTA
+canBeNull=false
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=ingreso
+columnName=INGRESO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=gasto
+columnName=GASTO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=ahorro
+columnName=AHORRO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=saldo
+columnName=SALDO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=anyMes
+columnName=ANY_MES
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=inicioPeriodo
+columnName=INICIO_PERIODO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=finPeriodo
+columnName=FIN_PERIODO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=ingresoEstimado
+columnName=INGRESO_ESTIMADO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=gastoEstimado
+columnName=GASTO_ESTIMADO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=ahorroEstimado
+columnName=AHORRO_ESTIMADO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=saldoEstimado
+columnName=SALDO_ESTIMADO
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=saldoAnterior
+columnName=SALDO_ANTERIOR
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=_id
+columnName=_id
+canBeNull=false
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=dateCreate
+# --field-end--
+# --field-start--
+fieldName=dateUpdate
+# --field-end--
+# --field-start--
+fieldName=userCreate
+# --field-end--
+# --field-start--
+fieldName=userUpdate
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.esqueleto.esqueletosdk.model.Usuario
+tableName=usuario
+# --table-fields-start--
+# --field-start--
+fieldName=email
+columnName=EMAIL
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=_id
+columnName=_id
+canBeNull=false
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=dateCreate
+# --field-end--
+# --field-start--
+fieldName=dateUpdate
+# --field-end--
+# --field-start--
+fieldName=userCreate
+# --field-end--
+# --field-start--
+fieldName=userUpdate
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

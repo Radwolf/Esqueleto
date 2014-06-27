@@ -78,6 +78,7 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
             QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
             resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
             QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
+
             // join with the order query
             movimientos = movimientoQb.join(resumenQb).query();
         } catch (SQLException e) {
