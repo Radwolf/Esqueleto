@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
 
@@ -65,7 +64,7 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         holder.tvDataMovimiento.setText(getFechaMovimientoCalculada(movimiento).toString());
         holder.tvConcepto.setText(movimiento.getConcepto());
         holder.tvOtrosDatos.setText(movimiento.getCategoria().getValor());
-        holder.tvImporteMovimiento.setText((CharSequence) BigDecimal.valueOf(movimiento.getImporte()));
+        holder.tvImporteMovimiento.setText(BigDecimal.valueOf(movimiento.getImporte()).toString());
 
         return view;
     }
