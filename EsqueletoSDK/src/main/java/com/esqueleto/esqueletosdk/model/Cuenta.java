@@ -9,12 +9,15 @@ import java.util.Date;
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "cuenta")
-public class Cuenta extends Basic {
+public class Cuenta{
 
-    public static final String COLUMN_NAME_USUARIO = "USUARIO_ID";
-    private static final String COLUMN_NAME_DATESINC = "DATE_SINC";
-    private static final String COLUMN_NAME_NOMBRE = "NOMBRE";
+    public static final String COLUMN_NAME_ID = "cuenta_id";
+    public static final String COLUMN_NAME_USUARIO = "usuario_id";
+    private static final String COLUMN_NAME_DATESINC = "date_sync";
+    private static final String COLUMN_NAME_NOMBRE = "nombre";
 
+    @DatabaseField(generatedId = true, canBeNull = false, columnName = COLUMN_NAME_ID)
+    private int _id;
     @DatabaseField(foreign = true, columnName = COLUMN_NAME_USUARIO, foreignAutoRefresh=true, canBeNull=true,
             maxForeignAutoRefreshLevel=2)
     private Usuario usuario;
@@ -27,7 +30,7 @@ public class Cuenta extends Basic {
     }
 
     public Cuenta(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, Usuario usuario, Date dateSinc, String nombre) {
-        super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
+        this._id = _id;
         this.usuario = usuario;
         this.dateSinc = dateSinc;
         this.nombre = nombre;

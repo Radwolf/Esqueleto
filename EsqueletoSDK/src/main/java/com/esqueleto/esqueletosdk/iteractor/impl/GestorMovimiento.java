@@ -66,7 +66,7 @@ public class GestorMovimiento implements MovimientoInteractor {
 
     @Override
     public List<Movimiento> getMovimientosByCategoria(Context ctx, String categoria) {
-        return null;
+        return movimientoRepositoryDB.getMovimientosByCategoria(categoria);
     }
 
     @Override

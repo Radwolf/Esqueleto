@@ -9,6 +9,7 @@ import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.ColumnArg;
 import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
@@ -90,17 +91,17 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
     @Override
     public List<Movimiento> getMovimientosByCategoria(String claveDiccionario) {
         List<Movimiento> movimientos = null;
-//        try {
-//
-//            QueryBuilder<Diccionario, Integer> diccionarioQb = diccionarioDao.queryBuilder();
-//            diccionarioQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
-//            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
-//            movimientoQb.where().eq(Movimiento.COLUMN_NAME_CATEGORIA, new ColumnArg(Diccionario.COLUMN_NAME_ID));
-//            // join with the order query
-//            movimientos = movimientoQb.join(diccionarioQb).query();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+
+            QueryBuilder<Diccionario, Integer> diccionarioQb = diccionarioDao.queryBuilder();
+            diccionarioQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
+            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
+            movimientoQb.where().eq(Movimiento.COLUMN_NAME_CATEGORIA, new ColumnArg("diccionario", Diccionario.COLUMN_NAME_ID));
+            // join with the order query
+            movimientos = movimientoQb.join(diccionarioQb).query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return movimientos;
     }
 

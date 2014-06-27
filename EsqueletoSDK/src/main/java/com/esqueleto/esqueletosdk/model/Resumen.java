@@ -9,22 +9,25 @@ import java.util.Date;
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "resumen")
-public class Resumen extends Basic {
+public class Resumen{
 
-    public static final String COLUMN_NAME_CUENTA = "CUENTA";
-    private static final String COLUMN_NAME_INGRESO = "INGRESO";
-    private static final String COLUMN_NAME_GASTO = "GASTO";
-    private static final String COLUMN_NAME_AHORRO = "AHORRO";
-    private static final String COLUMN_NAME_SALDO = "SALDO";
-    public static final String COLUMN_NAME_ANYMES = "ANY_MES";
-    private static final String COLUMN_NAME_INICIOPERIODO = "INICIO_PERIODO";
-    private static final String COLUMN_NAME_FINPERIODO = "FIN_PERIODO";
-    private static final String COLUMN_NAME_INGRESOESTIMADO = "INGRESO_ESTIMADO";
-    private static final String COLUMN_NAME_GASTOESTIMADO = "GASTO_ESTIMADO";
-    private static final String COLUMN_NAME_AHORROESTIMADO = "AHORRO_ESTIMADO";
-    private static final String COLUMN_NAME_SALDOESTIMADO = "SALDO_ESTIMADO";
-    private static final String COLUMN_NAME_SALDOANTERIOR = "SALDO_ANTERIOR";
+    public static final String COLUMN_NAME_ID = "resumen_id";
+    public static final String COLUMN_NAME_CUENTA = "cuenta_id";
+    private static final String COLUMN_NAME_INGRESO = "ingreso";
+    private static final String COLUMN_NAME_GASTO = "gasto";
+    private static final String COLUMN_NAME_AHORRO = "ahorro";
+    private static final String COLUMN_NAME_SALDO = "saldo";
+    public static final String COLUMN_NAME_ANYMES = "any_mes";
+    private static final String COLUMN_NAME_INICIOPERIODO = "inicio_periodo";
+    private static final String COLUMN_NAME_FINPERIODO = "fin_periodo";
+    private static final String COLUMN_NAME_INGRESOESTIMADO = "ingreso_estimado";
+    private static final String COLUMN_NAME_GASTOESTIMADO = "gasto_estimado";
+    private static final String COLUMN_NAME_AHORROESTIMADO = "ahorro_estimado";
+    private static final String COLUMN_NAME_SALDOESTIMADO = "saldo_estimado";
+    private static final String COLUMN_NAME_SALDOANTERIOR = "saldo_anterior";
 
+    @DatabaseField(generatedId = true, canBeNull = false, columnName = COLUMN_NAME_ID)
+    private int _id;
     @DatabaseField(canBeNull = false, foreign = true, columnName = COLUMN_NAME_CUENTA)
     private Cuenta cuenta;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_INGRESO)
@@ -60,7 +63,7 @@ public class Resumen extends Basic {
                    double saldo, String anyMes, Date inicioPeriodo, Date finPeriodo,
                    double ingresoEstimado, double gastoEstimado, double ahorroEstimado,
                    double saldoEstimado, double saldoAnterior) {
-        super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
+        this._id = _id;
         this.cuenta = cuenta;
         this.ingreso = ingreso;
         this.gasto = gasto;

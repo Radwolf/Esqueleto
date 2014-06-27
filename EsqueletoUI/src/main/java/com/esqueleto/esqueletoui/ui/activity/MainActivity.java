@@ -13,10 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.esqueleto.esqueletosdk.command.impl.AddCuenta;
-import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
-import com.esqueleto.esqueletosdk.command.impl.AddResumen;
-import com.esqueleto.esqueletosdk.command.impl.AddUsuario;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetResumen;
@@ -27,16 +23,11 @@ import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
-import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.CuentaAdapter;
 import com.esqueleto.esqueletoui.adapter.MovimientoAdapter;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -93,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
 //        Resumen resumen = getResumen.execute(getApplicationContext());
 
         gestorMovimiento = new GestorMovimiento(getApplicationContext());
-        getMovimientos = new GetMovimientos(gestorMovimiento, "ANYMES", "2014/06");
+        getMovimientos = new GetMovimientos(gestorMovimiento, "CATEGORIA", "CATEGORIA_NOMINA");
 //        List<Movimiento> movimientos = getMovimientos.execute(getApplicationContext());
 
         if (savedInstanceState == null) {

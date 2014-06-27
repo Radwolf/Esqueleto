@@ -9,17 +9,19 @@ import java.util.Date;
  * Created by Raúl on 03/04/2014.
  */
 @DatabaseTable(tableName = "movimiento")
-public class Movimiento extends Basic {
+public class Movimiento{
 
-    private static final String COLUMN_NAME_IMPORTE = "IMPORTE";
-    private static final String COLUMN_NAME_FECHAESTIMADA = "FECHA_ESTIMADA";
-    private static final String COLUMN_NAME_FECHAMOVIMIENTO = "FECHA_MOVIMIENTO";
-    private static final String COLUMN_NAME_CONCEPTO = "CONCEPTO";
-    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "tipoMovimient_id";
+    public static final String COLUMN_NAME_ID = "movimiento_id";
+    private static final String COLUMN_NAME_IMPORTE = "importe";
+    private static final String COLUMN_NAME_FECHAESTIMADA = "fecha_estimada";
+    private static final String COLUMN_NAME_FECHAMOVIMIENTO = "fecha_movimiento";
+    private static final String COLUMN_NAME_CONCEPTO = "concepto";
+    public static final String COLUMN_NAME_TIPOMOVIMIENTO = "tipo_movimiento_id";
     public static final String COLUMN_NAME_CATEGORIA = "categoria_id";
     public static final String COLUMN_NAME_RESUMEN = "resumen_id";
 
-
+    @DatabaseField(generatedId = true, canBeNull = false, columnName = COLUMN_NAME_ID)
+    private int _id;
     @DatabaseField(foreign = true, columnName = COLUMN_NAME_TIPOMOVIMIENTO, foreignAutoRefresh=true, canBeNull=true,
             maxForeignAutoRefreshLevel=2)
     private Diccionario tipoMovimiento;
@@ -44,7 +46,7 @@ public class Movimiento extends Basic {
     public Movimiento(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate,
                       Resumen resumen, Diccionario tipoMovimiento, double importe, Date fechaEstimada,
                       Date fechaMovimiento, Diccionario categoria, String concepto) {
-        super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
+        this._id = _id;
         this.resumen = resumen;
         this.tipoMovimiento = tipoMovimiento;
         this.importe = importe;

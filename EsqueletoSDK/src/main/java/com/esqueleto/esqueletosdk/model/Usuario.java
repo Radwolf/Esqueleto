@@ -7,10 +7,13 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "usuario")
-public class Usuario extends Basic {
+public class Usuario{
 
-    public static final String COLUMN_NAME_EMAIL = "EMAIL";
+    public static final String COLUMN_NAME_ID = "usuario_id";
+    public static final String COLUMN_NAME_EMAIL = "email";
 
+    @DatabaseField(generatedId = true, canBeNull = false, columnName = COLUMN_NAME_ID)
+    private int _id;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_EMAIL)
     private String email;
 
@@ -18,7 +21,7 @@ public class Usuario extends Basic {
     }
 
     public Usuario(int _id, String email, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
-        super(_id, dateCreate, dateUpdate, userCreate, userUpdate);
+        this._id = _id;
         this.email = email;
     }
 
