@@ -185,4 +185,25 @@ public class Resumen implements Serializable{
         this.saldoAnterior = saldoAnterior;
     }
     //</editor-fold>
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
+
+        Resumen resumen = (Resumen) o;
+
+        if (anyMes != null ? !anyMes.equals(resumen.anyMes) : resumen.anyMes != null) return false;
+        if (cuenta != null ? !cuenta.equals(resumen.cuenta) : resumen.cuenta != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cuenta != null ? cuenta.hashCode() : 0;
+        result = 31 * result + (anyMes != null ? anyMes.hashCode() : 0);
+        return result;
+    }
 }

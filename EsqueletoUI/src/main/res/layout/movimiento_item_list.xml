@@ -4,7 +4,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@drawable/bg_corner_importe">
+    android:background="@drawable/bg_corner_gradient">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -13,22 +13,23 @@
         android:textColor="#000000"
         android:textAlignment="center"
         android:layout_gravity="center_vertical"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:background="#ff8bc0ff">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="03/06/2014"
             android:id="@+id/tv_data_movimiento"
             android:gravity="center_vertical|center_horizontal"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:inputType="date"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:orientation="vertical"
         android:layout_weight="2.5"
-        android:padding="10dp"
-        android:background="@drawable/bg_border_movimiento">
+        android:padding="10dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -57,7 +58,6 @@
             android:id="@+id/tv_importe_movimiento"
             android:textAlignment="center"
             android:gravity="center_vertical|center_horizontal"
-            android:textStyle="bold"
-            android:textColor="#ffffff" />
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

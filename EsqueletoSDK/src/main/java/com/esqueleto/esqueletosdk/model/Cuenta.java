@@ -60,4 +60,28 @@ public class Cuenta implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
+
+        Cuenta cuenta = (Cuenta) o;
+
+        if (_id != cuenta._id) return false;
+        if (dateSinc != null ? !dateSinc.equals(cuenta.dateSinc) : cuenta.dateSinc != null)
+            return false;
+        if (nombre != null ? !nombre.equals(cuenta.nombre) : cuenta.nombre != null) return false;
+        if (usuario != null ? !usuario.equals(cuenta.usuario) : cuenta.usuario != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = usuario != null ? usuario.hashCode() : 0;
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        return result;
+    }
 }

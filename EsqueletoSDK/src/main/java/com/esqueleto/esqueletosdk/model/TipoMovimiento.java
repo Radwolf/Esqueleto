@@ -63,4 +63,22 @@ public class TipoMovimiento implements Serializable{
         this.nombre = nombre;
     }
     //</editor-fold>
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
+
+        TipoMovimiento that = (TipoMovimiento) o;
+
+        if (clave != null ? !clave.equals(that.clave) : that.clave != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return clave != null ? clave.hashCode() : 0;
+    }
 }

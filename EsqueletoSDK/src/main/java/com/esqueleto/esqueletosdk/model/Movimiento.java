@@ -119,4 +119,32 @@ public class Movimiento implements Serializable{
         this.resumen = resumen;
     }
     //</editor-fold>
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
+
+        Movimiento that = (Movimiento) o;
+
+        if (categoria != null ? !categoria.equals(that.categoria) : that.categoria != null)
+            return false;
+        if (concepto != null ? !concepto.equals(that.concepto) : that.concepto != null)
+            return false;
+        if (resumen != null ? !resumen.equals(that.resumen) : that.resumen != null) return false;
+        if (tipoMovimiento != null ? !tipoMovimiento.equals(that.tipoMovimiento) : that.tipoMovimiento != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = tipoMovimiento != null ? tipoMovimiento.hashCode() : 0;
+        result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
+        result = 31 * result + (concepto != null ? concepto.hashCode() : 0);
+        result = 31 * result + (resumen != null ? resumen.hashCode() : 0);
+        return result;
+    }
 }

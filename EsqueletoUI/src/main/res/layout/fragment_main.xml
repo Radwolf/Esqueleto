@@ -62,7 +62,8 @@
             android:id="@+id/lv_movimientos"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:cacheColorHint="#FFDAFF7F"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -58,4 +58,21 @@ public class Diccionario implements Serializable{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
+
+        Diccionario that = (Diccionario) o;
+
+        if (clave != null ? !clave.equals(that.clave) : that.clave != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return clave != null ? clave.hashCode() : 0;
+    }
 }
