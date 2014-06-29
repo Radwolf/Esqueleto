@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
+import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Usuario;
+import com.esqueleto.esqueletosdk.repository.CategoriaRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.CuentaRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -16,18 +18,16 @@ import java.util.List;
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public class CategoriaRepositoryDBImpl implements CuentaRepositoryDB {
+public class CategoriaRepositoryDBImpl implements CategoriaRepositoryDB {
 
     private DatabaseHelper db;
-    Dao<Cuenta, Integer> cuentaDao;
-    Dao<Usuario, Integer> usuarioDao;
+    Dao<Categoria, Integer> categoriaDao;
 
     public CategoriaRepositoryDBImpl(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
-            cuentaDao = db.getCuentaDao();
-            usuarioDao = db.getUsuarioDao();
+            categoriaDao = db.getCategoriaDao();
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -36,9 +36,9 @@ public class CategoriaRepositoryDBImpl implements CuentaRepositoryDB {
     }
 
     @Override
-    public int create(Cuenta cuenta) {
+    public int create(Categoria categoria) {
         try {
-            return cuentaDao.create(cuenta);
+            return categoriaDao.create(categoria);
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -47,20 +47,20 @@ public class CategoriaRepositoryDBImpl implements CuentaRepositoryDB {
     }
 
     @Override
-    public int update(Cuenta cuenta) {
+    public int update(Categoria categoria) {
         return 0;
     }
 
     @Override
-    public int delete(Cuenta cuenta) {
+    public int delete(Categoria categoria) {
         return 0;
     }
 
     @Override
-    public Cuenta getCuenta(Integer id) {
+    public Categoria getCategoria(Integer id) {
         try {
-            Cuenta cuenta = cuentaDao.queryForId(id);
-            return cuenta;
+            Categoria categoria = categoriaDao.queryForId(id);
+            return categoria;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,18 +68,34 @@ public class CategoriaRepositoryDBImpl implements CuentaRepositoryDB {
     }
 
     @Override
-    public List<Cuenta> getCuentas(String email) {
-        List<Cuenta> cuentas = null;
+    public List<Categoria> getCategorias() {
+        List<Categoria> categorias = null;
         try {
 
-            QueryBuilder<Usuario, Integer> usuarioQb = usuarioDao.queryBuilder();
-            usuarioQb.where().eq(Usuario.COLUMN_NAME_EMAIL, email);
-            QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
+            QueryBuilder<Categoria, Integer> categoriaQb = categoriaDao.queryBuilder();
             // join with the order query
-            cuentas = cuentaQb.join(usuarioQb).query();
+            categorias = categoriaQb.query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return cuentas;
+        return categorias;
+    }
+
+    @Override
+    public Categoria getCategoriaByClave(String clave){
+        List<Categoria> categorias = null;
+        try {
+
+            QueryBuilder<Categoria, Integer> categoriaQb = categoriaDao.queryBuilder();
+            categoriaQb.where().eq(Categoria.COLUMN_NAME_CLAVE, clave);
+            // join with the order query
+            categorias = categoriaQb.query();
+            if(categorias.size() > 0){
+                return categorias.get(0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -5,7 +5,9 @@ import android.content.Context;
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
 import com.esqueleto.esqueletosdk.model.Categoria;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletosdk.repository.CategoriaRepositoryDB;
+import com.esqueleto.esqueletosdk.repository.TipoMovimientoRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
@@ -15,16 +17,16 @@ import java.util.List;
 /**
  * Created by rgonzalez on 25/04/2014.
  */
-public class TipoMovimientoRepositoryDBImpl implements CategoriaRepositoryDB {
+public class TipoMovimientoRepositoryDBImpl implements TipoMovimientoRepositoryDB {
 
     private DatabaseHelper db;
-    Dao<Categoria, Integer> categoriaDao;
+    Dao<TipoMovimiento, Integer> tipoMovimientoDao;
 
     public TipoMovimientoRepositoryDBImpl(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
-            categoriaDao = db.getCategoriaDao();
+            tipoMovimientoDao = db.getTipoMovimientoDao();
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -33,9 +35,9 @@ public class TipoMovimientoRepositoryDBImpl implements CategoriaRepositoryDB {
     }
 
     @Override
-    public int create(Categoria categoria) {
+    public int create(TipoMovimiento tipoMovimiento) {
         try {
-            return categoriaDao.create(categoria);
+            return tipoMovimientoDao.create(tipoMovimiento);
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
@@ -44,20 +46,20 @@ public class TipoMovimientoRepositoryDBImpl implements CategoriaRepositoryDB {
     }
 
     @Override
-    public int update(Categoria categoria) {
+    public int update(TipoMovimiento tipoMovimiento) {
         return 0;
     }
 
     @Override
-    public int delete(Categoria categoria) {
+    public int delete(TipoMovimiento tipoMovimiento) {
         return 0;
     }
 
     @Override
-    public Categoria getCategoria(Integer id) {
+    public TipoMovimiento getTipoMovimiento(Integer id) {
         try {
-            Categoria categoria = categoriaDao.queryForId(id);
-            return categoria;
+            TipoMovimiento tipoMovimiento = tipoMovimientoDao.queryForId(id);
+            return tipoMovimiento;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -65,30 +67,30 @@ public class TipoMovimientoRepositoryDBImpl implements CategoriaRepositoryDB {
     }
 
     @Override
-    public List<Categoria> getCuentas(String email) {
-        List<Categoria> cuentas = null;
+    public List<TipoMovimiento> getTipoMovimientos() {
+        List<TipoMovimiento> tipoMovimientos = null;
         try {
 
-            QueryBuilder<Categoria, Integer> categoriaQb = categoriaDao.queryBuilder();
+            QueryBuilder<TipoMovimiento, Integer> tipoMovimientoQb = tipoMovimientoDao.queryBuilder();
             // join with the order query
-            cuentas = categoriaQb.query();
+            tipoMovimientos = tipoMovimientoQb.query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return cuentas;
+        return tipoMovimientos;
     }
 
     @Override
-    public Categoria getCategoriaByClave(String clave){
-        List<Categoria> cuentas = null;
+    public TipoMovimiento getTipoMovimientoByClave(String clave){
+        List<TipoMovimiento> tipoMovimientos = null;
         try {
 
-            QueryBuilder<Categoria, Integer> categoriaQb = categoriaDao.queryBuilder();
-            categoriaQb.where().eq(Categoria.COLUMN_NAME_CLAVE, clave);
+            QueryBuilder<TipoMovimiento, Integer> tipoMovimientoQb = tipoMovimientoDao.queryBuilder();
+            tipoMovimientoQb.where().eq(TipoMovimiento.COLUMN_NAME_CLAVE, clave);
             // join with the order query
-            cuentas = categoriaQb.query();
-            if(cuentas.size() > 0){
-                cuentas.get(0);
+            tipoMovimientos = tipoMovimientoQb.query();
+            if(tipoMovimientos.size() > 0){
+                return tipoMovimientos.get(0);
             }
         } catch (SQLException e) {
             e.printStackTrace();

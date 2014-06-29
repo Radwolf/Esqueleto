@@ -3,13 +3,14 @@ package com.esqueleto.esqueletosdk.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "resumen")
-public class Resumen{
+public class Resumen implements Serializable{
 
     public static final String COLUMN_NAME_ID = "resumen_id";
     public static final String COLUMN_NAME_CUENTA = "cuenta_id";

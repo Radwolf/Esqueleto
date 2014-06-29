@@ -3,15 +3,21 @@ package com.esqueleto.esqueletosdk.iteractor.impl;
 import android.content.Context;
 
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
+import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Diccionario;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
+import com.esqueleto.esqueletosdk.repository.CategoriaRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.DiccionarioRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.ResumenRepositoryDB;
+import com.esqueleto.esqueletosdk.repository.TipoMovimientoRepositoryDB;
+import com.esqueleto.esqueletosdk.repository.impl.CategoriaRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.DiccionarioRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.MovimientoRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.ResumenRepositoryDBImpl;
+import com.esqueleto.esqueletosdk.repository.impl.TipoMovimientoRepositoryDBImpl;
 
 import java.util.Date;
 import java.util.List;
@@ -23,12 +29,14 @@ public class GestorMovimiento implements MovimientoInteractor {
 
     public static MovimientoRepositoryDB movimientoRepositoryDB;
     public static ResumenRepositoryDB resumenRepositoryDB;
-    public static DiccionarioRepositoryDB diccionarioRepositoryDB;
+    public static CategoriaRepositoryDB categoriaRepositoryDB;
+    public static TipoMovimientoRepositoryDB tipoMovimientoRepositoryDB;
 
     public GestorMovimiento(Context ctx) {
         movimientoRepositoryDB = new MovimientoRepositoryDBImpl(ctx);
         resumenRepositoryDB = new ResumenRepositoryDBImpl(ctx);
-        diccionarioRepositoryDB = new DiccionarioRepositoryDBImpl(ctx);
+        categoriaRepositoryDB = new CategoriaRepositoryDBImpl(ctx);
+        tipoMovimientoRepositoryDB = new TipoMovimientoRepositoryDBImpl(ctx);
     }
 
     @Override
@@ -36,8 +44,8 @@ public class GestorMovimiento implements MovimientoInteractor {
                               Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
         Movimiento movimiento = new Movimiento();
         Resumen resumen = resumenRepositoryDB.getResumen(resumenId);
-        Diccionario dCategoria = diccionarioRepositoryDB.getDiccionarioByClave(categoria);
-        Diccionario dTipoMovimiento = diccionarioRepositoryDB.getDiccionarioByClave(tipoMovimiento);
+        Categoria dCategoria = categoriaRepositoryDB.getCategoriaByClave(categoria);
+        TipoMovimiento dTipoMovimiento = tipoMovimientoRepositoryDB.getTipoMovimientoByClave(tipoMovimiento);
         movimiento.setCategoria(dCategoria);
         movimiento.setTipoMovimiento(dTipoMovimiento);
         movimiento.setConcepto(concepto);

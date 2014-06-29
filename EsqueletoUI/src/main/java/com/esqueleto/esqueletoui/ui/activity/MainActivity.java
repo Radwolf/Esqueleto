@@ -33,6 +33,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
+import butterknife.OnItemSelected;
 
 import static android.widget.Toast.LENGTH_SHORT;
 public class MainActivity extends ActionBarActivity {
@@ -95,10 +96,6 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    @OnItemClick(R.id.lv_cuentas) void onItemClick(int position) {
-        Toast.makeText(this, "You clicked: " + cuentaAdapter.getItem(position), LENGTH_SHORT).show();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -134,6 +131,11 @@ public class MainActivity extends ActionBarActivity {
         TextView textView;
         @InjectView(R.id.editText)
         EditText editText;
+
+        @OnItemClick(R.id.lv_cuentas)
+        void onItemClick(int position) {
+            Toast.makeText(getActivity(), "You clicked: " + cuentaAdapter.getItem(position).getNombre(), LENGTH_SHORT).show();
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

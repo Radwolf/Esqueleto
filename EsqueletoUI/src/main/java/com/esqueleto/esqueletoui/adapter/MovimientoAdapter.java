@@ -63,7 +63,7 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         Movimiento movimiento = getItem(position);
         holder.tvDataMovimiento.setText(getFechaMovimientoCalculada(movimiento).toString());
         holder.tvConcepto.setText(movimiento.getConcepto());
-        holder.tvOtrosDatos.setText(movimiento.getCategoria().getValor());
+        holder.tvOtrosDatos.setText(movimiento.getCategoria().getNombre());
         holder.tvImporteMovimiento.setText(BigDecimal.valueOf(movimiento.getImporte()).toString());
 
         return view;

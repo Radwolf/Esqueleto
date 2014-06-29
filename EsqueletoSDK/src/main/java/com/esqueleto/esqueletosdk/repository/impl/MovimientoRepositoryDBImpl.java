@@ -4,9 +4,11 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
+import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Diccionario;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.ColumnArg;
@@ -22,7 +24,8 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
 
     private DatabaseHelper db;
     Dao<Movimiento, Integer> movimientoDao;
-    Dao<Diccionario, Integer> diccionarioDao;
+    Dao<Categoria, Integer> categoriaDao;
+    Dao<TipoMovimiento, Integer> tipoMovimientoDao;
     Dao<Resumen, Integer> resumenDao;
 
     public MovimientoRepositoryDBImpl(Context ctx){
@@ -30,7 +33,8 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getHelper(ctx);
             movimientoDao = db.getMovimientoDao();
-            diccionarioDao = db.getDiccionarioDao();
+            categoriaDao = db.getCategoriaDao();
+            tipoMovimientoDao = db.getTipoMovimientoDao();
             resumenDao = db.getResumenDao();
         } catch (SQLException e) {
             // TODO: Exception Handling
@@ -93,12 +97,11 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
         List<Movimiento> movimientos = null;
         try {
 
-            QueryBuilder<Diccionario, Integer> diccionarioQb = diccionarioDao.queryBuilder();
-            diccionarioQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
+            QueryBuilder<Categoria, Integer> categoriaQb = categoriaDao.queryBuilder();
+            categoriaQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
             QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
-            movimientoQb.where().eq(Movimiento.COLUMN_NAME_CATEGORIA, new ColumnArg("diccionario", Diccionario.COLUMN_NAME_ID));
             // join with the order query
-            movimientos = movimientoQb.join(diccionarioQb).query();
+            movimientos = movimientoQb.join(categoriaQb).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,17 +111,16 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
     @Override
     public List<Movimiento> getMovimientosByTipo(String claveDiccionario) {
         List<Movimiento> movimientos = null;
-//        try {
-//
-//            QueryBuilder<Diccionario, Integer> diccionarioQb = diccionarioDao.queryBuilder();
-//            diccionarioQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
-//            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
-//            movimientoQb.where().eq(Movimiento.COLUMN_NAME_TIPOMOVIMIENTO, new ColumnArg(Diccionario.COLUMN_NAME_ID));
-//            // join with the order query
-//            movimientos = movimientoQb.join(diccionarioQb).query();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+
+            QueryBuilder<TipoMovimiento, Integer> tipoMovimientoQb = tipoMovimientoDao.queryBuilder();
+            tipoMovimientoQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
+            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
+            // join with the order query
+            movimientos = movimientoQb.join(tipoMovimientoQb).query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return movimientos;
     }
 }

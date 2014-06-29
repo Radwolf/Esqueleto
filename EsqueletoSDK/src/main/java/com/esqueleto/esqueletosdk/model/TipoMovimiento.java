@@ -3,57 +3,64 @@ package com.esqueleto.esqueletosdk.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by Raúl on 03/04/2014.
  */
-@DatabaseTable(tableName = "diccionario")
-public class TipoMovimiento {
+@DatabaseTable(tableName = "tipo_movimiento")
+public class TipoMovimiento implements Serializable{
 
-    public static final String COLUMN_NAME_ID = "diccionario_id";
-    public static final String COLUMN_NAME_CLAVE = "clave";
-    private static final String COLUMN_NAME_VALOR = "valor";
-    private static final String COLUMN_NAME_TIPO = "tipo";
-
+    public static final String COLUMN_NAME_ID = "tipo_movimiento_id";
+    public static final String COLUMN_NAME_CLAVE= "clave";
+    private static final String COLUMN_NAME_NOMBRE = "nombre";
     @DatabaseField(generatedId = true, canBeNull = false, columnName = COLUMN_NAME_ID)
     private int _id;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_CLAVE)
     private String clave;
-    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_VALOR)
-    private String valor;
-    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_TIPO)
-    private String tipo;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_NOMBRE)
+    private String nombre;
+
 
     public TipoMovimiento() {
     }
 
-    public TipoMovimiento(int _id, String dateCreate, String dateUpdate, String userCreate, String userUpdate, String clave, String valor, String tipo) {
+    public TipoMovimiento(int _id, String clave, String nombre) {
         this._id = _id;
         this.clave = clave;
-        this.valor = valor;
-        this.tipo = tipo;
+        this.nombre = nombre;
+    }
+
+    public TipoMovimiento(String clave, String nombre) {
+        this.clave = clave;
+        this.nombre = nombre;
+    }
+
+    //<editor-fold desc="GETTERS">
+    public int get_id() {
+        return _id;
     }
 
     public String getClave() {
         return clave;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="SETTERS">
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
     public void setClave(String clave) {
         this.clave = clave;
     }
 
-    public String getValor() {
-        return valor;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    //</editor-fold>
 }

@@ -4,10 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Diccionario;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletosdk.model.Usuario;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -42,6 +44,10 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
     private RuntimeExceptionDao<Resumen, Integer> resumenRuntimeDao = null;
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;
+    private Dao<TipoMovimiento, Integer> tipoMovimientoDao = null;
+    private RuntimeExceptionDao<TipoMovimiento, Integer> tipoMovimientoRuntimeDao = null;
+    private Dao<Categoria, Integer> categoriaDao = null;
+    private RuntimeExceptionDao<Categoria, Integer> categoriaRuntimeDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -68,14 +74,15 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Movimiento.class);
             TableUtils.createTable(connectionSource, Resumen.class);
             TableUtils.createTable(connectionSource, Usuario.class);
+            TableUtils.createTable(connectionSource, TipoMovimiento.class);
+            TableUtils.createTable(connectionSource, Categoria.class);
             Log.i(DatabaseHelper.class.getName(), "Tablas creadas con exito");
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
         }
 
-        RuntimeExceptionDao<Diccionario, Integer> diccionarioDao = getDiccionarioDataDao();
-        loadDataDiccionary(diccionarioDao);
+        loadDataDiccionarios(getTipoMovimientoDataDao(), getCategoriaDataDao());
 
         createDataTest();
 
@@ -136,10 +143,10 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
     }
 
     private void createDataMovimientosTest(RuntimeExceptionDao<Movimiento, Integer> movimientoDao, Resumen resumen) {
-        Diccionario dCategoriaNomina = getDiccionarioByClave("CATEGORIA_NOMINA");
-        Diccionario dCategoriaCombustible = getDiccionarioByClave("CATEGORIA_COMBUSTIBLE");
-        Diccionario dTipoIngreso = getDiccionarioByClave("TIPO_INGRESO");
-        Diccionario dTipoGasto = getDiccionarioByClave("TIPO_GASTO");
+        Categoria dCategoriaNomina = (Categoria) getDiccionarioByClave((RuntimeExceptionDao<T, Integer>) getCategoriaDataDao(), "CATEGORIA_NOMINA");
+        Categoria dCategoriaCombustible = (Categoria) getDiccionarioByClave((RuntimeExceptionDao<T, Integer>) getCategoriaDataDao(),"CATEGORIA_COMBUSTIBLE");
+        TipoMovimiento dTipoIngreso = (TipoMovimiento) getDiccionarioByClave((RuntimeExceptionDao<T, Integer>) getCategoriaDataDao(),"TIPO_INGRESO");
+        TipoMovimiento dTipoGasto = (TipoMovimiento) getDiccionarioByClave((RuntimeExceptionDao<T, Integer>) getCategoriaDataDao(),"TIPO_GASTO");
 
 
         Movimiento movimiento = new Movimiento();
@@ -163,13 +170,12 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
     }
 
-    private Diccionario getDiccionarioByClave(String clave) {
-
-        RuntimeExceptionDao<Diccionario, Integer> diccionarioDao = getDiccionarioDataDao();
+    private T getDiccionarioByClave(RuntimeExceptionDao<T, Integer> dao, String clave) {
+        String COLUMN_NAME_CLAVE = "clave";
         try {
-            QueryBuilder<Diccionario, Integer> diccionarioQb = diccionarioDao.queryBuilder();
-            diccionarioQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, clave);
-            List<Diccionario> diccionarios = diccionarioQb.query();
+            QueryBuilder<T, Integer> queryBuilder = dao.queryBuilder();
+            queryBuilder.where().eq(COLUMN_NAME_CLAVE, clave);
+            List<T> diccionarios = queryBuilder.query();
             if(diccionarios.size()>0){
                 return diccionarios.get(0);
             }
@@ -179,25 +185,25 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
         return null;
     }
 
-    private void loadDataDiccionary(RuntimeExceptionDao<Diccionario, Integer> diccionarioDao) {
+    private void loadDataDiccionarios(RuntimeExceptionDao<TipoMovimiento, Integer> tipoMovimientoDao, RuntimeExceptionDao<Categoria, Integer> categoriaDao) {
         //TODO: Faltará tratamiento de acento para las claves
         String[] tipoMovimientos = new String[]{"Ingreso", "Gasto", "Ahorro"};
         String[] categorias = new String[]{"Nomina", "Recibo", "Prestamo", "Combustible", "Farmacia"};
 
         for (String tipoMovimiento: tipoMovimientos){
-            Diccionario diccionario = new Diccionario();
-            diccionario.setValor(tipoMovimiento);
-            diccionario.setClave(String.format("TIPO_%s", tipoMovimiento.toUpperCase()));
-            diccionario.setTipo("CADENA");
-            diccionarioDao.create(diccionario);
+            TipoMovimiento eTipoMovimiento = new TipoMovimiento(
+                    String.format("TIPO_%s", tipoMovimiento.toUpperCase()),
+                    tipoMovimiento
+            );
+            tipoMovimientoDao.create(eTipoMovimiento);
         }
 
         for (String categoria: categorias){
-            Diccionario diccionario = new Diccionario();
-            diccionario.setValor(categoria);
-            diccionario.setClave(String.format("CATEGORIA_%s", categoria.toUpperCase()));
-            diccionario.setTipo("CADENA");
-            diccionarioDao.create(diccionario);
+            Categoria eCategoria = new Categoria(
+                    String.format("CATEGORIA_%s", categoria.toUpperCase()),
+                    categoria
+            );
+            categoriaDao.create(eCategoria);
         }
     }
 
@@ -214,6 +220,8 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, Movimiento.class, true);
             TableUtils.dropTable(connectionSource, Resumen.class, true);
             TableUtils.dropTable(connectionSource, Usuario.class, true);
+            TableUtils.dropTable(connectionSource, TipoMovimiento.class, true);
+            TableUtils.dropTable(connectionSource, Categoria.class, true);
             // after we drop the old databases, we create the new ones
             onCreate(db, connectionSource);
         } catch (SQLException e) {
@@ -329,6 +337,48 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
             usuarioRuntimeDao = getRuntimeExceptionDao(Usuario.class);
         }
         return usuarioRuntimeDao;
+    }
+    /**
+     * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
+     * value.
+     */
+    public Dao<TipoMovimiento, Integer> getTipoMovimientoDao() throws SQLException {
+        if (tipoMovimientoDao == null) {
+            tipoMovimientoDao = getDao(TipoMovimiento.class);
+        }
+        return tipoMovimientoDao;
+    }
+
+    /**
+     * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our SimpleData class. It will
+     * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
+     */
+    public RuntimeExceptionDao<TipoMovimiento, Integer> getTipoMovimientoDataDao() {
+        if (tipoMovimientoRuntimeDao == null) {
+            tipoMovimientoRuntimeDao = getRuntimeExceptionDao(TipoMovimiento.class);
+        }
+        return tipoMovimientoRuntimeDao;
+    }
+    /**
+     * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
+     * value.
+     */
+    public Dao<Categoria, Integer> getCategoriaDao() throws SQLException {
+        if (categoriaDao == null) {
+            categoriaDao = getDao(Categoria.class);
+        }
+        return categoriaDao;
+    }
+
+    /**
+     * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our SimpleData class. It will
+     * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
+     */
+    public RuntimeExceptionDao<Categoria, Integer> getCategoriaDataDao() {
+        if (categoriaRuntimeDao == null) {
+            categoriaRuntimeDao = getRuntimeExceptionDao(Categoria.class);
+        }
+        return categoriaRuntimeDao;
     }
     /**
      * Close the database connections and clear any cached DAOs.
