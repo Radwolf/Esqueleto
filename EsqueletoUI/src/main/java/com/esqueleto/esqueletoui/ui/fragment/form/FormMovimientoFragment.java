@@ -1,8 +1,10 @@
 package com.esqueleto.esqueletoui.ui.fragment.form;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,8 @@ import butterknife.InjectView;
  */
 public class FormMovimientoFragment extends Fragment {
 
+    private int request_code = 1;
+
     @InjectView(R.id.eTConcepto)
     EditText concetpo;
     @InjectView(R.id.sTipoMovimiento)
@@ -34,14 +38,17 @@ public class FormMovimientoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_form_movimiento, container, false);
         ButterKnife.inject(this, rootView);
-
+        setHasOptionsMenu(true);
         return rootView;
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK && requestCode == request_code){
+            Log.i("FromMovimiento", "Todo OK");
+        }
     }
 }

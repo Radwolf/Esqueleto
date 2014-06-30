@@ -73,4 +73,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile 'com.j256.ormlite:ormlite-android:4.46'
     compile 'com.squareup.dagger:dagger-compiler:1.2.1'
+    compile 'com.android.support:support-v13:+'
 }

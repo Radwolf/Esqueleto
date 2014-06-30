@@ -1,5 +1,6 @@
 package com.esqueleto.esqueletoui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,16 +24,15 @@ import butterknife.InjectView;
  */
 public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
 
+    private Activity ctx;
     private List<Movimiento> movimientos;
-    private final LayoutInflater inflater;
 
 
-    public MovimientoAdapter(Context context, int textViewResourceId,
-                             List<Movimiento> movimientos) {
-        super(context, textViewResourceId, movimientos);
+    public MovimientoAdapter(Activity context, List<Movimiento> movimientos) {
+        super(context, R.layout.movimiento_item_list, movimientos);
+        this.ctx = context;
         this.movimientos = new ArrayList<Movimiento>();
         this.movimientos.addAll(movimientos);
-        inflater = LayoutInflater.from(context);
     }
 
     static class ViewHolder {
@@ -50,34 +50,38 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         }
     }
 
-    @Override public View getView(int position, View view, ViewGroup parent) {
-        ViewHolder holder;
-        if (view != null) {
-            holder = (ViewHolder) view.getTag();
-        } else {
-            view = inflater.inflate(R.layout.movimiento_item_list, parent, false);
-            holder = new ViewHolder(view);
-            view.setTag(holder);
+    @Override
+    public View getView(int position, View view, ViewGroup parent) {
+        if (view == null){
+            view = ctx.getLayoutInflater().inflate(R.layout.movimiento_item_list, parent, false);
         }
 
         Movimiento movimiento = getItem(position);
+        inicializarCampos(view, movimiento);
+        return view;
+    }
+
+    private void inicializarCampos(View view, Movimiento movimiento) {
+        ViewHolder holder = new ViewHolder(view);
         holder.tvDataMovimiento.setText(getFechaMovimientoCalculada(movimiento).toString());
         holder.tvConcepto.setText(movimiento.getConcepto());
         holder.tvOtrosDatos.setText(movimiento.getCategoria().getNombre());
         holder.tvImporteMovimiento.setText(BigDecimal.valueOf(movimiento.getImporte()).toString());
-
-        return view;
     }
 
-    @Override public int getCount() {
+
+    @Override
+    public int getCount() {
         return movimientos.size();
     }
 
-    @Override public Movimiento getItem(int position) {
+    @Override
+    public Movimiento getItem(int position) {
         return movimientos.get(position);
     }
 
-    @Override public long getItemId(int position) {
+    @Override
+    public long getItemId(int position) {
         return position;
     }
 

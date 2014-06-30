@@ -1,173 +1,79 @@
 package com.esqueleto.esqueletoui.ui.activity;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v4.view.ViewPager;
 
-import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
-import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
-import com.esqueleto.esqueletosdk.command.impl.GetResumen;
-import com.esqueleto.esqueletosdk.command.impl.GetUsuario;
-import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
-import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
-import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
-import com.esqueleto.esqueletosdk.iteractor.impl.GestorUsuario;
-import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletosdk.model.Movimiento;
-import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.adapter.CuentaAdapter;
-import com.esqueleto.esqueletoui.adapter.MovimientoAdapter;
+import com.esqueleto.esqueletoui.ui.pager.TabsPagerAdapter;
 
-import java.util.List;
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnItemClick;
+    private ViewPager viewPager;
+    private TabsPagerAdapter pagerAdapter;
+    private ActionBar actionBar;
 
-import static android.widget.Toast.LENGTH_SHORT;
-public class MainActivity extends FragmentActivity {
-
-//    public static UsuarioRepositoryDB usuarioRepositoryDB;
-    public static GetUsuario getUsuario;
-//    public static AddUsuario addUsuario;
-    public static GestorUsuario gestorUsuario;
-    /*
-     * Constants
-     */
-    private static final String MAIL_RUL = "raul.gomo@gmail.com";
-
-    /*
-     * Attributes
-     */
-    public static GestorCuenta gestorCuenta;
-    public static GetCuentas getCuentas;
-//    public static AddCuenta addCuenta;
-
-    public static GestorMovimiento gestorMovimiento;
-//    public static AddMovimiento addMovimiento;
-    public static GetMovimientos getMovimientos;
-
-    public static GestorResumen gestorResumen;
-//    public static AddResumen addResumen;
-    public static GetResumen getResumen;
-
-    /*
-     * Attributes
-     */
-    public static CuentaAdapter cuentaAdapter;
-    public static MovimientoAdapter movimientoAdapter;
+    private String[] titulos = {"Crear Movimiento", "Lista Movimientos"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        inicializarTabs();
+    }
 
-        gestorUsuario = new GestorUsuario(getApplicationContext());
-        getUsuario = new GetUsuario(gestorUsuario, MAIL_RUL);
+    private void inicializarTabs() {
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        actionBar = getActionBar();
+        pagerAdapter = new TabsPagerAdapter(getFragmentManager());
 
-        gestorCuenta = new GestorCuenta(getApplicationContext());
-        getCuentas = new GetCuentas(gestorCuenta, MAIL_RUL);
-//        List<Cuenta> cuentas = getCuentas.execute(getApplicationContext());
+        viewPager.setAdapter(pagerAdapter);
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        gestorResumen = new GestorResumen(getApplicationContext());
-//        getResumen = new GetResumen(gestorResumen, cuentas.get(0).get_id(), "2014/06");
-//        Resumen resumen = getResumen.execute(getApplicationContext());
-
-        gestorMovimiento = new GestorMovimiento(getApplicationContext());
-        getMovimientos = new GetMovimientos(gestorMovimiento, "CATEGORIA", "CATEGORIA_NOMINA");
-//        List<Movimiento> movimientos = getMovimientos.execute(getApplicationContext());
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainFragment())
-                    .commit();
+        for (String nombre: titulos){
+            ActionBar.Tab tab = actionBar.newTab().setText(nombre);
+            tab.setTabListener(this);
+            actionBar.addTab(tab);
         }
+
+
+    }
+
+    //<editor-fold desc="METODOS VIEW CHANGE LISTENER">
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    public void onPageSelected(int position) {
+        actionBar.setSelectedNavigationItem(position);
     }
 
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
+    }
+    //</editor-fold>
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-    public static class MainFragment extends Fragment {
-
-       /*
-        * Widgets
-        */
-        @InjectView(R.id.lv_cuentas)
-        ListView listView;
-        @InjectView(R.id.lv_movimientos)
-        ListView movimientoListView;
-        @InjectView(R.id.button)
-        Button button;
-        @InjectView(R.id.textView)
-        TextView textView;
-        @InjectView(R.id.editText)
-        EditText editText;
-
-        @OnItemClick(R.id.lv_cuentas)
-        void onItemClick(int position) {
-            Toast.makeText(getActivity(), "You clicked: " + cuentaAdapter.getItem(position).getNombre(), LENGTH_SHORT).show();
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            ButterKnife.inject(this, rootView);
-            initListViewCuentas(getCuentas.execute(getActivity().getApplicationContext()));
-            initListViewMovimientos(getMovimientos.execute(getActivity().getApplicationContext()));
-
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                  Usuario usuario = getUsuario.execute(getActivity().getApplicationContext());
-                  textView.setText(String.format("Hello, %s!", usuario.getEmail()));
-                }
-            });
-
-            return rootView;
-        }
-
-        private void initListViewMovimientos(List<Movimiento> movimientos) {
-            movimientoAdapter = new MovimientoAdapter(getActivity().getApplicationContext(), R.layout.movimiento_item_list, movimientos);
-            movimientoListView.setAdapter(movimientoAdapter);
-        }
-
-        /**
-         * Initialize ListVideo with our RendererAdapter.
-         */
-        private void initListViewCuentas(List<Cuenta> cuentas) {
-            cuentaAdapter = new CuentaAdapter(getActivity().getApplicationContext(), R.layout.cuenta_item, cuentas);
-            listView.setAdapter(cuentaAdapter);
-        }
+    //<editor-fold desc="METODOS TAB CHANGE LISTENER">
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        viewPager.setCurrentItem(tab.getPosition());
     }
 
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+    //</editor-fold>
 }
