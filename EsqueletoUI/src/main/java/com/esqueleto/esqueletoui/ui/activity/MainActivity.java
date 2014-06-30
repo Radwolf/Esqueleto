@@ -2,7 +2,7 @@ package com.esqueleto.esqueletoui.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -33,10 +33,9 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
-import butterknife.OnItemSelected;
 
 import static android.widget.Toast.LENGTH_SHORT;
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity {
 
 //    public static UsuarioRepositoryDB usuarioRepositoryDB;
     public static GetUsuario getUsuario;
@@ -103,6 +102,8 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+
 
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {

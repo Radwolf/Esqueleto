@@ -1,15 +1,16 @@
 package com.esqueleto.esqueletosdk.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
-import java.io.Serializable;
 
 /**
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "usuario")
-public class Usuario implements Serializable{
+public class Usuario implements Parcelable{
 
     public static final String COLUMN_NAME_ID = "usuario_id";
     public static final String COLUMN_NAME_EMAIL = "email";
@@ -19,7 +20,30 @@ public class Usuario implements Serializable{
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_EMAIL)
     private String email;
 
+    public static final Parcelable.Creator<Usuario> CREATOR =
+        new Parcelable.Creator<Usuario>()
+        {
+            @Override
+            public Usuario createFromParcel(Parcel parcel)
+            {
+                return new Usuario(parcel);
+            }
+
+            @Override
+            public Usuario[] newArray(int size)
+            {
+                return new Usuario[size];
+            }
+        };
+
     public Usuario() {
+    }
+
+    public Usuario(Parcel parcel)
+    {
+        //seguir el mismo orden que el usado en el método writeToParcel
+        this._id = parcel.readInt();
+        this.email = parcel.readString();
     }
 
     public Usuario(int _id, String email, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
@@ -36,19 +60,13 @@ public class Usuario implements Serializable{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
-
-        Usuario usuario = (Usuario) o;
-
-        if (email != null ? !email.equals(usuario.email) : usuario.email != null) return false;
-
-        return true;
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public int hashCode() {
-        return email != null ? email.hashCode() : 0;
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeInt(this._id);
+        parcel.writeString(this.email);
     }
 }

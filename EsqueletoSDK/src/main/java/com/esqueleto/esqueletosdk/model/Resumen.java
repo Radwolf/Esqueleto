@@ -1,16 +1,18 @@
 package com.esqueleto.esqueletosdk.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by rgonzalez on 20/02/14.
  */
 @DatabaseTable(tableName = "resumen")
-public class Resumen implements Serializable{
+public class Resumen implements Parcelable{
 
     public static final String COLUMN_NAME_ID = "resumen_id";
     public static final String COLUMN_NAME_CUENTA = "cuenta_id";
@@ -186,24 +188,26 @@ public class Resumen implements Serializable{
     }
     //</editor-fold>
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
-
-        Resumen resumen = (Resumen) o;
-
-        if (anyMes != null ? !anyMes.equals(resumen.anyMes) : resumen.anyMes != null) return false;
-        if (cuenta != null ? !cuenta.equals(resumen.cuenta) : resumen.cuenta != null) return false;
-
-        return true;
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public int hashCode() {
-        int result = cuenta != null ? cuenta.hashCode() : 0;
-        result = 31 * result + (anyMes != null ? anyMes.hashCode() : 0);
-        return result;
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeInt(this._id);
+        parcel.writeParcelable(this.cuenta, flags);
+        parcel.writeDouble(this.ingreso);
+        parcel.writeDouble(this.gasto);
+        parcel.writeDouble(this.ahorro);
+        parcel.writeDouble(this.saldo);
+        parcel.writeString(this.anyMes);
+        parcel.writeSerializable(this.inicioPeriodo);
+        parcel.writeSerializable(this.finPeriodo);
+        parcel.writeDouble(this.ingresoEstimado);
+        parcel.writeDouble(this.gastoEstimado);
+        parcel.writeDouble(this.ahorroEstimado);
+        parcel.writeDouble(this.saldoEstimado);
+        parcel.writeDouble(this.saldoAnterior);
     }
 }

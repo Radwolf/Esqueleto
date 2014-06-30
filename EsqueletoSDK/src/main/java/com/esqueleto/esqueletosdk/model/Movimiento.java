@@ -1,16 +1,18 @@
 package com.esqueleto.esqueletosdk.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Raúl on 03/04/2014.
  */
 @DatabaseTable(tableName = "movimiento")
-public class Movimiento implements Serializable{
+public class Movimiento implements Parcelable{
 
     public static final String COLUMN_NAME_ID = "movimiento_id";
     private static final String COLUMN_NAME_IMPORTE = "importe";
@@ -38,7 +40,36 @@ public class Movimiento implements Serializable{
     @DatabaseField(foreign = true, columnName = COLUMN_NAME_RESUMEN, foreignAutoRefresh=true, canBeNull=true, maxForeignAutoRefreshLevel=2)
     private Resumen resumen;
 
+    public static final Parcelable.Creator<Movimiento> CREATOR =
+        new Parcelable.Creator<Movimiento>()
+        {
+            @Override
+            public Movimiento createFromParcel(Parcel parcel)
+            {
+                return new Movimiento(parcel);
+            }
+
+            @Override
+            public Movimiento[] newArray(int size)
+            {
+                return new Movimiento[size];
+            }
+        };
+
     public Movimiento() {
+    }
+
+    public Movimiento(Parcel parcel)
+    {
+        //seguir el mismo orden que el usado en el método writeToParcel
+        this._id = parcel.readInt();
+        this.tipoMovimiento = parcel.readParcelable(TipoMovimiento.class.getClassLoader());
+        this.importe = parcel.readDouble();
+        this.fechaEstimada = (Date) parcel.readSerializable();
+        this.fechaMovimiento = (Date) parcel.readSerializable();
+        this.categoria = parcel.readParcelable(Categoria.class.getClassLoader());
+        this.concepto = parcel.readString();
+        this.resumen = parcel.readParcelable(Resumen.class.getClassLoader());
     }
 
     public Movimiento(int _id, TipoMovimiento tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento, Categoria categoria, String concepto, Resumen resumen) {
@@ -120,31 +151,20 @@ public class Movimiento implements Serializable{
     }
     //</editor-fold>
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || ((Object) this).getClass() != o.getClass()) return false;
-
-        Movimiento that = (Movimiento) o;
-
-        if (categoria != null ? !categoria.equals(that.categoria) : that.categoria != null)
-            return false;
-        if (concepto != null ? !concepto.equals(that.concepto) : that.concepto != null)
-            return false;
-        if (resumen != null ? !resumen.equals(that.resumen) : that.resumen != null) return false;
-        if (tipoMovimiento != null ? !tipoMovimiento.equals(that.tipoMovimiento) : that.tipoMovimiento != null)
-            return false;
-
-        return true;
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public int hashCode() {
-        int result = tipoMovimiento != null ? tipoMovimiento.hashCode() : 0;
-        result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
-        result = 31 * result + (concepto != null ? concepto.hashCode() : 0);
-        result = 31 * result + (resumen != null ? resumen.hashCode() : 0);
-        return result;
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeInt(this._id);
+        parcel.writeParcelable(this.tipoMovimiento, flags);
+        parcel.writeDouble(this.importe);
+        parcel.writeSerializable(this.fechaEstimada);
+        parcel.writeSerializable(this.fechaMovimiento);
+        parcel.writeParcelable(this.categoria, flags);
+        parcel.writeString(this.concepto);
+        parcel.writeParcelable(this.resumen, flags);
     }
 }
