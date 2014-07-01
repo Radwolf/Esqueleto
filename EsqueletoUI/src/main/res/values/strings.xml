@@ -4,5 +4,6 @@
     <string name="app_name">Esqueleto</string>
     <string name="hello_world">Hello Robo!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_guardar">Guardar</string>
 
 </resources>
