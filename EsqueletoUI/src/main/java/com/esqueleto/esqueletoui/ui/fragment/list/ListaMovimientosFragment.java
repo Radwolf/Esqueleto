@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
@@ -21,8 +20,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnItemClick;
-import ly.apps.android.rest.utils.StringUtils;
 
 /**
  * Created by RUL on 29/06/2014.
@@ -53,6 +50,7 @@ public class ListaMovimientosFragment extends Fragment{
         receiver = new MovimientoReceiver(adapter);
         getActivity().registerReceiver(receiver, new IntentFilter("listamovimientos"));
     }
+
 
     @Override
     public void onPause() {

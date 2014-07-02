@@ -2,12 +2,9 @@ package com.esqueleto.esqueletoui.ui.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.SearchManager;
-import android.content.Intent;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
-
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
@@ -112,8 +108,17 @@ public class MainActivity extends Activity {
         // Handle action buttons
         switch(item.getItemId()) {
             case R.id.action_add_movimiento:
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, new FormMovimientoFragment()).commit();
+                // Crear un nuevo fragmento y transacción
+                FormMovimientoFragment newFragment = new FormMovimientoFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Reemplazar lo que esté en el fragment_container view con este fragmento,
+                // y añadir transacción al back stack
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+
+                //commit la trasacción
+                transaction.commit();
                 setTitle("Añadir movimiento");
                 return true;
             default:
@@ -134,8 +139,17 @@ public class MainActivity extends Activity {
             case 0:
                 break;
             case 1:
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, new ListaMovimientosFragment()).commit();
+                // Crear un nuevo fragmento y transacción
+                ListaMovimientosFragment newFragment = new ListaMovimientosFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Reemplazar lo que esté en el fragment_container view con este fragmento,
+                // y añadir transacción al back stack
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+
+                //commit la trasacción
+                transaction.commit();
                 break;
             case 2:
                 break;

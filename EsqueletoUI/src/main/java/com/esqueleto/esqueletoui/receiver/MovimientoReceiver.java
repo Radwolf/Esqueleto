@@ -22,7 +22,6 @@ public class MovimientoReceiver extends BroadcastReceiver {
     GestorMovimiento gestorMovimiento;
     AddMovimiento addMovimiento;
 
-
     public static final int MOVIMIENTO_INSERTADO = 1;
     public static final int MOVIMIENTO_ACTUALIZADO = 2;
     public static final int MOVIMIENTO_ELIMINADO = 3;
@@ -59,6 +58,7 @@ public class MovimientoReceiver extends BroadcastReceiver {
         addMovimiento = new AddMovimiento(gestorMovimiento, cuenta, anyMes, claveTipoMovimiento, importe,
                 fechaEstimada, fechaMovimiento, claveCategoria, concepto);
         Movimiento movimiento = addMovimiento.execute(ctx);
+        adapter.setNotifyOnChange(true);
         adapter.add(movimiento);
     }
 

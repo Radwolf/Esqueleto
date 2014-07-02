@@ -17,7 +17,6 @@ import android.widget.Spinner;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.receiver.MovimientoReceiver;
 
@@ -66,11 +65,6 @@ public class FormMovimientoFragment extends Fragment {
 
     private void insertarMovimiento(String claveCategoria, String claveTipoMovimiento, String concepto,
                  Cuenta cuenta, String anyMes, double importe, Date fechaEstimada, Date fechaMovimiento){
-        Movimiento movimiento = new Movimiento();
-        movimiento.setConcepto(concepto);
-        movimiento.setImporte(importe);
-        movimiento.setFechaEstimada(fechaEstimada);
-        movimiento.setFechaMovimiento(fechaMovimiento);
         Intent intent = new Intent("listamovimientos");
         intent.putExtra("operacion", MovimientoReceiver.MOVIMIENTO_INSERTADO);
         intent.putExtra("concepto", concepto);
@@ -81,7 +75,8 @@ public class FormMovimientoFragment extends Fragment {
         intent.putExtra("claveTipoMovimiento", claveTipoMovimiento);
         intent.putExtra("cuenta", cuenta);
         intent.putExtra("anyMes", anyMes);
-        getActivity().sendBroadcast(intent);
+//        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
+//        getActivity().sendBroadcast(intent);
 
     }
     @Override
