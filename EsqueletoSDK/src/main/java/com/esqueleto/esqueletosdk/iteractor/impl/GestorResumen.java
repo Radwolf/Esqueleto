@@ -29,7 +29,7 @@ public class GestorResumen implements ResumenInteractor {
     //Inicio Periodo y Fin periodo se calculará a partir de unas preferencias de la app
 
     @Override
-    public void addResumen(Context ctx, Integer cuentaId, String anyMes, Date inicioPeriodo,
+    public Resumen addResumen(Context ctx, Integer cuentaId, String anyMes, Date inicioPeriodo,
                            Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
                            double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
                            double saldoAnterior, double saldoEstimado) {
@@ -52,6 +52,8 @@ public class GestorResumen implements ResumenInteractor {
         resumen.setFinPeriodo(finPeriodo);
 
         resumenRepositoryDB.create(resumen);
+
+        return resumen;
     }
 
     @Override

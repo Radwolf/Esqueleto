@@ -1,7 +1,6 @@
 package com.esqueleto.esqueletosdk.repository;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletosdk.model.Usuario;
 
 import java.util.List;
 

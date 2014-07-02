@@ -19,10 +19,11 @@ public class GestorUsuario implements UsuarioInteractor {
     }
 
     @Override
-    public void addUsuario(Context ctx, String email) {
+    public Usuario addUsuario(Context ctx, String email) {
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
         usuarioRepositoryDB.create(usuario);
+        return usuario;
     }
 
     @Override

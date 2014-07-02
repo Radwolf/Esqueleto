@@ -9,7 +9,7 @@ import com.esqueleto.esqueletosdk.model.Usuario;
  */
 public interface UsuarioInteractor {
 
-    void addUsuario(Context ctx, String email);
+    Usuario addUsuario(Context ctx, String email);
     Usuario getUsuario(Context ctx, String email);
 
 }

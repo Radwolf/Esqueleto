@@ -26,12 +26,13 @@ public class GestorCuenta implements CuentaInteractor {
     }
 
     @Override
-    public void addCuenta(Context ctx, String nombre, String email) {
+    public Cuenta addCuenta(Context ctx, String nombre, String email) {
         Usuario usuario = usuarioRepositoryDB.getUsuario(email);
         Cuenta cuenta = new Cuenta();
         cuenta.setUsuario(usuario);
         cuenta.setNombre(nombre);
         cuentaRepositoryDB.create(cuenta);
+        return cuenta;
     }
 
     @Override

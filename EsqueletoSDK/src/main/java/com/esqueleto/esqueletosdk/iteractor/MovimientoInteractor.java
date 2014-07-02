@@ -2,6 +2,7 @@ package com.esqueleto.esqueletosdk.iteractor;
 
 import android.content.Context;
 
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface MovimientoInteractor {
 
-    int addMovimiento(Context ctx, Integer resumenId, String tipoMovimiento, double importe,
+    Movimiento addMovimiento(Context ctx, Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
                        Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto);
     Movimiento getMovimiento(Context ctx, Integer id);
     List<Movimiento> getMovimientosByAnyMes(Context ctx, String anyMes);

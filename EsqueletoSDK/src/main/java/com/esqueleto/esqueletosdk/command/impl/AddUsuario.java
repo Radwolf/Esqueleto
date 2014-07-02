@@ -4,11 +4,12 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.UsuarioInteractor;
+import com.esqueleto.esqueletosdk.model.Usuario;
 
 /**
  * Created by rgonzalez on 24/04/2014.
  */
-public class AddUsuario implements AddCommand {
+public class AddUsuario implements AddCommand<Usuario> {
 
     UsuarioInteractor usuarioInteractor;
     String email;
@@ -19,8 +20,8 @@ public class AddUsuario implements AddCommand {
     }
 
     @Override
-    public void execute(Context ctx) {
-        this.usuarioInteractor.addUsuario(ctx, email);
+    public Usuario execute(Context ctx) {
+        return this.usuarioInteractor.addUsuario(ctx, email);
     }
 
     @Override

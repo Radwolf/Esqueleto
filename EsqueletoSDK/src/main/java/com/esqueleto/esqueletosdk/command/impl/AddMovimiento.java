@@ -4,17 +4,20 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
+import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Movimiento;
 
 import java.util.Date;
 
 /**
  * Created by rgonzalez on 24/04/2014.
  */
-public class AddMovimiento implements AddCommand {
+public class AddMovimiento implements AddCommand<Movimiento> {
 
     MovimientoInteractor movimientoInteractor;
     Integer _id;
-    Integer resumenId;
+    Cuenta cuenta;
+    String anyMes;
     String tipoMovimiento;
     double importe;
     Date fechaEstimada;
@@ -22,11 +25,12 @@ public class AddMovimiento implements AddCommand {
     String categoria;
     String concepto;
 
-    public AddMovimiento(MovimientoInteractor movimientoInteractor, Integer resumenId, String tipoMovimiento,
-                         double importe, Date fechaEstimada, Date fechaMovimiento, String categoria,
-                         String concepto) {
+    public AddMovimiento(MovimientoInteractor movimientoInteractor, Cuenta cuenta, String anyMes,
+                         String tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento,
+                         String categoria, String concepto) {
         this.movimientoInteractor = movimientoInteractor;
-        this.resumenId = resumenId;
+        this.cuenta = cuenta;
+        this.anyMes = anyMes;
         this.tipoMovimiento = tipoMovimiento;
         this.importe = importe;
         this.fechaEstimada = fechaEstimada;
@@ -36,8 +40,8 @@ public class AddMovimiento implements AddCommand {
     }
 
     @Override
-    public void execute(Context ctx) {
-        this._id = this.movimientoInteractor.addMovimiento(ctx, this.resumenId, this.tipoMovimiento, this.importe,
+    public Movimiento execute(Context ctx) {
+        return this.movimientoInteractor.addMovimiento(ctx, this.cuenta, this.anyMes, this.tipoMovimiento, this.importe,
                 this.fechaEstimada, this.fechaMovimiento, this.categoria, this.concepto);
     }
 

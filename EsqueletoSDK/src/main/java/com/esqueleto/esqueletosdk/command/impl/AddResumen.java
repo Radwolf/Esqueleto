@@ -4,13 +4,14 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.ResumenInteractor;
+import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.Date;
 
 /**
  * Created by rgonzalez on 24/04/2014.
  */
-public class AddResumen implements AddCommand {
+public class AddResumen implements AddCommand<Resumen> {
 
     ResumenInteractor resumenInteractor;
     Integer cuentaId;
@@ -48,8 +49,8 @@ public class AddResumen implements AddCommand {
     }
 
     @Override
-    public void execute(Context ctx) {
-        this.resumenInteractor.addResumen(ctx, cuentaId, this.anyMes, this.inicioPeriodo, this.finPeriodo,
+    public Resumen execute(Context ctx) {
+        return this.resumenInteractor.addResumen(ctx, cuentaId, this.anyMes, this.inicioPeriodo, this.finPeriodo,
                 this.ahorro, this.ahorroEstimado, this.gasto, this.gastoEstimado, this.ingreso,
                 this.ingresoEstimado, this.saldo, this.saldoAnterior, this.saldoEstimado);
     }

@@ -4,17 +4,15 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
 import com.esqueleto.esqueletosdk.model.Categoria;
-import com.esqueleto.esqueletosdk.model.Diccionario;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletosdk.repository.CategoriaRepositoryDB;
-import com.esqueleto.esqueletosdk.repository.DiccionarioRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.ResumenRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.TipoMovimientoRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.impl.CategoriaRepositoryDBImpl;
-import com.esqueleto.esqueletosdk.repository.impl.DiccionarioRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.MovimientoRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.ResumenRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.TipoMovimientoRepositoryDBImpl;
@@ -40,10 +38,10 @@ public class GestorMovimiento implements MovimientoInteractor {
     }
 
     @Override
-    public int addMovimiento(Context ctx, Integer resumenId, String tipoMovimiento, double importe,
+    public Movimiento addMovimiento(Context ctx, Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
                               Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
         Movimiento movimiento = new Movimiento();
-        Resumen resumen = resumenRepositoryDB.getResumen(resumenId);
+        Resumen resumen = resumenRepositoryDB.getResumen(cuenta, anyMes);
         Categoria dCategoria = categoriaRepositoryDB.getCategoriaByClave(categoria);
         TipoMovimiento dTipoMovimiento = tipoMovimientoRepositoryDB.getTipoMovimientoByClave(tipoMovimiento);
         movimiento.setCategoria(dCategoria);
@@ -53,8 +51,9 @@ public class GestorMovimiento implements MovimientoInteractor {
         movimiento.setFechaEstimada(fechaEstimada);
         movimiento.setFechaMovimiento(fechaMovimiento);
         movimiento.setImporte(importe);
-        //Faltará la lógica para actualizar el resumen.
-        return movimientoRepositoryDB.create(movimiento);
+        //TODO: Faltará la lógica para actualizar el resumen.
+        movimientoRepositoryDB.create(movimiento);
+        return movimiento;
     }
 
     @Override

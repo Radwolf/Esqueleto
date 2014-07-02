@@ -11,7 +11,7 @@ import java.util.List;
  * Created by rgonzalez on 23/06/2014.
  */
 public interface ResumenInteractor {
-    void addResumen(Context ctx, Integer cuentaId, String anyMes, Date inicioPeriodo,
+    Resumen addResumen(Context ctx, Integer cuentaId, String anyMes, Date inicioPeriodo,
                     Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
                     double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
                     double saldoAnterior, double saldoEstimado);

@@ -4,13 +4,14 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
+import com.esqueleto.esqueletosdk.model.Movimiento;
 
 import java.util.Date;
 
 /**
  * Created by rgonzalez on 24/04/2014.
  */
-public class UpdateMovimiento implements AddCommand {
+public class UpdateMovimiento implements AddCommand<Movimiento> {
 
     MovimientoInteractor movimientoInteractor;
     Integer _id;
@@ -35,8 +36,8 @@ public class UpdateMovimiento implements AddCommand {
     }
 
     @Override
-    public void execute(Context ctx) {
-        this.movimientoInteractor.updateMovimiento(ctx, this._id, this.tipoMovimiento, this.importe,
+    public Movimiento execute(Context ctx) {
+        return this.movimientoInteractor.updateMovimiento(ctx, this._id, this.tipoMovimiento, this.importe,
                 this.fechaEstimada, this.fechaMovimiento, this.categoria, this.concepto);
     }
 

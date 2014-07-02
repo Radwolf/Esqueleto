@@ -73,7 +73,10 @@ public class FormMovimientoFragment extends Fragment {
         movimiento.setFechaMovimiento(fechaMovimiento);
         Intent intent = new Intent("listamovimientos");
         intent.putExtra("operacion", MovimientoReceiver.MOVIMIENTO_INSERTADO);
-        intent.putExtra("movimiento", movimiento);
+        intent.putExtra("concepto", concepto);
+        intent.putExtra("importe", importe);
+        intent.putExtra("fechaEstimada", fechaEstimada);
+        intent.putExtra("fechaMovimiento", fechaMovimiento);
         intent.putExtra("claveCategoria", claveCategoria);
         intent.putExtra("claveTipoMovimiento", claveTipoMovimiento);
         intent.putExtra("cuenta", cuenta);

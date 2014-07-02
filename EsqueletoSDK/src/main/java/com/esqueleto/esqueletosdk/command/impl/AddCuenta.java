@@ -4,11 +4,12 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.CuentaInteractor;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 
 /**
  * Created by rgonzalez on 24/04/2014.
  */
-public class AddCuenta implements AddCommand {
+public class AddCuenta implements AddCommand<Cuenta> {
 
     CuentaInteractor cuentaInteractor;
     String nombre;
@@ -21,8 +22,8 @@ public class AddCuenta implements AddCommand {
     }
 
     @Override
-    public void execute(Context ctx) {
-        this.cuentaInteractor.addCuenta(ctx, this.nombre, this.email);
+    public Cuenta execute(Context ctx) {
+        return this.cuentaInteractor.addCuenta(ctx, this.nombre, this.email);
     }
 
     @Override
