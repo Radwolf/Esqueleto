@@ -5,5 +5,10 @@
     <string name="hello_world">Hello Robo!</string>
     <string name="action_settings">Settings</string>
     <string name="action_guardar">Guardar</string>
+    <string name="drawer_open">Menú lateral abierto</string>
+    <string name="drawer_close">Menú lateral cerrado</string>
+    <string name="app_not_available">Opción no disponible</string>
+    <string name="action_websearch">Buscador</string>
+    <string name="action_add_movimiento">Añadir movimiento</string>
 
 </resources>
