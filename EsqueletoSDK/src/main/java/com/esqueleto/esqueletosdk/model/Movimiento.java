@@ -15,10 +15,10 @@ import java.util.Date;
 public class Movimiento implements Parcelable{
 
     public static final String COLUMN_NAME_ID = "movimiento_id";
-    private static final String COLUMN_NAME_IMPORTE = "importe";
-    private static final String COLUMN_NAME_FECHAESTIMADA = "fecha_estimada";
-    private static final String COLUMN_NAME_FECHAMOVIMIENTO = "fecha_movimiento";
-    private static final String COLUMN_NAME_CONCEPTO = "concepto";
+    public static final String COLUMN_NAME_IMPORTE = "importe";
+    public static final String COLUMN_NAME_FECHAESTIMADA = "fecha_estimada";
+    public static final String COLUMN_NAME_FECHAMOVIMIENTO = "fecha_movimiento";
+    public static final String COLUMN_NAME_CONCEPTO = "concepto";
     public static final String COLUMN_NAME_TIPOMOVIMIENTO = "tipo_movimiento_id";
     public static final String COLUMN_NAME_CATEGORIA = "categoria_id";
     public static final String COLUMN_NAME_RESUMEN = "resumen_id";

@@ -1,14 +1,21 @@
 package com.esqueleto.esqueletoui.ui.fragment.list;
 
 import android.app.Fragment;
+import android.app.ListFragment;
+import android.app.LoaderManager;
+import android.content.Context;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
+import com.esqueleto.esqueletosdk.command.impl.GetCursorMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.model.Movimiento;
@@ -24,9 +31,9 @@ import butterknife.InjectView;
 /**
  * Created by RUL on 29/06/2014.
  */
-public class ListaMovimientosFragment extends Fragment{
+public class ListaMovimientosFragment extends ListFragment{
 
-    private ArrayAdapter<Movimiento> adapter;
+    private MovimientoAdapter adapter;
     private MovimientoReceiver receiver;
     GestorMovimiento gestorMovimiento;
     GetMovimientos getMovimientos;
@@ -41,21 +48,22 @@ public class ListaMovimientosFragment extends Fragment{
         inicializarCommands();
         inicializarComponentes(rootView);
         setHasOptionsMenu(true);
+
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        receiver = new MovimientoReceiver(adapter);
-        getActivity().registerReceiver(receiver, new IntentFilter("listamovimientos"));
+//        receiver = new MovimientoReceiver(adapter);
+//        getActivity().registerReceiver(receiver, new IntentFilter("listamovimientos"));
     }
 
 
     @Override
     public void onPause() {
         super.onPause();
-        getActivity().unregisterReceiver(receiver);
+//        getActivity().unregisterReceiver(receiver);
     }
 
 //    @OnItemClick(R.id.listaMovimientos)
@@ -69,7 +77,8 @@ public class ListaMovimientosFragment extends Fragment{
         getMovimientos = new GetMovimientos(gestorMovimiento, "ANYMES", "2014/06");
         List<Movimiento> movimientos = getMovimientos.execute(getActivity());
         adapter = new MovimientoAdapter(getActivity(), movimientos);
-        listaMovimientos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        setListAdapter(adapter);
     }
 
     private void inicializarCommands() {

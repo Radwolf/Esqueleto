@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletosdk.repository.impl;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
@@ -10,8 +11,11 @@ import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
+import com.j256.ormlite.android.AndroidDatabaseResults;
+import com.j256.ormlite.dao.CloseableIterator;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.ColumnArg;
+import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
@@ -123,4 +127,30 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
         }
         return movimientos;
     }
+
+    @Override
+    public Cursor getCursorMovimientosByAnyMes(String anyMes) {
+        Cursor cursor = null;
+        try {
+            //TODO: Habría que tener en cuenta la cuenta
+            QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
+            resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
+            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
+
+            CloseableIterator<Movimiento> iterator = movimientoDao.iterator(movimientoQb.join(resumenQb).prepare());
+            try {
+                // get the raw results which can be cast under Android
+                AndroidDatabaseResults results =
+                        (AndroidDatabaseResults)iterator.getRawResults();
+                cursor = results.getRawCursor();
+                return cursor;
+            } finally {
+                iterator.closeQuietly();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cursor;
+    }
+
 }

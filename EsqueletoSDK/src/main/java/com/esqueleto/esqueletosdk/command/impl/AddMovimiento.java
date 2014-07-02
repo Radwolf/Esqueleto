@@ -41,7 +41,7 @@ public class AddMovimiento implements AddCommand<Movimiento> {
 
     @Override
     public Movimiento execute(Context ctx) {
-        return this.movimientoInteractor.addMovimiento(ctx, this.cuenta, this.anyMes, this.tipoMovimiento, this.importe,
+        return this.movimientoInteractor.addMovimiento(this.cuenta, this.anyMes, this.tipoMovimiento, this.importe,
                 this.fechaEstimada, this.fechaMovimiento, this.categoria, this.concepto);
     }
 

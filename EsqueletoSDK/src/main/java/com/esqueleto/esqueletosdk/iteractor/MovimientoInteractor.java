@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletosdk.iteractor;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
@@ -13,16 +14,17 @@ import java.util.List;
  */
 public interface MovimientoInteractor {
 
-    Movimiento addMovimiento(Context ctx, Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
+    Movimiento addMovimiento(Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
                        Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto);
-    Movimiento getMovimiento(Context ctx, Integer id);
-    List<Movimiento> getMovimientosByAnyMes(Context ctx, String anyMes);
-    List<Movimiento> getMovimientosByTipo(Context ctx, String tipoMovimiento);
-    List<Movimiento> getMovimientosByCategoria(Context ctx, String categoria);
-    Movimiento updateMovimiento(Context ctx, Integer id, String tipoMovimiento, double importe,
+    Movimiento getMovimiento(Integer id);
+    List<Movimiento> getMovimientosByAnyMes(String anyMes);
+    List<Movimiento> getMovimientosByTipo(String tipoMovimiento);
+    List<Movimiento> getMovimientosByCategoria(String categoria);
+    Cursor getCursorMovimientosByAnyMes(String anyMes);
+    Movimiento updateMovimiento(Integer id, String tipoMovimiento, double importe,
                                 Date fechaEstimada, Date fechaMovimiento, String categoria,
                                 String concepto);
-    Movimiento confirmMovimiento(Context ctx, Integer id, double importe, Date fechaMovimiento);
-    void deleteMovimiento(Context ctx, Integer id);
+    Movimiento confirmMovimiento(Integer id, double importe, Date fechaMovimiento);
+    void deleteMovimiento(Integer id);
 
 }

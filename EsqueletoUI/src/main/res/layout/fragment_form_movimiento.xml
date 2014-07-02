@@ -9,15 +9,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:id="@+id/eTConcepto"
             android:hint="Concepto"
-            android:inputType="textCapSentences"
-            />
+            android:inputType="textCapSentences"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,12 +30,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:id="@+id/eTImporte"
             android:hint="Importe"
             android:inputType="numberDecimal"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:id="@+id/eTFechaMovimiento"
             android:hint="Fecha movimiento"
             android:inputType="date"/>

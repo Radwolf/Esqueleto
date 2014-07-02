@@ -2,6 +2,7 @@ package com.esqueleto.esqueletoui.ui.fragment.form;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +15,18 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
+import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
+import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
 import com.esqueleto.esqueletosdk.model.Cuenta;
+import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
+import com.esqueleto.esqueletoui.adapter.CategoriaSpinnerAdapter;
+import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
 import com.esqueleto.esqueletoui.receiver.MovimientoReceiver;
 
 import java.util.Date;
@@ -36,14 +45,21 @@ public class FormMovimientoFragment extends Fragment {
     GetCuentas getCuentas;
     Cuenta cuenta;
 
+    GestorTipoDato gestorTipoDato;
+    GetCategorias getCategorias;
+    GetTipoMovimientos getTipoMovimientos;
+
+    GestorMovimiento gestorMovimiento;
+    AddMovimiento addMovimiento;
+
     private int request_code = 1;
 
     @InjectView(R.id.eTConcepto)
     EditText concepto;
     @InjectView(R.id.sTipoMovimiento)
-    Spinner tipoMovimiento;
+    Spinner tipoMovimientos;
     @InjectView(R.id.sCategoria)
-    Spinner categoria;
+    Spinner categorias;
     @InjectView(R.id.eTImporte)
     EditText importe;
     @InjectView(R.id.eTFechaMovimiento)
@@ -56,27 +72,20 @@ public class FormMovimientoFragment extends Fragment {
         List<Cuenta> cuentas = getCuentas.execute(getActivity());
         cuenta = (cuentas.size()>0)?cuentas.get(0):null;
 
-        //TODO: Crear los adapter para rellenar los dos spinners
         final View rootView = inflater.inflate(R.layout.fragment_form_movimiento, container, false);
         ButterKnife.inject(this, rootView);
+        inicializarCommands(getActivity());
+        //TODO: Crear los adapter para rellenar los dos spinners
+        inicializarSpinners(getActivity());
         setHasOptionsMenu(true);
         return rootView;
     }
 
     private void insertarMovimiento(String claveCategoria, String claveTipoMovimiento, String concepto,
                  Cuenta cuenta, String anyMes, double importe, Date fechaEstimada, Date fechaMovimiento){
-        Intent intent = new Intent("listamovimientos");
-        intent.putExtra("operacion", MovimientoReceiver.MOVIMIENTO_INSERTADO);
-        intent.putExtra("concepto", concepto);
-        intent.putExtra("importe", importe);
-        intent.putExtra("fechaEstimada", fechaEstimada);
-        intent.putExtra("fechaMovimiento", fechaMovimiento);
-        intent.putExtra("claveCategoria", claveCategoria);
-        intent.putExtra("claveTipoMovimiento", claveTipoMovimiento);
-        intent.putExtra("cuenta", cuenta);
-        intent.putExtra("anyMes", anyMes);
-//        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
-//        getActivity().sendBroadcast(intent);
+        addMovimiento = new AddMovimiento(gestorMovimiento, cuenta, anyMes, claveTipoMovimiento, importe,
+                fechaEstimada, fechaMovimiento, claveCategoria, concepto);
+        Movimiento movimiento = addMovimiento.execute(getActivity());
 
     }
     @Override
@@ -113,4 +122,17 @@ public class FormMovimientoFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void inicializarCommands(Context ctx) {
+        gestorMovimiento = new GestorMovimiento(ctx);
+        gestorTipoDato = new GestorTipoDato(ctx);
+        getCategorias = new GetCategorias(gestorTipoDato);
+        getTipoMovimientos = new GetTipoMovimientos(gestorTipoDato);
+    }
+
+    private void inicializarSpinners(Context ctx) {
+        categorias.setAdapter(new CategoriaSpinnerAdapter(ctx, getCategorias.execute(ctx)));
+        tipoMovimientos.setAdapter(new TipoMovimientoSpinnerAdapter(ctx, getTipoMovimientos.execute(ctx)));
+    }
+
 }

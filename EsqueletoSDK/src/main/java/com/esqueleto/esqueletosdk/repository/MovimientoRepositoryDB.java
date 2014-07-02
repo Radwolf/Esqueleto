@@ -1,5 +1,7 @@
 package com.esqueleto.esqueletosdk.repository;
 
+import android.database.Cursor;
+
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Usuario;
@@ -25,4 +27,5 @@ public interface MovimientoRepositoryDB {
 
     List<Movimiento> getMovimientosByTipo(String claveDiccionario);
 
+    Cursor getCursorMovimientosByAnyMes(String anyMes);
 }

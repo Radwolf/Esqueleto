@@ -20,7 +20,7 @@ public class DeleteMovimiento implements DeleteCommand {
 
     @Override
     public void execute(Context ctx) {
-        this.movimientoInteractor.deleteMovimiento(ctx, this._id);
+        this.movimientoInteractor.deleteMovimiento(this._id);
     }
 
     @Override

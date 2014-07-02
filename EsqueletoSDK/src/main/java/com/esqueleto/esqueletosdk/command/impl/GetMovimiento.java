@@ -22,7 +22,7 @@ public class GetMovimiento implements GetCommand<Movimiento> {
 
     @Override
     public Movimiento execute(Context ctx) {
-        return this.movimientoInteractor.getMovimiento(ctx, id);
+        return this.movimientoInteractor.getMovimiento(id);
     }
 
 }

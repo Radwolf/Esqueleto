@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletosdk.iteractor.impl;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
 import com.esqueleto.esqueletosdk.model.Categoria;
@@ -38,7 +39,7 @@ public class GestorMovimiento implements MovimientoInteractor {
     }
 
     @Override
-    public Movimiento addMovimiento(Context ctx, Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
+    public Movimiento addMovimiento(Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
                               Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
         Movimiento movimiento = new Movimiento();
         Resumen resumen = resumenRepositoryDB.getResumen(cuenta, anyMes);
@@ -57,37 +58,42 @@ public class GestorMovimiento implements MovimientoInteractor {
     }
 
     @Override
-    public Movimiento getMovimiento(Context ctx, Integer id) {
+    public Movimiento getMovimiento(Integer id) {
         return null;
     }
 
     @Override
-    public List<Movimiento> getMovimientosByAnyMes(Context ctx, String anyMes) {
+    public List<Movimiento> getMovimientosByAnyMes(String anyMes) {
         return movimientoRepositoryDB.getMovimientosByAnyMes(anyMes);
     }
 
     @Override
-    public List<Movimiento> getMovimientosByTipo(Context ctx, String tipoMovimiento) {
+    public List<Movimiento> getMovimientosByTipo(String tipoMovimiento) {
         return null;
     }
 
     @Override
-    public List<Movimiento> getMovimientosByCategoria(Context ctx, String categoria) {
+    public List<Movimiento> getMovimientosByCategoria(String categoria) {
         return movimientoRepositoryDB.getMovimientosByCategoria(categoria);
     }
 
     @Override
-    public Movimiento updateMovimiento(Context ctx, Integer id, String tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
+    public Cursor getCursorMovimientosByAnyMes(String anyMes) {
+        return movimientoRepositoryDB.getCursorMovimientosByAnyMes(anyMes);
+    }
+
+    @Override
+    public Movimiento updateMovimiento(Integer id, String tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
         return null;
     }
 
     @Override
-    public Movimiento confirmMovimiento(Context ctx, Integer id, double importe, Date fechaMovimiento) {
+    public Movimiento confirmMovimiento(Integer id, double importe, Date fechaMovimiento) {
         return null;
     }
 
     @Override
-    public void deleteMovimiento(Context ctx, Integer id) {
+    public void deleteMovimiento(Integer id) {
 
     }
 }
