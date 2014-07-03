@@ -27,7 +27,6 @@ import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.CategoriaSpinnerAdapter;
 import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
-import com.esqueleto.esqueletoui.receiver.MovimientoReceiver;
 
 import java.util.Date;
 import java.util.List;
@@ -39,6 +38,8 @@ import butterknife.InjectView;
  * Created by Raúl on 29/06/2014.
  */
 public class FormMovimientoFragment extends Fragment {
+
+    public static final String TAG = "FormMovimientoFragment";
 
     //TODO: Temporal hay que recuperar la cuenta de algo como una sesion
     GestorCuenta gestorCuenta;
@@ -64,6 +65,22 @@ public class FormMovimientoFragment extends Fragment {
     EditText importe;
     @InjectView(R.id.eTFechaMovimiento)
     EditText fechaMovimiento;
+
+    private FragmentIterationListener mCallback = null;
+    public interface FragmentIterationListener{
+        public void onFragmentIteration(Bundle parameters);
+    }
+
+    public static FormMovimientoFragment newInstance(Bundle arguments){
+        FormMovimientoFragment f = new FormMovimientoFragment();
+        if(arguments != null){
+            f.setArguments(arguments);
+        }
+        return f;
+    }
+
+    public FormMovimientoFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

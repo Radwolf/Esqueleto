@@ -1,21 +1,12 @@
 package com.esqueleto.esqueletoui.ui.fragment.list;
 
-import android.app.Fragment;
 import android.app.ListFragment;
-import android.app.LoaderManager;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
-import com.esqueleto.esqueletosdk.command.impl.GetCursorMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.model.Movimiento;
@@ -33,6 +24,7 @@ import butterknife.InjectView;
  */
 public class ListaMovimientosFragment extends ListFragment{
 
+    public static final String TAG = "ListaMovimientosFragment";
     private MovimientoAdapter adapter;
     private MovimientoReceiver receiver;
     GestorMovimiento gestorMovimiento;
@@ -40,6 +32,22 @@ public class ListaMovimientosFragment extends ListFragment{
 
     @InjectView(R.id.listaMovimientos)
     ListView listaMovimientos;
+
+    private FragmentIterationListener mCallback = null;
+    public interface FragmentIterationListener{
+        public void onFragmentIteration(Bundle parameters);
+    }
+
+    public static ListaMovimientosFragment newInstance(Bundle arguments){
+        ListaMovimientosFragment f = new ListaMovimientosFragment();
+        if(arguments != null){
+            f.setArguments(arguments);
+        }
+        return f;
+    }
+
+    public ListaMovimientosFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

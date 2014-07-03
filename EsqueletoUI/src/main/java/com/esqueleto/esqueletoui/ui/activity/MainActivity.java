@@ -108,13 +108,19 @@ public class MainActivity extends Activity {
         // Handle action buttons
         switch(item.getItemId()) {
             case R.id.action_add_movimiento:
+//                Bundle arguments = new Bundle();
+//                FormMovimientoFragment fragment = FormMovimientoFragment.newInstance(arguments);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.replace(android.R.id.content, fragment, FormMovimientoFragment
+//                        .TAG);
+//                ft.commit();
                 // Crear un nuevo fragmento y transacción
                 FormMovimientoFragment newFragment = new FormMovimientoFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
                 // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, newFragment);
+                transaction.replace(R.id.content_frame, newFragment, FormMovimientoFragment.TAG);
                 transaction.addToBackStack(null);
 
                 //commit la trasacción
@@ -139,13 +145,18 @@ public class MainActivity extends Activity {
             case 0:
                 break;
             case 1:
+//                Bundle arguments = new Bundle();
+//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
+//                ft.commit();
                 // Crear un nuevo fragmento y transacción
                 ListaMovimientosFragment newFragment = new ListaMovimientosFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
                 // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, newFragment);
+                transaction.replace(R.id.content_frame, newFragment, ListaMovimientosFragment.TAG);
                 transaction.addToBackStack(null);
 
                 //commit la trasacción
