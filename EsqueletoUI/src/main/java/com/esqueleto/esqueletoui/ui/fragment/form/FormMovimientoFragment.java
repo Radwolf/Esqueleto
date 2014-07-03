@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
 import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
@@ -22,8 +23,10 @@ import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
+import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.CategoriaSpinnerAdapter;
 import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
@@ -122,11 +125,14 @@ public class FormMovimientoFragment extends Fragment {
         // handle item selection
         switch (item.getItemId()) {
             case R.id.guardar_movimiento:
-
+                TextView tvCategoria = (TextView) categorias.getSelectedView();
+                Categoria categoria = (Categoria) tvCategoria.getTag();
+                TextView tvTipoMovimiento = (TextView) tipoMovimientos.getSelectedView();
+                TipoMovimiento tipoMovimiento = (TipoMovimiento) tvTipoMovimiento.getTag();
                 //TODO: Recuperar bien los spinners y castear correctamente el resto de datos
                 insertarMovimiento(
-                        "CATEGORIA_COMBUSTIBLE",
-                        "TIPO_GASTO",
+                        categoria.getClave(),
+                        tipoMovimiento.getClave(),
                         concepto.getText().toString(),
                         cuenta,
                         "2014/06",
