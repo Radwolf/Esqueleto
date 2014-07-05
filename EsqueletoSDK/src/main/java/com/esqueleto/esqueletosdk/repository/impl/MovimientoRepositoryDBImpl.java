@@ -86,10 +86,11 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
             //TODO: Habría que tener en cuenta la cuenta
             QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
             resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
+            QueryBuilder<TipoMovimiento, Integer> tipoMovimientoQb = tipoMovimientoDao.queryBuilder();
             QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
 
             // join with the order query
-            movimientos = movimientoQb.join(resumenQb).query();
+            movimientos = movimientoQb.join(tipoMovimientoQb).join(resumenQb).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }

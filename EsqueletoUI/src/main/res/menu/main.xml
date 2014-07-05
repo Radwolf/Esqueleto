@@ -6,4 +6,5 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/action_add_movimiento"
         android:showAsAction="ifRoom|withText" />
+
 </menu>

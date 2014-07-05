@@ -2,6 +2,7 @@ package com.esqueleto.esqueletoui.ui.fragment.form;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +31,10 @@ import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.CategoriaSpinnerAdapter;
 import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
+import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -106,8 +110,29 @@ public class FormMovimientoFragment extends Fragment {
         addMovimiento = new AddMovimiento(gestorMovimiento, cuenta, anyMes, claveTipoMovimiento, importe,
                 fechaEstimada, fechaMovimiento, claveCategoria, concepto);
         Movimiento movimiento = addMovimiento.execute(getActivity());
+        limpiarFormulario();
+        // Crear un nuevo fragmento y transacción
+        ListaMovimientosFragment newFragment = new ListaMovimientosFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        // Reemplazar lo que esté en el fragment_container view con este fragmento,
+        // y añadir transacción al back stack
+        transaction.replace(R.id.content_frame, newFragment, ListaMovimientosFragment.TAG);
+        transaction.addToBackStack(null);
+
+        //commit la trasacción
+        transaction.commit();
 
     }
+
+    private void limpiarFormulario() {
+        categorias.setSelection(0);
+        tipoMovimientos.setSelection(0);
+        importe.setText("");
+        concepto.setText("");
+        fechaMovimiento.setText("");
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == Activity.RESULT_OK && requestCode == request_code){
@@ -137,8 +162,8 @@ public class FormMovimientoFragment extends Fragment {
                         cuenta,
                         "2014/06",
                         Double.valueOf(importe.getText().toString()).doubleValue(),
-                        new Date(fechaMovimiento.getText().toString()),
-                        new Date(fechaMovimiento.getText().toString())
+                        stringToDate(fechaMovimiento.getText().toString()),
+                        stringToDate(fechaMovimiento.getText().toString())
                 );
                 return true;
             default:
@@ -158,4 +183,14 @@ public class FormMovimientoFragment extends Fragment {
         tipoMovimientos.setAdapter(new TipoMovimientoSpinnerAdapter(ctx, getTipoMovimientos.execute(ctx)));
     }
 
+    private Date stringToDate(String sDate){
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = null;
+        try {
+            fecha = formatoDelTexto.parse(sDate);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        return fecha;
+    }
 }

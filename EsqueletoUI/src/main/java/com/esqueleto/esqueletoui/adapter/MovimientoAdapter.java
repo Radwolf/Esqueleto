@@ -2,16 +2,20 @@ package com.esqueleto.esqueletoui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +48,8 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         TextView tvOtrosDatos;
         @InjectView(R.id.tv_importe_movimiento)
         TextView tvImporteMovimiento;
+        @InjectView(R.id.itemMovimiento)
+        LinearLayout itemMovimiento;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
@@ -63,10 +69,17 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
 
     private void inicializarCampos(View view, Movimiento movimiento) {
         ViewHolder holder = new ViewHolder(view);
-        holder.tvDataMovimiento.setText(getFechaMovimientoCalculada(movimiento).toString());
+        holder.tvDataMovimiento.setText(dateToString(getFechaMovimientoCalculada(movimiento)));
         holder.tvConcepto.setText(movimiento.getConcepto());
         holder.tvOtrosDatos.setText(movimiento.getCategoria().getNombre());
         holder.tvImporteMovimiento.setText(BigDecimal.valueOf(movimiento.getImporte()).toString());
+        if("TIPO_GASTO".equals(movimiento.getTipoMovimiento().getClave())) {
+            holder.itemMovimiento.setBackgroundColor(Color.parseColor("#f36c60"));
+        }else if("TIPO_INGRESO".equals(movimiento.getTipoMovimiento().getClave())){
+            holder.itemMovimiento.setBackgroundColor(Color.parseColor("#d0f8ce"));
+        }else if("TIPO_AHORRO".equals(movimiento.getTipoMovimiento().getClave())){
+            holder.itemMovimiento.setBackgroundColor(Color.parseColor("#b3e5fc"));
+        }
     }
 
 
@@ -91,5 +104,12 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
             fechaMovimientoCalculada = movimiento.getFechaEstimada();
         }
         return fechaMovimientoCalculada;
+    }
+
+    private String dateToString(Date date){
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+        String sFecha;
+        sFecha = formatoDelTexto.format(date);
+        return sFecha;
     }
 }

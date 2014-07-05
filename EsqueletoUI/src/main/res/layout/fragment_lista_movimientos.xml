@@ -6,7 +6,6 @@
     android:id="@+id/listaMovimientos"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
     android:cacheColorHint="@android:color/transparent"
     android:divider="@android:color/transparent"
     android:dividerHeight="12dp"
@@ -14,6 +13,7 @@
     android:paddingBottom="7dp"
     android:paddingLeft="9dp"
     android:paddingRight="9dp"
-    android:paddingTop="10dp" >
+    android:paddingTop="10dp"
+    android:background="#fafafa">
 
 </ListView>
