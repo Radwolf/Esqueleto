@@ -3,6 +3,7 @@ package com.esqueleto.esqueletoui.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +49,8 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         TextView tvOtrosDatos;
         @InjectView(R.id.tv_importe_movimiento)
         TextView tvImporteMovimiento;
-        @InjectView(R.id.itemMovimiento)
-        LinearLayout itemMovimiento;
+        @InjectView(R.id.layout_movimiento_importe)
+        LinearLayout lMovimientoImporte;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
@@ -74,11 +75,11 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         holder.tvOtrosDatos.setText(movimiento.getCategoria().getNombre());
         holder.tvImporteMovimiento.setText(BigDecimal.valueOf(movimiento.getImporte()).toString());
         if("TIPO_GASTO".equals(movimiento.getTipoMovimiento().getClave())) {
-            holder.itemMovimiento.setBackgroundColor(Color.parseColor("#f36c60"));
+            holder.lMovimientoImporte.setBackgroundResource(R.drawable.bg_corner_gasto);
         }else if("TIPO_INGRESO".equals(movimiento.getTipoMovimiento().getClave())){
-            holder.itemMovimiento.setBackgroundColor(Color.parseColor("#d0f8ce"));
+            holder.lMovimientoImporte.setBackgroundResource(R.drawable.bg_corner_ingreso);
         }else if("TIPO_AHORRO".equals(movimiento.getTipoMovimiento().getClave())){
-            holder.itemMovimiento.setBackgroundColor(Color.parseColor("#b3e5fc"));
+            holder.lMovimientoImporte.setBackgroundResource(R.drawable.bg_corner_ahorro);
         }
     }
 
@@ -107,7 +108,7 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
     }
 
     private String dateToString(Date date){
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yy");
         String sFecha;
         sFecha = formatoDelTexto.format(date);
         return sFecha;
