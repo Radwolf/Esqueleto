@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
+import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
 import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
 import java.util.Locale;
@@ -143,6 +144,22 @@ public class MainActivity extends Activity {
     private void selectItem(int position) {
         switch(position){
             case 0:
+//                Bundle arguments = new Bundle();
+//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
+//                ft.commit();
+                // Crear un nuevo fragmento y transacción
+                ResumenFragment newFragment2 = new ResumenFragment();
+                FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+
+                // Reemplazar lo que esté en el fragment_container view con este fragmento,
+                // y añadir transacción al back stack
+                transaction2.replace(R.id.content_frame, newFragment2, ResumenFragment.TAG);
+                transaction2.addToBackStack(null);
+
+                //commit la trasacción
+                transaction2.commit();
                 break;
             case 1:
 //                Bundle arguments = new Bundle();
