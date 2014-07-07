@@ -2,8 +2,11 @@ package com.esqueleto.esqueletoui.ui.fragment.list;
 
 import android.app.ActionBar;
 import android.app.ListFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -12,13 +15,16 @@ import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
+import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
 import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.CategoriaSpinnerAdapter;
 import com.esqueleto.esqueletoui.adapter.MovimientoAdapter;
+import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
 import com.esqueleto.esqueletoui.receiver.MovimientoReceiver;
 
 import java.util.List;
@@ -29,10 +35,9 @@ import butterknife.InjectView;
 /**
  * Created by RUL on 29/06/2014.
  */
-public class ListaMovimientosFragment extends ListFragment{
+public class ListaMovimientosFragment extends ListFragment implements ActionBar.OnNavigationListener{
 
     public static final String TAG = "ListaMovimientosFragment";
-    ActionBar actionBar;
     private MovimientoAdapter adapter;
     private MovimientoReceiver receiver;
 
@@ -40,11 +45,15 @@ public class ListaMovimientosFragment extends ListFragment{
     GetMovimientos getMovimientos;
     GestorTipoDato gestorTipoDato;
     GetCategorias getCategorias;
+    GetTipoMovimientos getTipoMovimientos;
+
+    TipoMovimientoSpinnerAdapter dropDownActionBar;
 
     @InjectView(R.id.listaMovimientos)
     ListView listaMovimientos;
 
     private FragmentIterationListener mCallback = null;
+
     public interface FragmentIterationListener{
         public void onFragmentIteration(Bundle parameters);
     }
@@ -63,8 +72,6 @@ public class ListaMovimientosFragment extends ListFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_lista_movimientos, container, false);
-//        actionBar = getFragmentActivity().getSupportActionBar();
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
         ButterKnife.inject(this, rootView);
         inicializarCommands();
@@ -94,10 +101,19 @@ public class ListaMovimientosFragment extends ListFragment{
 //                adapter.getItem(position).getConcepto()), Toast.LENGTH_SHORT).show();
 //    }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        inicializarSpinnerActionBar(getActivity().getActionBar(), getActivity());
+    }
+
     private void inicializarComponentes(View rootView) {
         //TODO: calcular el any_mes por defecto
         getCategorias = new GetCategorias(gestorTipoDato);
+        getTipoMovimientos = new GetTipoMovimientos(gestorTipoDato);
         getMovimientos = new GetMovimientos(gestorMovimiento, "ANYMES", "2014/06");
+
         List<Movimiento> movimientos = getMovimientos.execute(getActivity());
         adapter = new MovimientoAdapter(getActivity(), movimientos);
         adapter.notifyDataSetChanged();
@@ -109,16 +125,23 @@ public class ListaMovimientosFragment extends ListFragment{
         gestorTipoDato = new GestorTipoDato(getActivity());
     }
 
-    private void inicializarActionBar(){
-        actionBar.setListNavigationCallbacks(new CategoriaSpinnerAdapter(getActivity(),
-                        getCategorias.execute(getActivity())),
-                        new ActionBar.OnNavigationListener() {
+    private void inicializarSpinnerActionBar(ActionBar actionBar, Context ctx) {
+        gestorTipoDato = new GestorTipoDato(ctx);
+        getTipoMovimientos = new GetTipoMovimientos(gestorTipoDato);
+        // Specify a SpinnerAdapter to populate the dropdown list.
+        dropDownActionBar = new TipoMovimientoSpinnerAdapter(ctx, getTipoMovimientos.execute(ctx));
+        actionBar.setListNavigationCallbacks(dropDownActionBar, this);
+    }
 
-            @Override
-            public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+    @Override
+    public boolean onNavigationItemSelected(int position, long id) {
+        // When the given dropdown item is selected, show its contents in the
+        // container view.
+        System.out.println(position);
 
-                return true;
-            }
-        });
+        //TODO: Esto no funciona con dos spinners distintos, habría que meter al final en tabs los meses
+        TipoMovimiento tvTipoMovimiento = (TipoMovimiento) dropDownActionBar.getItem(position);
+        System.out.println(tvTipoMovimiento.getClave());
+        return true;
     }
 }

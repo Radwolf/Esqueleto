@@ -1,5 +1,6 @@
 package com.esqueleto.esqueletoui.ui.fragment.form;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -142,6 +143,8 @@ public class FormMovimientoFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        getActivity().getActionBar().setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_STANDARD);
         inflater.inflate(R.menu.form_movimiento, menu);
     }
 

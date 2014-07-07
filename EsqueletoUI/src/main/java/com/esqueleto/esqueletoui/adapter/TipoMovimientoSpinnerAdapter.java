@@ -54,4 +54,5 @@ public class TipoMovimientoSpinnerAdapter extends BaseAdapter implements Spinner
 
         return text;
     }
+
 }

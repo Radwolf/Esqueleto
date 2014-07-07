@@ -1,5 +1,6 @@
 package com.esqueleto.esqueletoui.ui.fragment.form;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,7 +46,7 @@ import butterknife.InjectView;
 /**
  * Created by Raúl on 29/06/2014.
  */
-public class ResumenFragment extends Fragment {
+public class ResumenFragment extends Fragment implements ActionBar.OnNavigationListener{
 
     public static final String TAG = "ResumenFragment";
 
@@ -52,6 +54,7 @@ public class ResumenFragment extends Fragment {
 
 
     private FragmentIterationListener mCallback = null;
+
     public interface FragmentIterationListener{
         public void onFragmentIteration(Bundle parameters);
     }
@@ -69,10 +72,28 @@ public class ResumenFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        // Set up the dropdown list navigation in the action bar.
+        getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        getActivity().getActionBar().setListNavigationCallbacks(
+                // Specify a SpinnerAdapter to populate the dropdown list.
+                new ArrayAdapter<String>(
+                        getActivity().getActionBar().getThemedContext(),
+                        android.R.layout.simple_list_item_1,
+                        android.R.id.text1,
+                        new String[] {
+                                "2014/05",
+                                "2014/06",
+                                "2014/07",
+                        }),
+                this);
         final View rootView = inflater.inflate(R.layout.fragment_resumen, container, false);
 
         return rootView;
     }
 
+    @Override
+    public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+        System.out.println(itemPosition);
+        return false;
+    }
 }
