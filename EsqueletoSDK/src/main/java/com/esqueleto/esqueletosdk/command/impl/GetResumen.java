@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.GetCommand;
 import com.esqueleto.esqueletosdk.iteractor.ResumenInteractor;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Resumen;
 
 /**
@@ -12,18 +13,18 @@ import com.esqueleto.esqueletosdk.model.Resumen;
 public class GetResumen implements GetCommand<Resumen> {
 
     ResumenInteractor resumenInteractor;
-    Integer cuentaId;
+    Cuenta cuenta;
     String anyMes;
 
-    public GetResumen(ResumenInteractor resumenInteractor, Integer cuentaId, String anyMes) {
+    public GetResumen(ResumenInteractor resumenInteractor, Cuenta cuenta, String anyMes) {
         this.resumenInteractor = resumenInteractor;
-        this.cuentaId = cuentaId;
+        this.cuenta = cuenta;
         this.anyMes = anyMes;
     }
 
     @Override
     public Resumen execute(Context ctx) {
-        return this.resumenInteractor.getResumen(ctx, this.cuentaId, this.anyMes);
+        return this.resumenInteractor.getResumen(ctx, this.cuenta, this.anyMes);
     }
 
 }

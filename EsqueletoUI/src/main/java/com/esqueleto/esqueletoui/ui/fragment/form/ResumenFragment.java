@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.esqueleto.esqueletosdk.command.impl.GetCuenta;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
 
 import java.util.Calendar;
@@ -20,9 +23,13 @@ public class ResumenFragment extends Fragment implements ActionBar.TabListener{
 
     public static final String TAG = "ResumenFragment";
 
+    GestorCuenta gestorCuenta;
+    GetCuenta getCuenta;
+
     //TODO: Temporal hay que recuperar la cuenta de algo como una sesion
+    private Cuenta cuenta;
 
-
+    private ActionBar actionBar;
     private FragmentIterationListener mCallback = null;
 
     public interface FragmentIterationListener{
@@ -42,7 +49,17 @@ public class ResumenFragment extends Fragment implements ActionBar.TabListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ActionBar actionBar = getActivity().getActionBar();
+        gestorCuenta = new GestorCuenta(getActivity());
+        getCuenta = new GetCuenta(gestorCuenta, 1);
+        cuenta = getCuenta.execute(getActivity());
+        actionBar = getActivity().getActionBar();
+
+        inicializarTabNavigation();
+        final View rootView = inflater.inflate(R.layout.fragment_resumen, container, false);
+        return rootView;
+    }
+
+    private void inicializarTabNavigation() {
         // Set up the dropdown list navigation in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         Calendar calendar = Calendar.getInstance();
@@ -53,20 +70,19 @@ public class ResumenFragment extends Fragment implements ActionBar.TabListener{
             ActionBar.Tab tab = actionBar.newTab();
             tab.setText(nombreTab);
             tab.setTabListener(this);
+//            tab.setCustomView(R.layout.tab_resumen_mes);
             actionBar.addTab(tab);
             if("2014/06".equals(nombreTab.toString())) {
                 actionBar.selectTab(tab);
             }
         }
-        final View rootView = inflater.inflate(R.layout.fragment_resumen, container, false);
-
-        return rootView;
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 //        ft.replace(R.id.content_frame, this);
         Bundle arguments = new Bundle();
+        arguments.putParcelable("cuenta", cuenta);
         arguments.putCharSequence("anyMes", tab.getText());
         MesesFragment newFragment = MesesFragment.newInstance(arguments);
         ft.replace(R.id.content_frame, newFragment, ResumenFragment.TAG);

@@ -76,10 +76,12 @@ public class ResumenRepositoryDBImpl implements ResumenRepositoryDB {
     @Override
     public Resumen getResumen(Cuenta cuenta, String anyMes) {
         try {
+            QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
+            cuentaQb.where().eq(Cuenta.COLUMN_NAME_ID, cuenta.get_id());
             QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
-            resumenQb.where().eq(Resumen.COLUMN_NAME_CUENTA, cuenta);
             resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
-            List<Resumen> resumenes = resumenQb.query();
+
+            List<Resumen> resumenes = resumenQb.join(cuentaQb).query();
             if(resumenes.size()>0) {
                 return resumenes.get(0);
             }

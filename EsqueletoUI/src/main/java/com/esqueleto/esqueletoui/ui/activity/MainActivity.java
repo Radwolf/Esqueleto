@@ -172,6 +172,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
                 //commit la trasacción
                 transaction2.commit();
+                //TODO: Hay que recuperar el nombre de la cuenta para pasar a los resume
+                setTitle("Casa");
                 break;
             case 1:
 //                Bundle arguments = new Bundle();
@@ -187,7 +189,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 // y añadir transacción al back stack
                 transaction.replace(R.id.content_frame, newFragment, ListaMovimientosFragment.TAG);
                 transaction.addToBackStack(ResumenFragment.TAG);
-
+                //TODO: Movimientos debería salir del drawer pero el drawer deberia ser personalizado por cuenta
+                setTitle(mDrawerTitles[position]);
                 //commit la trasacción
                 transaction.commit();
                 break;
@@ -204,7 +207,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(mDrawerTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 

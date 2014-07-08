@@ -4,7 +4,22 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fafafa">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:gravity="right"
+        android:paddingTop="5dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:id="@+id/resumen_fecha_sincro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texto_normal"
+            android:text="12/06/2014"
+            android:textSize="17dp"
+            android:textStyle="bold|italic" />
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -36,6 +51,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2">
                 <TextView
+                    android:id="@+id/resumen_saldo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="354,23"
@@ -49,6 +65,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/resumen_saldo_estimado"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="12,55"
@@ -84,6 +101,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2">
                 <TextView
+                    android:id="@+id/resumen_ingreso"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="1.354,23"
@@ -97,6 +115,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/resumen_ingreso_estimado"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="12,55"
@@ -138,6 +157,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2">
                 <TextView
+                    android:id="@+id/resumen_ahorro"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="500,00"
@@ -151,6 +171,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/resumen_ahorro_estimado"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="750,00"
@@ -186,6 +207,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2">
                 <TextView
+                    android:id="@+id/resumen_gasto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="1.000,00"
@@ -199,6 +221,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/resumen_gasto_estimado"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="0,00"
