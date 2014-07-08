@@ -78,6 +78,16 @@ public class GestorMovimiento implements MovimientoInteractor {
     }
 
     @Override
+    public List<Movimiento> getMovimientosByTipoInMes(String tipoMovimiento, String anyMes) {
+        return movimientoRepositoryDB.getMovimientosByTipoInMes(tipoMovimiento, anyMes);
+    }
+
+    @Override
+    public List<Movimiento> getMovimientosByCategoriaInMes(String categoria, String anyMes) {
+        return movimientoRepositoryDB.getMovimientosByCategoriaInMes(categoria, anyMes);
+    }
+
+    @Override
     public Cursor getCursorMovimientosByAnyMes(String anyMes) {
         return movimientoRepositoryDB.getCursorMovimientosByAnyMes(anyMes);
     }

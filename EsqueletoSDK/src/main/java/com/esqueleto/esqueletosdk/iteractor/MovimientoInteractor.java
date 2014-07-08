@@ -1,6 +1,5 @@
 package com.esqueleto.esqueletosdk.iteractor;
 
-import android.content.Context;
 import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
@@ -20,6 +19,8 @@ public interface MovimientoInteractor {
     List<Movimiento> getMovimientosByAnyMes(String anyMes);
     List<Movimiento> getMovimientosByTipo(String tipoMovimiento);
     List<Movimiento> getMovimientosByCategoria(String categoria);
+    List<Movimiento> getMovimientosByTipoInMes(String tipoMovimiento, String anyMes);
+    List<Movimiento> getMovimientosByCategoriaInMes(String categoria, String anyMes);
     Cursor getCursorMovimientosByAnyMes(String anyMes);
     Movimiento updateMovimiento(Integer id, String tipoMovimiento, double importe,
                                 Date fechaEstimada, Date fechaMovimiento, String categoria,

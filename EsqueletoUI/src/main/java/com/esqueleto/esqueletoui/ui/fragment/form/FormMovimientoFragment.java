@@ -144,8 +144,10 @@ public class FormMovimientoFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        getActivity().getActionBar().setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_STANDARD);
+        getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        menu.findItem(R.id.action_add_movimiento).setVisible(false);
         inflater.inflate(R.menu.form_movimiento, menu);
+
     }
 
     @Override

@@ -15,29 +15,35 @@ import java.util.List;
 public class GetMovimientos implements GetCommand<List<Movimiento>> {
 
     //TODO: Sacarlo a un fichero de Constants para compartir con la ui
-    private final String SEARCH_BY_ANYMES = "ANYMES";
-    private final String SEARCH_BY_TIPOMOVIMIENTO = "TIPOMOVIMIENTO";
-    private final String SEARCH_BY_CATEGORIA = "CATEGORIA";
+    public static final String SEARCH_BY_ANYMES = "ANYMES";
+    public static final String SEARCH_BY_TIPOMOVIMIENTO = "TIPOMOVIMIENTO";
+    public static final String SEARCH_BY_CATEGORIA = "CATEGORIA";
+    public static final String SEARCH_BY_TIPO_ANYMES = "TIPO_ANYMES";
+    public static final String SEARCH_BY_CATEGORIA_ANYMES = "CATEGORIA_ANYMES";
 
     MovimientoInteractor movimientoInteractor;
     String typeSearch;
-    String filtro;
+    String[] filtros;
 
-    public GetMovimientos(MovimientoInteractor movimientoInteractor, String typeSearch, String filtro) {
+    public GetMovimientos(MovimientoInteractor movimientoInteractor, String typeSearch, String[] filtros) {
         this.movimientoInteractor = movimientoInteractor;
         this.typeSearch = typeSearch;
-        this.filtro = filtro;
+        this.filtros = filtros;
     }
 
     @Override
     public List<Movimiento> execute(Context ctx) {
         List<Movimiento> movimientos = new ArrayList<Movimiento>();
         if(SEARCH_BY_ANYMES.equals(typeSearch)){
-            movimientos = this.movimientoInteractor.getMovimientosByAnyMes(filtro);
+            movimientos = this.movimientoInteractor.getMovimientosByAnyMes(filtros[0]);
         }else if (SEARCH_BY_CATEGORIA.equals(typeSearch)){
-            movimientos = this.movimientoInteractor.getMovimientosByCategoria(filtro);
+            movimientos = this.movimientoInteractor.getMovimientosByCategoria(filtros[0]);
         }else if (SEARCH_BY_TIPOMOVIMIENTO.equals(typeSearch)){
-            movimientos = this.movimientoInteractor.getMovimientosByTipo(filtro);
+            movimientos = this.movimientoInteractor.getMovimientosByTipo(filtros[0]);
+        }else if (SEARCH_BY_TIPO_ANYMES.equals(typeSearch)){
+            movimientos = this.movimientoInteractor.getMovimientosByTipoInMes(filtros[0], filtros[1]);
+        }else if (SEARCH_BY_CATEGORIA_ANYMES.equals(typeSearch)){
+            movimientos = this.movimientoInteractor.getMovimientosByCategoriaInMes(filtros[0], filtros[1]);
         }
         return movimientos;
     }

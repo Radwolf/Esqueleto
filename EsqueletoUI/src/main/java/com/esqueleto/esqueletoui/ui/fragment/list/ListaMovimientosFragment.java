@@ -10,19 +10,15 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
-import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.adapter.CategoriaSpinnerAdapter;
 import com.esqueleto.esqueletoui.adapter.MovimientoAdapter;
 import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
 import com.esqueleto.esqueletoui.receiver.MovimientoReceiver;
@@ -46,6 +42,7 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     GestorTipoDato gestorTipoDato;
     GetCategorias getCategorias;
     GetTipoMovimientos getTipoMovimientos;
+
 
     TipoMovimientoSpinnerAdapter dropDownActionBar;
 
@@ -112,7 +109,8 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
         //TODO: calcular el any_mes por defecto
         getCategorias = new GetCategorias(gestorTipoDato);
         getTipoMovimientos = new GetTipoMovimientos(gestorTipoDato);
-        getMovimientos = new GetMovimientos(gestorMovimiento, "ANYMES", "2014/06");
+        String[] filtros = {"2014/06"};
+        getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_ANYMES, filtros);
 
         List<Movimiento> movimientos = getMovimientos.execute(getActivity());
         adapter = new MovimientoAdapter(getActivity(), movimientos);
@@ -137,11 +135,28 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     public boolean onNavigationItemSelected(int position, long id) {
         // When the given dropdown item is selected, show its contents in the
         // container view.
-        System.out.println(position);
+        if(position > 0) {
+            TipoMovimiento tvTipoMovimiento = (TipoMovimiento) dropDownActionBar.getItem(position);
+            String clave = tvTipoMovimiento.getClave();
+            if("TIPO_INGRESO".equals(clave)){
+                String[] filtros = {clave, "2014/06"};
+                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+            }else if("TIPO_GASTO".equals(clave)){
+                String[] filtros = {clave, "2014/06"};
+                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+            }else if("TIPO_AHORRO".equals(clave)){
+                String[] filtros = {clave, "2014/06"};
+                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+            }
+        }else{
+            String[] filtros = {"2014/06"};
+            getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_ANYMES, filtros);
+        }
 
-        //TODO: Esto no funciona con dos spinners distintos, habría que meter al final en tabs los meses
-        TipoMovimiento tvTipoMovimiento = (TipoMovimiento) dropDownActionBar.getItem(position);
-        System.out.println(tvTipoMovimiento.getClave());
+        List<Movimiento> movimientos = getMovimientos.execute(getActivity());
+        adapter = new MovimientoAdapter(getActivity(), movimientos);
+        setListAdapter(adapter);
+
         return true;
     }
 }

@@ -14,8 +14,6 @@ import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.j256.ormlite.android.AndroidDatabaseResults;
 import com.j256.ormlite.dao.CloseableIterator;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.ColumnArg;
-import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
@@ -123,6 +121,42 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
             QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
             // join with the order query
             movimientos = movimientoQb.join(tipoMovimientoQb).query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movimientos;
+    }
+
+    @Override
+    public List<Movimiento> getMovimientosByCategoriaInMes(String claveDiccionario, String anyMes) {
+        List<Movimiento> movimientos = null;
+        try {
+
+            QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
+            resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
+            QueryBuilder<Categoria, Integer> categoriaQb = categoriaDao.queryBuilder();
+            categoriaQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
+            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
+            // join with the order query
+            movimientos = movimientoQb.join(resumenQb).join(categoriaQb).query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movimientos;
+    }
+
+    @Override
+    public List<Movimiento> getMovimientosByTipoInMes(String claveDiccionario, String anyMes) {
+        List<Movimiento> movimientos = null;
+        try {
+
+            QueryBuilder<Resumen, Integer> resumenQb = resumenDao.queryBuilder();
+            resumenQb.where().eq(Resumen.COLUMN_NAME_ANYMES, anyMes);
+            QueryBuilder<TipoMovimiento, Integer> tipoMovimientoQb = tipoMovimientoDao.queryBuilder();
+            tipoMovimientoQb.where().eq(Diccionario.COLUMN_NAME_CLAVE, claveDiccionario);
+            QueryBuilder<Movimiento, Integer> movimientoQb = movimientoDao.queryBuilder();
+            // join with the order query
+            movimientos = movimientoQb.join(resumenQb).join(tipoMovimientoQb).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }

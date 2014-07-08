@@ -1,63 +1,59 @@
 package com.esqueleto.esqueletoui.ui.activity;
 
-import android.app.Activity;
-import android.app.Fragment;
+import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
-import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
-import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
 import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
 import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
 import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
-import java.util.Locale;
-
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
-    GestorTipoDato gestorTipoDato;
-    GetTipoMovimientos getTipoMovimientos;
-    TipoMovimientoSpinnerAdapter dropDownActionBar;
+    private ActionBar actionBar;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    private String[] mPlanetTitles;
+    private String[] mDrawerTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nd);
 
-        final ActionBar actionBar = getSupportActionBar();
+        inicializarNavigationActionBar();
+        inicializarDrawerMenu();
+
+        if (savedInstanceState == null) {
+            selectItem(0);
+        }
+    }
+
+    private void inicializarNavigationActionBar() {
+        actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+    }
 
+    private void inicializarDrawerMenu() {
         mTitle = mDrawerTitle = getTitle();
-        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
+        mDrawerTitles = getResources().getStringArray(R.array.drawer_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -65,12 +61,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
+                R.layout.drawer_list_item, mDrawerTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
@@ -92,10 +88,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        if (savedInstanceState == null) {
-            selectItem(0);
-        }
     }
 
     @Override
@@ -137,7 +129,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
                 // y añadir transacción al back stack
                 transaction.replace(R.id.content_frame, newFragment, FormMovimientoFragment.TAG);
-                transaction.addToBackStack(null);
+                transaction.addToBackStack(ListaMovimientosFragment.TAG);
 
                 //commit la trasacción
                 transaction.commit();
@@ -194,7 +186,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
                 // y añadir transacción al back stack
                 transaction.replace(R.id.content_frame, newFragment, ListaMovimientosFragment.TAG);
-                transaction.addToBackStack(null);
+                transaction.addToBackStack(ResumenFragment.TAG);
 
                 //commit la trasacción
                 transaction.commit();
@@ -212,7 +204,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
+        setTitle(mDrawerTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,12 @@ public class TipoMovimientoSpinnerAdapter extends BaseAdapter implements Spinner
     private final LayoutInflater inflater;
 
     public TipoMovimientoSpinnerAdapter(Context context, List<TipoMovimiento> tipoMovimientos){
-        this.tipoMovimientos = tipoMovimientos;
+        List<TipoMovimiento> tipos = new ArrayList<TipoMovimiento>();
+        TipoMovimiento tipoMovimiento = new TipoMovimiento();
+        tipoMovimiento.setNombre("Todos");
+        tipos.add(tipoMovimiento);
+        tipos.addAll(tipoMovimientos);
+        this.tipoMovimientos = tipos;
         inflater = LayoutInflater.from(context);
 
     }
