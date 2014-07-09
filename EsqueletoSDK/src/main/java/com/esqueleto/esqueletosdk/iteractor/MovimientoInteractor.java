@@ -4,6 +4,7 @@ import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface MovimientoInteractor {
 
-    Movimiento addMovimiento(Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
+    Movimiento addMovimiento(Resumen resumen, String tipoMovimiento, double importe,
                        Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto);
     Movimiento getMovimiento(Integer id);
     List<Movimiento> getMovimientosByAnyMes(String anyMes);

@@ -10,18 +10,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetResumen;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Resumen;
+import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
+import com.esqueleto.esqueletoui.ui.activity.MainActivity;
 import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by Raúl on 29/06/2014.
@@ -32,6 +37,7 @@ public class MesesFragment extends Fragment{
     private ActionBar actionBar;
 
     private Cuenta cuenta;
+    private String anyMes;
     GestorResumen gestorResumen;
     GetResumen getResumen;
 
@@ -71,11 +77,50 @@ public class MesesFragment extends Fragment{
     public MesesFragment() {
     }
 
+    @OnClick(R.id.totales_ahorro)
+    void onClickAhorro(LinearLayout total){
+        Bundle listArguments = new Bundle();
+        listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_TIPO_ANYMES);
+        //TODO: Sacarlo a fichero de constantes
+        String[] filtros = {"TIPO_AHORRO", anyMes};
+        listArguments.putStringArray("filtros", filtros);
+        ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
+        StringBuffer title = new StringBuffer(cuenta.getNombre());
+        title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+
+        loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
+    }
+
+    @OnClick(R.id.totales_gasto)
+    void onClickGasto(LinearLayout total){
+        Bundle listArguments = new Bundle();
+        listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_TIPO_ANYMES);
+        String[] filtros = {"TIPO_GASTO", anyMes};
+        listArguments.putStringArray("filtros", filtros);
+        ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
+        StringBuffer title = new StringBuffer(cuenta.getNombre());
+        title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+
+        loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
+    }
+
+    @OnClick(R.id.totales_ingreso)
+    void onClickIngreso(LinearLayout total){
+        Bundle listArguments = new Bundle();
+        listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_TIPO_ANYMES);
+        String[] filtros = {"TIPO_INGRESO", anyMes};
+        listArguments.putStringArray("filtros", filtros);
+        ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
+        StringBuffer title = new StringBuffer(cuenta.getNombre());
+        title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+
+        loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         actionBar = getActivity().getActionBar();
-        Cuenta cuenta = getArguments().getParcelable("cuenta");
-        CharSequence anyMes = getArguments().getCharSequence("anyMes");
+        cuenta = getArguments().getParcelable("cuenta");
+        anyMes = String.valueOf(getArguments().getCharSequence("anyMes"));
         Toast.makeText(getActivity(), anyMes, Toast.LENGTH_LONG).show();
         gestorResumen = new GestorResumen(getActivity());
         getResumen = new GetResumen(gestorResumen, cuenta, anyMes.toString());
@@ -88,7 +133,6 @@ public class MesesFragment extends Fragment{
         return rootView;
     }
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.resumen_mensual, menu);
@@ -96,58 +140,58 @@ public class MesesFragment extends Fragment{
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
+        ocultarMenuItems(menu, !MainActivity.shouldGoInvisible);
         super.onPrepareOptionsMenu(menu);
+    }
+
+    private void ocultarMenuItems(Menu menu, boolean visible){
+        for(int i = 0; i < menu.size(); i++){
+            menu.getItem(i).setVisible(visible);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        // Handle action buttons
+       // Handle action buttons
         switch(item.getItemId()) {
             case R.id.action_add_movimiento:
-//                Bundle arguments = new Bundle();
-//                FormMovimientoFragment fragment = FormMovimientoFragment.newInstance(arguments);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(android.R.id.content, fragment, FormMovimientoFragment
-//                        .TAG);
-//                ft.commit();
-                // Crear un nuevo fragmento y transacción
-                FormMovimientoFragment formFragmen = new FormMovimientoFragment();
+                //TODO: Añadirlo al fichero de string y recuperaro con el getresources
+                String titulo = "Añadir movimiento";
+                Bundle formArguments = new Bundle();
+                formArguments.putParcelable("cuenta", cuenta);
+                formArguments.putString("anyMes", anyMes);
+                FormMovimientoFragment formFragment = FormMovimientoFragment.newInstance(formArguments);
 
-                // Reemplazar lo que esté en el fragment_container view con este fragmento,
-                // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, formFragmen, FormMovimientoFragment.TAG);
-                transaction.addToBackStack(ListaMovimientosFragment.TAG);
-
-                //commit la trasacción
-                transaction.commit();
-                getActivity().setTitle("Añadir movimiento");
-                return true;
+                loadFragment(formFragment, FormMovimientoFragment.TAG, titulo);
+                break;
             case R.id.action_get_movimientos:
-                //                Bundle arguments = new Bundle();
-//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
-//                ft.commit();
-                // Crear un nuevo fragmento y transacción
-                ListaMovimientosFragment listFragment = new ListaMovimientosFragment();
-
-                // Reemplazar lo que esté en el fragment_container view con este fragmento,
-                // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, listFragment, ListaMovimientosFragment.TAG);
-                transaction.addToBackStack(ResumenFragment.TAG);
-                //TODO: Movimientos debería salir del drawer pero el drawer deberia ser personalizado por cuenta
+                //TODO: Movimientos habría que ponerlo en el drawer personalizado
+                Bundle listArguments = new Bundle();
+                listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_ANYMES);
+                String[] filtros = {anyMes};
+                listArguments.putStringArray("filtros", filtros);
+                listArguments.putParcelable("cuenta", cuenta);
+                ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
                 StringBuffer title = new StringBuffer(cuenta.getNombre());
                 title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
-                getActivity().setTitle(title.toString());
-                //commit la trasacción
-                transaction.commit();
+
+                loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
         return true;
+    }
+
+    private void loadFragment(Fragment fragment, String tag, String title) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.content_frame, fragment, tag);
+        transaction.addToBackStack(tag);
+
+        getActivity().setTitle(title);
+        transaction.commit();
     }
 
     private void inicializarComponentesResumen(Resumen resumen) {

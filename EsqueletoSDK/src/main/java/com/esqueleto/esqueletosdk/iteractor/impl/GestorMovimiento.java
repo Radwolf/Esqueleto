@@ -39,10 +39,9 @@ public class GestorMovimiento implements MovimientoInteractor {
     }
 
     @Override
-    public Movimiento addMovimiento(Cuenta cuenta, String anyMes, String tipoMovimiento, double importe,
+    public Movimiento addMovimiento(Resumen resumen, String tipoMovimiento, double importe,
                               Date fechaEstimada, Date fechaMovimiento, String categoria, String concepto) {
         Movimiento movimiento = new Movimiento();
-        Resumen resumen = resumenRepositoryDB.getResumen(cuenta, anyMes);
         Categoria dCategoria = categoriaRepositoryDB.getCategoriaByClave(categoria);
         TipoMovimiento dTipoMovimiento = tipoMovimientoRepositoryDB.getTipoMovimientoByClave(tipoMovimiento);
         movimiento.setCategoria(dCategoria);

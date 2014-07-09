@@ -36,6 +36,12 @@ public class GestorCuenta implements CuentaInteractor {
     }
 
     @Override
+    public Cuenta updateCuenta(Cuenta cuenta){
+        cuentaRepositoryDB.update(cuenta);
+        return cuenta;
+    }
+
+    @Override
     public Cuenta getCuenta(Context ctx, Integer id) {
         return cuentaRepositoryDB.getCuenta(id);
     }

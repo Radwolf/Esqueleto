@@ -39,6 +39,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private CharSequence mTitle;
     private String[] mDrawerTitles;
 
+    public static boolean shouldGoInvisible = false;
+
     GestorCuenta gestorCuenta;
     GetCuenta getCuenta;
     private Cuenta cuenta;
@@ -96,11 +98,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
+                shouldGoInvisible = false;
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
+                shouldGoInvisible = true;
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -149,53 +153,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        // Handle action buttons
-        switch(item.getItemId()) {
-            case R.id.action_add_movimiento:
-//                Bundle arguments = new Bundle();
-//                FormMovimientoFragment fragment = FormMovimientoFragment.newInstance(arguments);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(android.R.id.content, fragment, FormMovimientoFragment
-//                        .TAG);
-//                ft.commit();
-                // Crear un nuevo fragmento y transacción
-                FormMovimientoFragment formFragmen = new FormMovimientoFragment();
 
-                // Reemplazar lo que esté en el fragment_container view con este fragmento,
-                // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, formFragmen, FormMovimientoFragment.TAG);
-                transaction.addToBackStack(ListaMovimientosFragment.TAG);
+        return super.onOptionsItemSelected(item);
 
-                //commit la trasacción
-                transaction.commit();
-                setTitle("Añadir movimiento");
-                return true;
-            case R.id.action_get_movimientos:
-                //                Bundle arguments = new Bundle();
-//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
-//                ft.commit();
-                // Crear un nuevo fragmento y transacción
-                ListaMovimientosFragment listFragment = new ListaMovimientosFragment();
-
-                // Reemplazar lo que esté en el fragment_container view con este fragmento,
-                // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, listFragment, ListaMovimientosFragment.TAG);
-                transaction.addToBackStack(ResumenFragment.TAG);
-                //TODO: Movimientos debería salir del drawer pero el drawer deberia ser personalizado por cuenta
-                StringBuffer title = new StringBuffer(cuenta.getNombre());
-                title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
-                setTitle(title.toString());
-                //commit la trasacción
-                transaction.commit();
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-        return true;
     }
 
     @Override

@@ -48,6 +48,11 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
 
     @Override
     public int update(Cuenta cuenta) {
+        try {
+            return cuentaDao.update(cuenta);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 

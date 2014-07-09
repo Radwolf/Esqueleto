@@ -54,6 +54,12 @@ public class GestorResumen implements ResumenInteractor {
     }
 
     @Override
+    public Resumen updateResumen(Resumen resumen){
+        resumenRepositoryDB.update(resumen);
+        return resumen;
+    }
+
+    @Override
     public Resumen getResumen(Context ctx, Integer id) {
         return resumenRepositoryDB.getResumen(id);
     }

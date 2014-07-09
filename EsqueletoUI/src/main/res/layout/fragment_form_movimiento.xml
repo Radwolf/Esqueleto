@@ -6,42 +6,52 @@
     android:layout_height="match_parent"
     tools:context="com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:padding="10dp">
-
+        <TextView
+            android:id="@+id/titulo_form_movimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Casa (2014/06)"
+            android:textSize="20dp"
+            android:textStyle="bold" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/eTConcepto"
             android:hint="Concepto"
-            android:inputType="textCapSentences"/>
+            android:inputType="textCapSentences"
+            android:layout_below="@id/titulo_form_movimiento"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sTipoMovimiento"/>
+            android:id="@+id/sTipoMovimiento"
+            android:layout_below="@id/eTConcepto"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sCategoria"/>
+            android:id="@+id/sCategoria"
+            android:layout_below="@+id/sTipoMovimiento" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/eTImporte"
             android:hint="Importe"
-            android:inputType="numberDecimal"/>
+            android:inputType="numberDecimal"
+            android:layout_below="@id/sCategoria"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/eTFechaMovimiento"
             android:hint="Fecha movimiento"
-            android:inputType="date"/>
-    </LinearLayout>
+            android:inputType="date"
+            android:layout_below="@id/eTImporte"/>
+    </RelativeLayout>
 
 </ScrollView>

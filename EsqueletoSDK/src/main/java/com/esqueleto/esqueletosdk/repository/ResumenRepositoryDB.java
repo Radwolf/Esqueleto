@@ -12,9 +12,9 @@ public interface ResumenRepositoryDB {
 
     int create(Resumen resumen);
 
-    int update(Resumen movimiento);
+    int update(Resumen resumen);
 
-    int delete(Resumen movimiento);
+    int delete(Resumen resumen);
 
     Resumen getResumen(Integer id);
 

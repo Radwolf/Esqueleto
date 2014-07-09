@@ -16,7 +16,7 @@ public interface ResumenInteractor {
                     Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
                     double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
                     double saldoAnterior, double saldoEstimado);
-
+    Resumen updateResumen(Resumen resumen);
     Resumen getResumen(Context ctx, Integer id);
 
     Resumen getResumen(Context ctx, Cuenta cuenta, String anyMes);

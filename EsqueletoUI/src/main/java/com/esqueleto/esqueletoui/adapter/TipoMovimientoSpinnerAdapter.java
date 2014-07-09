@@ -21,11 +21,13 @@ public class TipoMovimientoSpinnerAdapter extends BaseAdapter implements Spinner
     private List<TipoMovimiento> tipoMovimientos;
     private final LayoutInflater inflater;
 
-    public TipoMovimientoSpinnerAdapter(Context context, List<TipoMovimiento> tipoMovimientos){
+    public TipoMovimientoSpinnerAdapter(Context context, List<TipoMovimiento> tipoMovimientos, boolean opcionTodos){
         List<TipoMovimiento> tipos = new ArrayList<TipoMovimiento>();
-        TipoMovimiento tipoMovimiento = new TipoMovimiento();
-        tipoMovimiento.setNombre("Todos");
-        tipos.add(tipoMovimiento);
+        if(opcionTodos) {
+            TipoMovimiento tipoMovimiento = new TipoMovimiento();
+            tipoMovimiento.setNombre("Todos");
+            tipos.add(tipoMovimiento);
+        }
         tipos.addAll(tipoMovimientos);
         this.tipoMovimientos = tipos;
         inflater = LayoutInflater.from(context);

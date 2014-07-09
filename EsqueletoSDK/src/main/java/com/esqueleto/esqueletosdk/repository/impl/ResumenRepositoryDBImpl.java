@@ -54,6 +54,11 @@ public class ResumenRepositoryDBImpl implements ResumenRepositoryDB {
 
     @Override
     public int update(Resumen resumen) {
+        try {
+            return resumenDao.update(resumen);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 

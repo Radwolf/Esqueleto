@@ -2,7 +2,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cuentas="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/guardar_movimiento"
+    <item android:id="@+id/action_save_movimiento"
         android:title="@string/action_guardar"
         android:icon="@android:drawable/ic_menu_save"
         android:orderInCategory="100"

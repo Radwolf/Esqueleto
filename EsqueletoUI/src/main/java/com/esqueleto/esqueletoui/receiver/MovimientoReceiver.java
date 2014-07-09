@@ -9,6 +9,7 @@ import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,7 +56,8 @@ public class MovimientoReceiver extends BroadcastReceiver {
         String claveTipoMovimiento = intent.getStringExtra("claveTipoMovimiento");
         Cuenta cuenta = intent.getParcelableExtra("cuenta");
         String anyMes = intent.getStringExtra("anyMes");
-        addMovimiento = new AddMovimiento(gestorMovimiento, cuenta, anyMes, claveTipoMovimiento, importe,
+        Resumen resumen = intent.getParcelableExtra("resumen");
+        addMovimiento = new AddMovimiento(gestorMovimiento, resumen, claveTipoMovimiento, importe,
                 fechaEstimada, fechaMovimiento, claveCategoria, concepto);
         Movimiento movimiento = addMovimiento.execute(ctx);
         adapter.setNotifyOnChange(true);

@@ -6,6 +6,7 @@ import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.Date;
 
@@ -16,8 +17,7 @@ public class AddMovimiento implements AddCommand<Movimiento> {
 
     MovimientoInteractor movimientoInteractor;
     Integer _id;
-    Cuenta cuenta;
-    String anyMes;
+    Resumen resumen;
     String tipoMovimiento;
     double importe;
     Date fechaEstimada;
@@ -25,12 +25,11 @@ public class AddMovimiento implements AddCommand<Movimiento> {
     String categoria;
     String concepto;
 
-    public AddMovimiento(MovimientoInteractor movimientoInteractor, Cuenta cuenta, String anyMes,
+    public AddMovimiento(MovimientoInteractor movimientoInteractor, Resumen resumen,
                          String tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento,
                          String categoria, String concepto) {
         this.movimientoInteractor = movimientoInteractor;
-        this.cuenta = cuenta;
-        this.anyMes = anyMes;
+        this.resumen = resumen;
         this.tipoMovimiento = tipoMovimiento;
         this.importe = importe;
         this.fechaEstimada = fechaEstimada;
@@ -41,7 +40,7 @@ public class AddMovimiento implements AddCommand<Movimiento> {
 
     @Override
     public Movimiento execute(Context ctx) {
-        return this.movimientoInteractor.addMovimiento(this.cuenta, this.anyMes, this.tipoMovimiento, this.importe,
+        return this.movimientoInteractor.addMovimiento(this.resumen, this.tipoMovimiento, this.importe,
                 this.fechaEstimada, this.fechaMovimiento, this.categoria, this.concepto);
     }
 

@@ -5,9 +5,9 @@ import android.content.Context;
 /**
  * Created by rgonzalez on 24/04/2014.
  */
-public interface UpdateCommand {
+public interface UpdateCommand<T> {
 
-    void execute(Context ctx);
+    T execute(Context ctx);
     void undo();
 }
 

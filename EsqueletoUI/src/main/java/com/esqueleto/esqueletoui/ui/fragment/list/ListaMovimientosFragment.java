@@ -1,12 +1,15 @@
 package com.esqueleto.esqueletoui.ui.fragment.list;
 
 import android.app.ActionBar;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -16,13 +19,17 @@ import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.MovimientoAdapter;
 import com.esqueleto.esqueletoui.adapter.TipoMovimientoSpinnerAdapter;
 import com.esqueleto.esqueletoui.receiver.MovimientoReceiver;
+import com.esqueleto.esqueletoui.ui.activity.MainActivity;
+import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
 
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -36,6 +43,12 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     public static final String TAG = "ListaMovimientosFragment";
     private MovimientoAdapter adapter;
     private MovimientoReceiver receiver;
+    private String claveTipoMovimiento;
+    private HashMap<String, Integer> tiposMovimientos = new HashMap<String, Integer>();
+    private String tipoSearch;
+    private String[] filtros;
+    private Cuenta cuenta;
+    private String anyMes;
 
     GestorMovimiento gestorMovimiento;
     GetMovimientos getMovimientos;
@@ -68,14 +81,27 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        tipoSearch = getArguments().getString("tipoSearch");
+        filtros = getArguments().getStringArray("filtros");
+        anyMes = (filtros.length > 1)?filtros[1]:filtros[0];
+        cuenta = getArguments().getParcelable("cuenta");
+
         View rootView = inflater.inflate(R.layout.fragment_lista_movimientos, container, false);
 
         ButterKnife.inject(this, rootView);
+        //TODO: Sacar a contastante estatica
+        inicializarTipos();
         inicializarCommands();
-        inicializarComponentes(rootView);
         setHasOptionsMenu(true);
 
         return rootView;
+    }
+
+    private void inicializarTipos() {
+        tiposMovimientos.put("TODOS", Integer.valueOf(0));
+        tiposMovimientos.put("TIPO_INGRESO", Integer.valueOf(1));
+        tiposMovimientos.put("TIPO_GASTO", Integer.valueOf(2));
+        tiposMovimientos.put("TIPO_AHORRO", Integer.valueOf(3));
     }
 
     @Override
@@ -102,27 +128,20 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        inflater.inflate(R.menu.resumen_mensual, menu);
+        inflater.inflate(R.menu.list_movimientos, menu);
         inicializarSpinnerActionBar(getActivity().getActionBar(), getActivity());
     }
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.action_get_movimientos).setVisible(false);
+        ocultarMenuItems(menu, !MainActivity.shouldGoInvisible);
         super.onPrepareOptionsMenu(menu);
     }
 
-    private void inicializarComponentes(View rootView) {
-        //TODO: calcular el any_mes por defecto
-        getCategorias = new GetCategorias(gestorTipoDato);
-        getTipoMovimientos = new GetTipoMovimientos(gestorTipoDato);
-        String[] filtros = {"2014/06"};
-        getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_ANYMES, filtros);
-
-        List<Movimiento> movimientos = getMovimientos.execute(getActivity());
-        adapter = new MovimientoAdapter(getActivity(), movimientos);
-        adapter.notifyDataSetChanged();
-        setListAdapter(adapter);
+    private void ocultarMenuItems(Menu menu, boolean visible){
+        for(int i = 0; i < menu.size(); i++){
+            menu.getItem(i).setVisible(visible);
+        }
     }
 
     private void inicializarCommands() {
@@ -134,36 +153,76 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
         gestorTipoDato = new GestorTipoDato(ctx);
         getTipoMovimientos = new GetTipoMovimientos(gestorTipoDato);
         // Specify a SpinnerAdapter to populate the dropdown list.
-        dropDownActionBar = new TipoMovimientoSpinnerAdapter(ctx, getTipoMovimientos.execute(ctx));
+        dropDownActionBar = new TipoMovimientoSpinnerAdapter(ctx, getTipoMovimientos.execute(ctx), true);
         actionBar.setListNavigationCallbacks(dropDownActionBar, this);
+
+        //Si traemos ya un filtro por tipo establecido, lo seleccionamos en el combo para disparar la busqueda
+        if(filtros.length > 1) {
+            claveTipoMovimiento = filtros[0];
+        }else{
+            claveTipoMovimiento = "TODOS";
+        }
+        actionBar.setSelectedNavigationItem(tiposMovimientos.get(claveTipoMovimiento).intValue());
     }
 
     @Override
     public boolean onNavigationItemSelected(int position, long id) {
         // When the given dropdown item is selected, show its contents in the
         // container view.
-        if(position > 0) {
-            TipoMovimiento tvTipoMovimiento = (TipoMovimiento) dropDownActionBar.getItem(position);
-            String clave = tvTipoMovimiento.getClave();
-            if("TIPO_INGRESO".equals(clave)){
-                String[] filtros = {clave, "2014/06"};
-                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
-            }else if("TIPO_GASTO".equals(clave)){
-                String[] filtros = {clave, "2014/06"};
-                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
-            }else if("TIPO_AHORRO".equals(clave)){
-                String[] filtros = {clave, "2014/06"};
-                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+//        if (claveTipoMovimiento  == null){
+            if (position > 0) {
+                TipoMovimiento tvTipoMovimiento = (TipoMovimiento) dropDownActionBar.getItem(position);
+                claveTipoMovimiento = tvTipoMovimiento.getClave();
+                if ("TIPO_INGRESO".equals(claveTipoMovimiento)) {
+                    String[] filtros = {claveTipoMovimiento, "2014/06"};
+                    getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+                } else if ("TIPO_GASTO".equals(claveTipoMovimiento)) {
+                    String[] filtros = {claveTipoMovimiento, "2014/06"};
+                    getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+                } else if ("TIPO_AHORRO".equals(claveTipoMovimiento)) {
+                    String[] filtros = {claveTipoMovimiento, "2014/06"};
+                    getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
+                }
+            } else {
+                String[] filtros = {"2014/06"};
+                getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_ANYMES, filtros);
             }
-        }else{
-            String[] filtros = {"2014/06"};
-            getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_ANYMES, filtros);
+
+            List<Movimiento> movimientos = getMovimientos.execute(getActivity());
+            adapter = new MovimientoAdapter(getActivity(), movimientos);
+            setListAdapter(adapter);
+//        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action buttons
+        switch(item.getItemId()) {
+            case R.id.action_add_movimiento:
+                //TODO: Añadirlo al fichero de string y recuperaro con el getresources
+                String titulo = "Añadir movimiento";
+                Bundle formArguments = new Bundle();
+                formArguments.putParcelable("cuenta", cuenta);
+                formArguments.putString("anyMes", anyMes);
+                FormMovimientoFragment formFragment = FormMovimientoFragment.newInstance(formArguments);
+
+                loadFragment(formFragment, FormMovimientoFragment.TAG, titulo);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        List<Movimiento> movimientos = getMovimientos.execute(getActivity());
-        adapter = new MovimientoAdapter(getActivity(), movimientos);
-        setListAdapter(adapter);
-
         return true;
+    }
+
+    private void loadFragment(Fragment fragment, String tag, String title) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.content_frame, fragment, tag);
+        transaction.addToBackStack(tag);
+
+        getActivity().setTitle(title);
+        transaction.commit();
     }
 }
