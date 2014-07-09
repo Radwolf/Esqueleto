@@ -2,7 +2,6 @@
 <resources>
     <string-array name="drawer_array">
         <item>Cuentas</item>
-        <item>Movimientos</item>
         <item>Importar</item>
         <item>Exportar</item>
     </string-array>

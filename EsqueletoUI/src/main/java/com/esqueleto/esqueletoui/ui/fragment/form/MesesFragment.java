@@ -1,8 +1,13 @@
 package com.esqueleto.esqueletoui.ui.fragment.form;
 
+import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,6 +18,7 @@ import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletoui.R;
+import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -23,8 +29,9 @@ import butterknife.InjectView;
 public class MesesFragment extends Fragment{
 
     public static final String TAG = "MesesFragment";
+    private ActionBar actionBar;
 
-    //TODO: Temporal hay que recuperar la cuenta de algo como una sesion
+    private Cuenta cuenta;
     GestorResumen gestorResumen;
     GetResumen getResumen;
 
@@ -66,6 +73,7 @@ public class MesesFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        actionBar = getActivity().getActionBar();
         Cuenta cuenta = getArguments().getParcelable("cuenta");
         CharSequence anyMes = getArguments().getCharSequence("anyMes");
         Toast.makeText(getActivity(), anyMes, Toast.LENGTH_LONG).show();
@@ -76,7 +84,70 @@ public class MesesFragment extends Fragment{
         ButterKnife.inject(this, rootView);
         inicializarComponentesResumen(resumen);
 //        fechaSincro.setText(String.valueOf(cuenta.getDateSinc()));
+        setHasOptionsMenu(true);
         return rootView;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.resumen_mensual, menu);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        // Handle action buttons
+        switch(item.getItemId()) {
+            case R.id.action_add_movimiento:
+//                Bundle arguments = new Bundle();
+//                FormMovimientoFragment fragment = FormMovimientoFragment.newInstance(arguments);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.replace(android.R.id.content, fragment, FormMovimientoFragment
+//                        .TAG);
+//                ft.commit();
+                // Crear un nuevo fragmento y transacción
+                FormMovimientoFragment formFragmen = new FormMovimientoFragment();
+
+                // Reemplazar lo que esté en el fragment_container view con este fragmento,
+                // y añadir transacción al back stack
+                transaction.replace(R.id.content_frame, formFragmen, FormMovimientoFragment.TAG);
+                transaction.addToBackStack(ListaMovimientosFragment.TAG);
+
+                //commit la trasacción
+                transaction.commit();
+                getActivity().setTitle("Añadir movimiento");
+                return true;
+            case R.id.action_get_movimientos:
+                //                Bundle arguments = new Bundle();
+//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
+//                ft.commit();
+                // Crear un nuevo fragmento y transacción
+                ListaMovimientosFragment listFragment = new ListaMovimientosFragment();
+
+                // Reemplazar lo que esté en el fragment_container view con este fragmento,
+                // y añadir transacción al back stack
+                transaction.replace(R.id.content_frame, listFragment, ListaMovimientosFragment.TAG);
+                transaction.addToBackStack(ResumenFragment.TAG);
+                //TODO: Movimientos debería salir del drawer pero el drawer deberia ser personalizado por cuenta
+                StringBuffer title = new StringBuffer(cuenta.getNombre());
+                title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+                getActivity().setTitle(title.toString());
+                //commit la trasacción
+                transaction.commit();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
     }
 
     private void inicializarComponentesResumen(Resumen resumen) {

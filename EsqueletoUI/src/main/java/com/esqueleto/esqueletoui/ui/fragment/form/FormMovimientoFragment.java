@@ -21,11 +21,9 @@ import android.widget.TextView;
 import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
 import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
-import com.esqueleto.esqueletosdk.command.impl.GetResumen;
 import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorMovimiento;
-import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorTipoDato;
 import com.esqueleto.esqueletosdk.model.Categoria;
 import com.esqueleto.esqueletosdk.model.Cuenta;
@@ -147,9 +145,12 @@ public class FormMovimientoFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        menu.findItem(R.id.action_add_movimiento).setVisible(false);
         inflater.inflate(R.menu.form_movimiento, menu);
+    }
 
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
     }
 
     @Override

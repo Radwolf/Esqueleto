@@ -16,10 +16,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.esqueleto.esqueletosdk.command.impl.GetCuenta;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
+import com.esqueleto.esqueletoui.listener.TabResumenListener;
 import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
+import com.esqueleto.esqueletoui.ui.fragment.form.MesesFragment;
 import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
 import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
+
+import java.util.Calendar;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -32,13 +39,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private CharSequence mTitle;
     private String[] mDrawerTitles;
 
+    GestorCuenta gestorCuenta;
+    GetCuenta getCuenta;
+    private Cuenta cuenta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nd);
 
+        //TODO: Crear tratamiento para recuperar la cuenta activa añadir flag en bd y recuperar por usuario
+        gestorCuenta = new GestorCuenta(this);
+        getCuenta = new GetCuenta(gestorCuenta, 1);
+        cuenta = getCuenta.execute(this);
+
         inicializarNavigationActionBar();
         inicializarDrawerMenu();
+        inicializarTabNavigation();
 
         if (savedInstanceState == null) {
             selectItem(0);
@@ -90,6 +107,24 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+    private void inicializarTabNavigation() {
+        // Set up the dropdown list navigation in the action bar.
+        Calendar calendar = Calendar.getInstance();
+        int any = calendar.get(Calendar.YEAR);
+        for(int i = 1; i <= 12; i++) {
+            StringBuffer nombreTab = new StringBuffer();
+            nombreTab.append(any).append("/").append((i<10)?"0":"").append(i);
+            ActionBar.Tab tab = actionBar.newTab();
+            tab.setText(nombreTab);
+            tab.setTabListener(new TabResumenListener(this, new MesesFragment(), cuenta));
+//            tab.setCustomView(R.layout.tab_resumen_mes);
+            actionBar.addTab(tab);
+            if("2014/06".equals(nombreTab.toString())) {
+                actionBar.selectTab(tab);
+            }
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -102,7 +137,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_add_movimiento).setVisible(!drawerOpen);
+        //TODO:Recuperar todas las opciones de menú para ocultarlas si se abre el drawer, o recuperarlo desde el fragment
+//        menu.findItem(R.id.action_add_movimiento).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -113,6 +149,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
         // Handle action buttons
         switch(item.getItemId()) {
             case R.id.action_add_movimiento:
@@ -123,21 +160,42 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 //                        .TAG);
 //                ft.commit();
                 // Crear un nuevo fragmento y transacción
-                FormMovimientoFragment newFragment = new FormMovimientoFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                FormMovimientoFragment formFragmen = new FormMovimientoFragment();
 
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
                 // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, newFragment, FormMovimientoFragment.TAG);
+                transaction.replace(R.id.content_frame, formFragmen, FormMovimientoFragment.TAG);
                 transaction.addToBackStack(ListaMovimientosFragment.TAG);
 
                 //commit la trasacción
                 transaction.commit();
                 setTitle("Añadir movimiento");
                 return true;
+            case R.id.action_get_movimientos:
+                //                Bundle arguments = new Bundle();
+//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
+//                ft.commit();
+                // Crear un nuevo fragmento y transacción
+                ListaMovimientosFragment listFragment = new ListaMovimientosFragment();
+
+                // Reemplazar lo que esté en el fragment_container view con este fragmento,
+                // y añadir transacción al back stack
+                transaction.replace(R.id.content_frame, listFragment, ListaMovimientosFragment.TAG);
+                transaction.addToBackStack(ResumenFragment.TAG);
+                //TODO: Movimientos debería salir del drawer pero el drawer deberia ser personalizado por cuenta
+                StringBuffer title = new StringBuffer(cuenta.getNombre());
+                title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+                setTitle(title.toString());
+                //commit la trasacción
+                transaction.commit();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+        return true;
     }
 
     @Override
@@ -156,13 +214,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private void selectItem(int position) {
         switch(position){
             case 0:
-//                Bundle arguments = new Bundle();
-//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
-//                ft.commit();
+                Bundle arguments = new Bundle();
+                arguments.putParcelable("cuenta", cuenta);
                 // Crear un nuevo fragmento y transacción
-                ResumenFragment newFragment2 = new ResumenFragment();
+                ResumenFragment newFragment2 = ResumenFragment.newInstance(arguments);
                 FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
 
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
@@ -176,27 +231,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 setTitle("Casa");
                 break;
             case 1:
-//                Bundle arguments = new Bundle();
-//                ListaMovimientosFragment fragment = ListaMovimientosFragment.newInstance(arguments);
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(android.R.id.content, fragment, ListaMovimientosFragment.TAG);
-//                ft.commit();
-                // Crear un nuevo fragmento y transacción
-                ListaMovimientosFragment newFragment = new ListaMovimientosFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                // Reemplazar lo que esté en el fragment_container view con este fragmento,
-                // y añadir transacción al back stack
-                transaction.replace(R.id.content_frame, newFragment, ListaMovimientosFragment.TAG);
-                transaction.addToBackStack(ResumenFragment.TAG);
-                //TODO: Movimientos debería salir del drawer pero el drawer deberia ser personalizado por cuenta
-                setTitle(mDrawerTitles[position]);
-                //commit la trasacción
-                transaction.commit();
                 break;
             case 2:
-                break;
-            case 3:
                 break;
         }
 //        // update the main content by replacing fragments

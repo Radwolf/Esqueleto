@@ -102,7 +102,14 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        inflater.inflate(R.menu.resumen_mensual, menu);
         inicializarSpinnerActionBar(getActivity().getActionBar(), getActivity());
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_get_movimientos).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 
     private void inicializarComponentes(View rootView) {
