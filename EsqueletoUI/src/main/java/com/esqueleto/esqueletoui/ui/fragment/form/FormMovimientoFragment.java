@@ -7,7 +7,6 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,13 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
 import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
-import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
+import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetResumen;
 import com.esqueleto.esqueletosdk.command.impl.GetTipoMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.UpdateCuenta;
@@ -45,7 +43,6 @@ import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -57,6 +54,7 @@ public class FormMovimientoFragment extends Fragment {
 
     public static final String TAG = "FormMovimientoFragment";
     private Context ctx;
+    private ActionBar actionBar;
     private Cuenta cuenta;
     private String anyMes;
 
@@ -107,6 +105,7 @@ public class FormMovimientoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ctx = getActivity();
+        actionBar = getActivity().getActionBar();
         cuenta = getArguments().getParcelable("cuenta");
         anyMes = getArguments().getString("anyMes");
 
@@ -117,6 +116,13 @@ public class FormMovimientoFragment extends Fragment {
         //TODO: Crear los adapter para rellenar los dos spinners
         inicializarSpinners(getActivity());
         setHasOptionsMenu(true);
+
+//        getFragmentManager().addOnBackStackChangedListener(
+//                new FragmentManager.OnBackStackChangedListener() {
+//                    public void onBackStackChanged() {
+//                        cargarListado();
+//                    }
+//                });
         return rootView;
     }
 
@@ -137,22 +143,35 @@ public class FormMovimientoFragment extends Fragment {
         updatearResumen(resumen, tipoMovimiento, importeValue, dFechaMovimiento);
 
         limpiarFormulario();
-        // Crear un nuevo fragmento y transacción
-        ListaMovimientosFragment newFragment = new ListaMovimientosFragment();
+        cargarListado();
+    }
+
+    private void cargarListado() {
+        Bundle listArguments = new Bundle();
+        listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_ANYMES);
+        String[] filtros = {anyMes};
+        listArguments.putStringArray("filtros", filtros);
+        listArguments.putParcelable("cuenta", cuenta);
+        ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
+        StringBuffer titulo = new StringBuffer(cuenta.getNombre());
+        titulo.append(" (").append(anyMes).append(")");
+
+        loadFragment(listFragment, ListaMovimientosFragment.TAG, titulo.toString());
+    }
+
+    private void loadFragment(Fragment fragment, String tag, String title) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
 
-        // Reemplazar lo que esté en el fragment_container view con este fragmento,
-        // y añadir transacción al back stack
-        transaction.replace(R.id.content_frame, newFragment, ListaMovimientosFragment.TAG);
-        transaction.addToBackStack(null);
+        transaction.replace(R.id.content_frame, fragment, tag);
 
-        //commit la trasacción
+        getActivity().setTitle(title);
         transaction.commit();
-
     }
 
     private void updatearResumen(Resumen resumen, TipoMovimiento tipoMovimiento, double importeValue, Date dFechaMovimiento) {
         String clave = tipoMovimiento.getClave();
+        //TODO: Tenemos que asegurarnos que resumen exista.
         if("TIPO_INGRESO".equals(clave)){
             if(dFechaMovimiento==null) {
                 resumen.setIngresoEstimado(resumen.getIngresoEstimado() + importeValue);
@@ -249,6 +268,7 @@ public class FormMovimientoFragment extends Fragment {
     }
 
     private void inicializarSpinners(Context ctx) {
+        //TODO: Categoria tendría que ir filtrado por tipo movimiento.
         categorias.setAdapter(new CategoriaSpinnerAdapter(ctx, getCategorias.execute(ctx)));
         tipoMovimientos.setAdapter(new TipoMovimientoSpinnerAdapter(ctx, getTipoMovimientos.execute(ctx), false));
     }

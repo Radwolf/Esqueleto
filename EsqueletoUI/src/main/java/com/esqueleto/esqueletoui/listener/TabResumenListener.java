@@ -32,6 +32,7 @@ public class TabResumenListener implements ActionBar.TabListener {
         arguments.putCharSequence("anyMes", tab.getText());
         MesesFragment newFragment = MesesFragment.newInstance(arguments);
         ft.replace(R.id.content_frame, newFragment, MesesFragment.TAG);
+//        mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
