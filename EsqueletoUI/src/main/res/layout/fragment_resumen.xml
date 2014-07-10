@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fafafa">
+    android:background="#ffe4e7e2">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -31,11 +31,11 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_corner_saldo">
+            android:background="@drawable/bg_corner_saldo_total">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1.2">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -82,11 +82,11 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_corner_ingreso">
+            android:background="@drawable/bg_corner_ingreso_total">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1.2">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -139,11 +139,11 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_corner_ahorro">
+            android:background="@drawable/bg_corner_ahorro_total">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1.2">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -190,11 +190,11 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_corner_gasto">
+            android:background="@drawable/bg_corner_gasto_total">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1.2">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -243,7 +243,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/bg_corner_fecha_in">
+        android:background="@drawable/bg_with_shadow">
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -9,10 +9,10 @@
     </solid>
 
     <!-- view border color and width -->
-    <stroke
-        android:width="2dp"
-        android:color="#d0d063" >
-    </stroke>
+    <!--<stroke-->
+        <!--android:width="2dp"-->
+        <!--android:color="#d0d063" >-->
+    <!--</stroke>-->
 
     <!-- If you want to add some padding -->
     <padding
