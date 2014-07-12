@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -25,12 +26,16 @@ import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
 import com.esqueleto.esqueletoui.ui.fragment.form.MesesFragment;
 import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
 import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
+import com.esqueleto.esqueletoui.ui.pager.TabsPagerAdapter;
 
 import java.util.Calendar;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
     private ActionBar actionBar;
+    private ViewPager viewPager;
+    private TabsPagerAdapter mAdapter;
+
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -59,9 +64,35 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         inicializarDrawerMenu();
         inicializarTabNavigation();
 
-        if (savedInstanceState == null) {
-            selectItem(0);
-        }
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        actionBar = getActionBar();
+        mAdapter = new TabsPagerAdapter(getFragmentManager());
+
+//        viewPager.setAdapter(mAdapter);
+//        actionBar.setHomeButtonEnabled(false);
+///**
+// * on swiping the viewpager make respective tab selected
+// * */
+//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                // on changing the page
+//                // make respected tab selected
+//                actionBar.setSelectedNavigationItem(position);
+//            }
+//
+//            @Override
+//            public void onPageScrolled(int arg0, float arg1, int arg2) {
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int arg0) {
+//            }
+//        });
+//        if (savedInstanceState == null) {
+//            selectItem(0);
+//        }
     }
 
     private void inicializarNavigationActionBar() {

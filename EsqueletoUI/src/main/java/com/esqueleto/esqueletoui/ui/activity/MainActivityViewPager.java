@@ -29,7 +29,7 @@ public class MainActivityViewPager extends FragmentActivity implements ActionBar
     }
 
     private void inicializarTabs() {
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
         pagerAdapter = new TabsPagerAdapter(getFragmentManager());
 

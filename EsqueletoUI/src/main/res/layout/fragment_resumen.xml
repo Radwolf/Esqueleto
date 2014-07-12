@@ -54,7 +54,7 @@
                     android:id="@+id/resumen_saldo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="354,23"
+                    android:text="0,00"
                     android:gravity="center_vertical|center_horizontal"
                     android:textSize="30dp"
                     android:textStyle="bold"

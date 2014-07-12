@@ -171,32 +171,37 @@ public class FormMovimientoFragment extends Fragment {
 
     private void updatearResumen(Resumen resumen, TipoMovimiento tipoMovimiento, double importeValue, Date dFechaMovimiento) {
         String clave = tipoMovimiento.getClave();
+        double saldo = 0;
+        double saldoEstimado = 0;
         //TODO: Tenemos que asegurarnos que resumen exista.
         if("TIPO_INGRESO".equals(clave)){
             if(dFechaMovimiento==null) {
                 resumen.setIngresoEstimado(resumen.getIngresoEstimado() + importeValue);
-                resumen.setSaldoEstimado(resumen.getSaldoEstimado() + importeValue);
+                saldoEstimado = resumen.getSaldoEstimado() + importeValue;
             }else{
                 resumen.setIngreso(resumen.getIngreso() + importeValue);
-                resumen.setSaldo(resumen.getSaldo() + importeValue);
+                saldo = resumen.getSaldo() + importeValue;
             }
         }else if("TIPO_GASTO".equals(clave)){
             if(dFechaMovimiento==null) {
                 resumen.setGastoEstimado(resumen.getGastoEstimado() + importeValue);
-                resumen.setSaldoEstimado(resumen.getSaldoEstimado() - importeValue);
+                saldoEstimado = resumen.getSaldoEstimado() - importeValue;
             }else{
                 resumen.setGasto(resumen.getGasto() + importeValue);
-                resumen.setSaldo(resumen.getSaldo() - importeValue);
+                saldo = resumen.getSaldo() - importeValue;
             }
         }else if("TIPO_AHORRO".equals(clave)){
             if(dFechaMovimiento==null) {
                 resumen.setAhorroEstimado(resumen.getAhorroEstimado() + importeValue);
-                resumen.setSaldoEstimado(resumen.getSaldoEstimado() - importeValue);
+                saldoEstimado = resumen.getSaldoEstimado() - importeValue;
             }else{
                 resumen.setAhorro(resumen.getAhorro() + importeValue);
-                resumen.setSaldo(resumen.getSaldo() - importeValue);
+                saldo = resumen.getSaldo() - importeValue;
             }
         }
+
+        resumen.setSaldo(saldo + resumen.getSaldoAnterior());
+        resumen.setSaldoEstimado(saldoEstimado +  resumen.getSaldoAnterior());
         //TODO: como calcular o para que registrar el saldo anterior?
         updateResumen = new UpdateResumen(gestorResumen, resumen);
         updateResumen.execute(ctx);
