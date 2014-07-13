@@ -33,8 +33,6 @@ import java.util.Calendar;
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
     private ActionBar actionBar;
-    private ViewPager viewPager;
-    private TabsPagerAdapter mAdapter;
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -46,53 +44,17 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     public static boolean shouldGoInvisible = false;
 
-    GestorCuenta gestorCuenta;
-    GetCuenta getCuenta;
-    private Cuenta cuenta;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nd);
 
-        //TODO: Crear tratamiento para recuperar la cuenta activa añadir flag en bd y recuperar por usuario
-        gestorCuenta = new GestorCuenta(this);
-        getCuenta = new GetCuenta(gestorCuenta, 1);
-        cuenta = getCuenta.execute(this);
 
         inicializarNavigationActionBar();
         inicializarDrawerMenu();
-        inicializarTabNavigation();
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
-        mAdapter = new TabsPagerAdapter(getFragmentManager());
 
-//        viewPager.setAdapter(mAdapter);
-//        actionBar.setHomeButtonEnabled(false);
-///**
-// * on swiping the viewpager make respective tab selected
-// * */
-//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                // on changing the page
-//                // make respected tab selected
-//                actionBar.setSelectedNavigationItem(position);
-//            }
-//
-//            @Override
-//            public void onPageScrolled(int arg0, float arg1, int arg2) {
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int arg0) {
-//            }
-//        });
-//        if (savedInstanceState == null) {
-//            selectItem(0);
-//        }
     }
 
     private void inicializarNavigationActionBar() {
@@ -142,23 +104,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
-    private void inicializarTabNavigation() {
-        // Set up the dropdown list navigation in the action bar.
-        Calendar calendar = Calendar.getInstance();
-        int any = calendar.get(Calendar.YEAR);
-        for(int i = 1; i <= 12; i++) {
-            StringBuffer nombreTab = new StringBuffer();
-            nombreTab.append(any).append("/").append((i<10)?"0":"").append(i);
-            ActionBar.Tab tab = actionBar.newTab();
-            tab.setText(nombreTab);
-            tab.setTabListener(new TabResumenListener(this, new MesesFragment(), cuenta));
-//            tab.setCustomView(R.layout.tab_resumen_mes);
-            actionBar.addTab(tab);
-            if("2014/06".equals(nombreTab.toString())) {
-                actionBar.selectTab(tab);
-            }
-        }
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -206,7 +152,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         switch(position){
             case 0:
                 Bundle arguments = new Bundle();
-                arguments.putParcelable("cuenta", cuenta);
+                //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
+                arguments.putInt("cuentaId", 1);
                 // Crear un nuevo fragmento y transacción
                 ResumenFragment newFragment2 = ResumenFragment.newInstance(arguments);
                 FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
@@ -218,8 +165,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
                 //commit la trasacción
                 transaction2.commit();
-                //TODO: Hay que recuperar el nombre de la cuenta para pasar a los resume
-                setTitle("Casa");
                 break;
             case 1:
                 break;

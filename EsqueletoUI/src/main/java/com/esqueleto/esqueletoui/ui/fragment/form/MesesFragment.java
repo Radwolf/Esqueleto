@@ -120,33 +120,16 @@ public class MesesFragment extends Fragment{
         actionBar = getActivity().getActionBar();
         cuenta = getArguments().getParcelable("cuenta");
         anyMes = String.valueOf(getArguments().getCharSequence("anyMes"));
-        Toast.makeText(getActivity(), anyMes, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity(), anyMes, Toast.LENGTH_LONG).show();
         gestorResumen = new GestorResumen(getActivity());
         getResumen = new GetResumen(gestorResumen, cuenta, anyMes.toString());
         Resumen resumen = getResumen.execute(getActivity());
-        final View rootView = inflater.inflate(R.layout.fragment_resumen, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_resumen_mensual, container, false);
         ButterKnife.inject(this, rootView);
         inicializarComponentesResumen(resumen);
 //        fechaSincro.setText(String.valueOf(cuenta.getDateSinc()));
         setHasOptionsMenu(true);
         return rootView;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.resumen_mensual, menu);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        ocultarMenuItems(menu, !MainActivity.shouldGoInvisible);
-        super.onPrepareOptionsMenu(menu);
-    }
-
-    private void ocultarMenuItems(Menu menu, boolean visible){
-        for(int i = 0; i < menu.size(); i++){
-            menu.getItem(i).setVisible(visible);
-        }
     }
 
     @Override
@@ -205,10 +188,12 @@ public class MesesFragment extends Fragment{
             ingresoEstimado.setText(String.valueOf(resumen.getIngresoEstimado()));
             saldo.setText(String.valueOf(resumen.getSaldo()));
             saldoEstimado.setText(String.valueOf(resumen.getSaldoEstimado()));
-        }else{
-            //TODO: en principio no se deberá dar este caso ya que no deberá existir tab sin resumen creado
-            Toast.makeText(getActivity(), "El resumen para este mes todavía no ha sido generado.", Toast.LENGTH_LONG).show();
+            fechaSincro.setText(cuenta.getDateSinc().toString());
         }
+//        else{
+//            //TODO: en principio no se deberá dar este caso ya que no deberá existir tab sin resumen creado
+//            Toast.makeText(getActivity(), "El resumen para este mes todavía no ha sido generado.", Toast.LENGTH_LONG).show();
+//        }
 
     }
 

@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
@@ -18,21 +19,23 @@ public class TabResumenListener implements ActionBar.TabListener {
     public Fragment fragment;
     public Context ctx;
     public Cuenta cuenta;
+    ViewPager mViewPager;
 
-    public TabResumenListener(Context ctx, Fragment fragment, Cuenta cuenta) {
+    public TabResumenListener(Context ctx, Fragment fragment, ViewPager mViewPager, Cuenta cuenta) {
         this.ctx = ctx;
         this.fragment = fragment;
         this.cuenta = cuenta;
+        this.mViewPager = mViewPager;
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        Bundle arguments = new Bundle();
-        arguments.putParcelable("cuenta", cuenta);
-        arguments.putCharSequence("anyMes", tab.getText());
-        MesesFragment newFragment = MesesFragment.newInstance(arguments);
-        ft.replace(R.id.content_frame, newFragment, MesesFragment.TAG);
-//        mViewPager.setCurrentItem(tab.getPosition());
+//        Bundle arguments = new Bundle();
+//        arguments.putParcelable("cuenta", cuenta);
+//        arguments.putCharSequence("anyMes", tab.getText());
+//        MesesFragment newFragment = MesesFragment.newInstance(arguments);
+//        ft.replace(R.id.content_frame, newFragment, MesesFragment.TAG);
+        mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -42,7 +45,7 @@ public class TabResumenListener implements ActionBar.TabListener {
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-        Toast.makeText(ctx, "Reselected!", Toast.LENGTH_LONG).show();
+//        Toast.makeText(ctx, "Reselected!", Toast.LENGTH_LONG).show();
     }
 
 }
