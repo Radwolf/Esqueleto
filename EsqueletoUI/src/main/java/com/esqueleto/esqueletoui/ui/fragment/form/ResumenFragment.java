@@ -93,11 +93,6 @@ public class ResumenFragment extends Fragment{
         return rootView;
     }
 
-    @OnClick(R.id.pager_title_strip)
-    void onClickTitle(PagerTitleStrip titleStrip){
-        Toast.makeText(getActivity(), "click", Toast.LENGTH_SHORT);
-    }
-
     private void inicializarTabNavigation() {
         // Set up the dropdown list navigation in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
