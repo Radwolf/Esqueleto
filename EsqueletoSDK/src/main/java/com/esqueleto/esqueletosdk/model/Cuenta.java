@@ -18,6 +18,7 @@ public class Cuenta implements Parcelable{
     public static final String COLUMN_NAME_USUARIO = "usuario_id";
     private static final String COLUMN_NAME_DATESINC = "date_sync";
     private static final String COLUMN_NAME_NOMBRE = "nombre";
+    public static final String COLUMN_NAME_SELECCIONADA = "seleccionada";
 
     @DatabaseField(generatedId = true, canBeNull = false, columnName = COLUMN_NAME_ID)
     private int _id;
@@ -28,6 +29,8 @@ public class Cuenta implements Parcelable{
     private Date dateSinc;
     @DatabaseField(columnName = COLUMN_NAME_NOMBRE)
     private String nombre;
+    @DatabaseField(columnName = COLUMN_NAME_SELECCIONADA)
+    private boolean seleccionada;
 
     public static final Parcelable.Creator<Cuenta> CREATOR =
         new Parcelable.Creator<Cuenta>()
@@ -55,13 +58,15 @@ public class Cuenta implements Parcelable{
         this.usuario = parcel.readParcelable(Usuario.class.getClassLoader());
         this.dateSinc = (Date) parcel.readSerializable();
         this.nombre = parcel.readString();
+        this.seleccionada = parcel.readByte() != 0;
     }
 
-    public Cuenta(int _id, Usuario usuario, Date dateSinc, String nombre) {
+    public Cuenta(int _id, Usuario usuario, Date dateSinc, String nombre, boolean seleccionada) {
         this._id = _id;
         this.usuario = usuario;
         this.dateSinc = dateSinc;
         this.nombre = nombre;
+        this.seleccionada = seleccionada;
     }
 
     //<editor-fold desc="GETTERS">
@@ -79,6 +84,10 @@ public class Cuenta implements Parcelable{
 
     public String getNombre() {
         return nombre;
+    }
+
+    public boolean isSeleccionada() {
+        return seleccionada;
     }
     //</editor-fold>
 
@@ -98,6 +107,10 @@ public class Cuenta implements Parcelable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setSeleccionada(boolean seleccionada) {
+        this.seleccionada = seleccionada;
+    }
     //</editor-fold>
 
     @Override
@@ -111,5 +124,6 @@ public class Cuenta implements Parcelable{
         parcel.writeParcelable(this.usuario, flags);
         parcel.writeSerializable(this.dateSinc);
         parcel.writeString(this.nombre);
+        parcel.writeByte((byte) (seleccionada ? 1 : 0));
     }
 }

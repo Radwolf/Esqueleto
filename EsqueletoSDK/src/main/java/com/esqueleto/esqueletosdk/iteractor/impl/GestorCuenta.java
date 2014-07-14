@@ -50,4 +50,9 @@ public class GestorCuenta implements CuentaInteractor {
     public List<Cuenta> getCuentas(Context ctx, String email) {
         return cuentaRepositoryDB.getCuentas(email);
     }
+
+    @Override
+    public Cuenta getCuentaSeleccionada(String email){
+        return  cuentaRepositoryDB.getCuentaSeleccionada(email);
+    }
 }

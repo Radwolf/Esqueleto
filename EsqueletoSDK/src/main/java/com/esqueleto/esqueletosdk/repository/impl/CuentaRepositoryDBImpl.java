@@ -11,6 +11,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -86,5 +87,24 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
             e.printStackTrace();
         }
         return cuentas;
+    }
+
+    @Override
+    public Cuenta getCuentaSeleccionada(String email){
+        List<Cuenta> cuentas = new ArrayList<Cuenta>();
+        try {
+            QueryBuilder<Usuario, Integer> usuarioQb = usuarioDao.queryBuilder();
+            usuarioQb.where().eq(Usuario.COLUMN_NAME_EMAIL, email);
+            QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
+            cuentaQb.where().eq(Cuenta.COLUMN_NAME_SELECCIONADA, true);
+            // join with the order query
+            cuentas = cuentaQb.join(usuarioQb).query();
+            if(cuentas.size() > 0){
+                return cuentas.get(0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

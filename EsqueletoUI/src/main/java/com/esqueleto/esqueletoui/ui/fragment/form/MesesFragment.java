@@ -5,14 +5,11 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetResumen;
@@ -20,7 +17,6 @@ import com.esqueleto.esqueletosdk.iteractor.impl.GestorResumen;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.ui.activity.MainActivity;
 import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
 import butterknife.ButterKnife;
@@ -115,6 +111,7 @@ public class MesesFragment extends Fragment{
 
         loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         actionBar = getActivity().getActionBar();

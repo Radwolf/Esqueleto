@@ -18,4 +18,6 @@ public interface CuentaRepositoryDB {
     Cuenta getCuenta(Integer id);
 
     List<Cuenta> getCuentas(String email);
+
+    Cuenta getCuentaSeleccionada(String email);
 }

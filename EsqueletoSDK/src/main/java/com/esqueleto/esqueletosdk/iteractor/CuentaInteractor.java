@@ -15,5 +15,6 @@ public interface CuentaInteractor {
     Cuenta updateCuenta(Cuenta cuenta);
     Cuenta getCuenta(Context ctx, Integer id);
     List<Cuenta> getCuentas(Context ctx, String email);
+    Cuenta getCuentaSeleccionada(String email);
 
 }

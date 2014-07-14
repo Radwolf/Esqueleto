@@ -108,8 +108,9 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
         Cuenta cuenta = new Cuenta();
         cuenta.setDateSinc(new Date());
-        cuenta.setNombre("Cuenta de casa");
+        cuenta.setNombre("Casa");
         cuenta.setUsuario(usuario);
+        cuenta.setSeleccionada(true);
         cuentaDao.create(cuenta);
 
         Resumen resumen = new Resumen();
@@ -130,6 +131,26 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
         createDataMovimientosTest(movimientoDao, resumen);
 
+        cuenta.setDateSinc(new Date());
+        cuenta.setNombre("Ocio");
+        cuenta.setUsuario(usuario);
+        cuenta.setSeleccionada(false);
+        cuentaDao.create(cuenta);
+
+        resumen.setAhorro(CERO_DOUBLE);
+        resumen.setAhorroEstimado(CERO_DOUBLE);
+        resumen.setGasto(CERO_DOUBLE);
+        resumen.setGastoEstimado(CERO_DOUBLE);
+        resumen.setIngreso(CERO_DOUBLE);
+        resumen.setIngresoEstimado(CERO_DOUBLE);
+        resumen.setSaldo(CERO_DOUBLE);
+        resumen.setSaldoAnterior(CERO_DOUBLE);
+        resumen.setSaldoEstimado(CERO_DOUBLE);
+        resumen.setAnyMes("2014/06");
+        resumen.setCuenta(cuenta);
+        resumen.setInicioPeriodo(createDateFormat("01/06/2014"));
+        resumen.setFinPeriodo(createDateFormat("30/06/2014"));
+        resumenDao.create(resumen);
     }
 
     private Date createDateFormat(String s) {

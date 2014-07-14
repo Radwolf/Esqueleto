@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -14,21 +13,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.esqueleto.esqueletosdk.command.impl.GetCuenta;
+import com.esqueleto.esqueletosdk.command.impl.GetCuentaSeleccionada;
+import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.listener.TabResumenListener;
-import com.esqueleto.esqueletoui.ui.fragment.form.FormMovimientoFragment;
-import com.esqueleto.esqueletoui.ui.fragment.form.MesesFragment;
+import com.esqueleto.esqueletoui.adapter.CustomDrawerAdapter;
+import com.esqueleto.esqueletoui.adapter.item.DrawerItem;
+import com.esqueleto.esqueletoui.adapter.item.SpinnerItem;
 import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
-import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
-import com.esqueleto.esqueletoui.ui.pager.TabsPagerAdapter;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.OnItemSelected;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -42,6 +44,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private CharSequence mTitle;
     private String[] mDrawerTitles;
 
+    private GestorCuenta gestorCuenta;
+    private GetCuentas getCuentas;
+    private GetCuentaSeleccionada getCuentaSeleccionada;
+    private Cuenta cuentaSeleccionada;
+
+    CustomDrawerAdapter adapter;
+    List<DrawerItem> dataList;
+    List<SpinnerItem> cuentasList;
+
+    //TODO: recuperar el mail del Account
+    private String emailUsuario = "raul.gomo@gmail.com";
+
     public static boolean shouldGoInvisible = false;
 
     @Override
@@ -49,12 +63,19 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nd);
 
-
+        inicializarCommands();
         inicializarNavigationActionBar();
-        inicializarDrawerMenu();
+        inicializarDrawerMenu(savedInstanceState);
 
         actionBar = getActionBar();
 
+    }
+
+    private void inicializarCommands() {
+        gestorCuenta = new GestorCuenta(this);
+        getCuentas = new GetCuentas(gestorCuenta, emailUsuario);
+        getCuentaSeleccionada = new GetCuentaSeleccionada(gestorCuenta, emailUsuario);
+        cuentaSeleccionada = getCuentaSeleccionada.execute(this);
     }
 
     private void inicializarNavigationActionBar() {
@@ -63,8 +84,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
     }
 
-    private void inicializarDrawerMenu() {
+    private void inicializarDrawerMenu(Bundle savedInstanceState) {
         mTitle = mDrawerTitle = getTitle();
+        dataList = new ArrayList<DrawerItem>();
         mDrawerTitles = getResources().getStringArray(R.array.drawer_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -72,8 +94,24 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mDrawerTitles));
+//        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+//                R.layout.drawer_list_item, mDrawerTitles));
+
+//TODO: sacar a metodo inicializar
+        // Add Drawer Item to dataList
+        dataList.add(new DrawerItem(true)); // adding a spinner to the list
+
+        dataList.add(new DrawerItem("Acciones"));// adding a header to the list
+        dataList.add(new DrawerItem("Resumen", R.drawable.ic_action_view_as_grid));
+        dataList.add(new DrawerItem("Importar / Exportar", R.drawable.ic_action_import_export));
+
+        //TODO: recuperar el email de usuario de account
+        inicializarSpinnerCuentas();
+
+        adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
+                dataList, cuentasList);
+        mDrawerList.setAdapter(adapter);
+
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -102,9 +140,33 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        if (savedInstanceState == null) {
+
+            if (dataList.get(0).isSpinner()
+                    & dataList.get(1).getTitle() != null) {
+                selectItem(2);
+            } else if (dataList.get(0).getTitle() != null) {
+                selectItem(1);
+            } else {
+                selectItem(0);
+            }
+        }
     }
 
+    private void inicializarSpinnerCuentas() {
+        List<Cuenta> cuentas = getCuentas.execute(this);
+        cuentasList = new ArrayList<SpinnerItem>();
+        for (Cuenta cuenta: cuentas){
+            cuentasList.add(new SpinnerItem(R.drawable.ic_drawer, cuenta.getNombre(),
+                    emailUsuario, cuenta.get_id()));
+        }
+    }
 
+    @OnItemSelected(R.id.drawerSpinner)
+    void onClickIngreso(Spinner drawerSpinner){
+        Toast.makeText(this, ((SpinnerItem)drawerSpinner.getSelectedItem()).getName(), Toast.LENGTH_SHORT);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -144,16 +206,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
+            if (dataList.get(position).getTitle() == null) {
+                selectItem(position);
+            }
         }
     }
 
     private void selectItem(int position) {
         switch(position){
-            case 0:
+            case 2:
                 Bundle arguments = new Bundle();
                 //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
-                arguments.putInt("cuentaId", 1);
+                arguments.putInt("cuentaId", cuentaSeleccionada.get_id());
                 // Crear un nuevo fragmento y transacción
                 ResumenFragment newFragment2 = ResumenFragment.newInstance(arguments);
                 FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
@@ -166,9 +230,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 //commit la trasacción
                 transaction2.commit();
                 break;
-            case 1:
-                break;
-            case 2:
+            case 3:
                 break;
         }
 //        // update the main content by replacing fragments
