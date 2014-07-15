@@ -1,7 +1,10 @@
 package com.esqueleto.esqueletoui.adapter;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +14,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.esqueleto.esqueletosdk.command.impl.UpdateCuenta;
+import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
+import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.item.DrawerItem;
 import com.esqueleto.esqueletoui.adapter.item.SpinnerItem;
+import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
 
 import java.util.List;
 
@@ -91,27 +99,26 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
                         @Override
                         public void onItemSelected(AdapterView<?> arg0,
                                                    View arg1, int arg2, long arg3) {
-                            TextView tv = (TextView) arg1.findViewById(R.id.text_main_name);
+                            Toast.makeText(context, "User Changed",
+                                    Toast.LENGTH_SHORT).show();
+
+//                            TextView tv = (TextView) arg1.findViewById(R.id.text_main_name);
 //                            Bundle arguments = new Bundle();
 //                            //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
-//                            arguments.putInt("cuentaId", (Integer) tv.getTag());
+//                            Cuenta cuenta = (Cuenta)tv.getTag();
+//                            arguments.putParcelable("cuenta", cuenta);
 //                            // Crear un nuevo fragmento y transacción
 //                            ResumenFragment newFragment2 = ResumenFragment.newInstance(arguments);
 //                            FragmentTransaction transaction2 = ((Activity) context).getFragmentManager().beginTransaction();
+//                            StringBuffer title = new StringBuffer(cuenta.getNombre());
 //
-//                            // Reemplazar lo que esté en el fragment_container view con este fragmento,
-//                            // y añadir transacción al back stack
-//                            transaction2.replace(R.id.content_frame, newFragment2, ResumenFragment.TAG);
-//                            transaction2.addToBackStack(null);
-//
-//                            //commit la trasacción
-//                            transaction2.commit();
+//                            loadFragment(newFragment2, ResumenFragment.TAG, title.toString());
                         }
 
                         @Override
                         public void onNothingSelected(AdapterView<?> arg0) {
                             // TODO Auto-generated method stub
-
+                            System.out.println("caca");
                         }
                     });
 
@@ -140,5 +147,16 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
         ImageView icon;
         LinearLayout headerLayout, itemLayout, spinnerLayout;
         Spinner spinner;
+    }
+
+    private void loadFragment(Fragment fragment, String tag, String title) {
+        FragmentTransaction transaction = ((Activity) context).getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+
+        transaction.replace(R.id.content_frame, fragment);
+        transaction.addToBackStack(tag);
+
+        ((Activity) context).setTitle(title);
+        transaction.commit();
     }
 }

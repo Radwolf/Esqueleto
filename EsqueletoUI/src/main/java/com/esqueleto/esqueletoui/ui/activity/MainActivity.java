@@ -1,6 +1,8 @@
 package com.esqueleto.esqueletoui.ui.activity;
 
 import android.app.ActionBar;
+import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCuentaSeleccionada;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
+import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
@@ -26,6 +29,7 @@ import com.esqueleto.esqueletoui.adapter.CustomDrawerAdapter;
 import com.esqueleto.esqueletoui.adapter.item.DrawerItem;
 import com.esqueleto.esqueletoui.adapter.item.SpinnerItem;
 import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
+import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +106,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         dataList.add(new DrawerItem(true)); // adding a spinner to the list
 
         dataList.add(new DrawerItem("Acciones"));// adding a header to the list
-        dataList.add(new DrawerItem("Resumen", R.drawable.ic_action_view_as_grid));
+        dataList.add(new DrawerItem("Movimientos", R.drawable.ic_action_view_as_grid));
         dataList.add(new DrawerItem("Importar / Exportar", R.drawable.ic_action_import_export));
 
         //TODO: recuperar el email de usuario de account
@@ -157,15 +161,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private void inicializarSpinnerCuentas() {
         List<Cuenta> cuentas = getCuentas.execute(this);
         cuentasList = new ArrayList<SpinnerItem>();
-        for (Cuenta cuenta: cuentas){
+        for (Cuenta cuenta : cuentas) {
             cuentasList.add(new SpinnerItem(R.drawable.ic_drawer, cuenta.getNombre(),
-                    emailUsuario, cuenta.get_id()));
+                    emailUsuario, cuenta));
         }
-    }
-
-    @OnItemSelected(R.id.drawerSpinner)
-    void onClickIngreso(Spinner drawerSpinner){
-        Toast.makeText(this, ((SpinnerItem)drawerSpinner.getSelectedItem()).getName(), Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -213,35 +212,56 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     }
 
     private void selectItem(int position) {
-        switch(position){
+        switch (position) {
             case 2:
                 Bundle arguments = new Bundle();
                 //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
-                arguments.putInt("cuentaId", cuentaSeleccionada.get_id());
-                // Crear un nuevo fragmento y transacción
-                ResumenFragment newFragment2 = ResumenFragment.newInstance(arguments);
-                FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+                arguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_ANYMES);
+                String anyMes = "2014/07";
+                if(actionBar.getSelectedTab()!=null){
+                    anyMes = actionBar.getSelectedTab().getText().toString();
+                }
+                String[] filtros = {anyMes};
+                arguments.putStringArray("filtros", filtros);
+                arguments.putParcelable("cuenta", cuentaSeleccionada);
+                ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(arguments);
+                StringBuffer title = new StringBuffer(cuentaSeleccionada.getNombre());
+                title.append(" (").append(anyMes).append(")");
 
-                // Reemplazar lo que esté en el fragment_container view con este fragmento,
-                // y añadir transacción al back stack
-                transaction2.replace(R.id.content_frame, newFragment2, ResumenFragment.TAG);
-                transaction2.addToBackStack(null);
-
-                //commit la trasacción
-                transaction2.commit();
+                loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
                 break;
             case 3:
+                String anyMesResumen = "2014/07";
+                if(actionBar.getSelectedTab()!=null){
+                    anyMes = actionBar.getSelectedTab().getText().toString();
+                }
+                Bundle argumentsResumen = new Bundle();
+                //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
+                argumentsResumen.putParcelable("cuenta", cuentaSeleccionada);
+                // Crear un nuevo fragmento y transacción
+                ResumenFragment newFragment2 = ResumenFragment.newInstance(argumentsResumen);
+                FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+                StringBuffer titulo = new StringBuffer(cuentaSeleccionada.getNombre());
+                titulo.append(" (").append(anyMesResumen).append(")");
+
+                loadFragment(newFragment2, ResumenFragment.TAG, titulo.toString());
                 break;
         }
-//        // update the main content by replacing fragments
-//        Fragment fragment = new PlanetFragment();
-//        Bundle args = new Bundle();
-//        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-//        fragment.setArguments(args);
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+    private void loadFragment(Fragment fragment, String tag, String title) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+
+        transaction.replace(R.id.content_frame, fragment);
+        transaction.addToBackStack(tag);
+
+        setTitle(title);
+        transaction.commit();
     }
 
     @Override
@@ -270,3 +290,4 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     }
 
 }
+

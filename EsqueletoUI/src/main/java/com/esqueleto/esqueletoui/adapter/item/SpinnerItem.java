@@ -1,5 +1,7 @@
 package com.esqueleto.esqueletoui.adapter.item;
 
+import com.esqueleto.esqueletosdk.model.Cuenta;
+
 /**
  * Created by rgonzalez on 14/07/2014.
  */
@@ -8,14 +10,14 @@ public class SpinnerItem {
     int drawableResID;
     String name;
     String email;
-    int cuentaId;
+    Cuenta cuenta;
 
-    public SpinnerItem(int drawableResID, String name, String email, int cuentaId) {
+    public SpinnerItem(int drawableResID, String name, String email, Cuenta cuenta) {
         super();
         this.drawableResID = drawableResID;
         this.name = name;
         this.email = email;
-        this.cuentaId = cuentaId;
+        this.cuenta = cuenta;
     }
 
     public int getDrawableResID() {
@@ -36,10 +38,10 @@ public class SpinnerItem {
     public void setEmail(String email) {
         this.email = email;
     }
-    public int getCuentaId() {
-        return cuentaId;
+    public Cuenta getCuenta() {
+        return cuenta;
     }
-    public void setCuentaId(int cuentaId) {
-        this.cuentaId = cuentaId;
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 }

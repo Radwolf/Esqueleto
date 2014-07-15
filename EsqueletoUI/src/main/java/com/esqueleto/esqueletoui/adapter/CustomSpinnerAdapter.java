@@ -81,7 +81,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<SpinnerItem>{
         holder.userImage.setImageDrawable(row.getResources().getDrawable(spinnerItem.getDrawableResID()));
         holder.name.setText(spinnerItem.getName());
         holder.email.setText(spinnerItem.getEmail());
-        holder.name.setTag(spinnerItem.getCuentaId());
+        holder.name.setTag(spinnerItem.getCuenta());
         return row;
 
     }

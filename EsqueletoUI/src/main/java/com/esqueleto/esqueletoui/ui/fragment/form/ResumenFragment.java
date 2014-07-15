@@ -2,6 +2,7 @@ package com.esqueleto.esqueletoui.ui.fragment.form;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCuenta;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
+import com.esqueleto.esqueletosdk.command.impl.UpdateCuenta;
+import com.esqueleto.esqueletosdk.command.impl.UpdateCuentaSeleccionada;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
@@ -43,7 +46,7 @@ public class ResumenFragment extends Fragment{
     private ActionBar actionBar;
 
     GestorCuenta gestorCuenta;
-    GetCuenta getCuenta;
+    UpdateCuentaSeleccionada updateCuentaSeleccionada;
     private Cuenta cuenta;
 
     private FragmentIterationListener mCallback = null;
@@ -67,12 +70,10 @@ public class ResumenFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         actionBar = getActivity().getActionBar();
-        //TODO: Crear tratamiento para recuperar la cuenta activa añadir flag en bd y recuperar por usuario
-        Integer cuentaId = getArguments().getInt("cuentaId");
+        //TODO: Crear tratamiento para recuperar el usuario
+        cuenta = getArguments().getParcelable("cuenta");
         gestorCuenta = new GestorCuenta(getActivity());
-        getCuenta = new GetCuenta(gestorCuenta, cuentaId);
-        cuenta = getCuenta.execute(getActivity());
-        actionBar.setTitle(cuenta.getNombre());
+        updateCuentaSeleccionada = new UpdateCuentaSeleccionada(gestorCuenta, cuenta, "raul.gomo@gmail.com");
 
         final View rootView = inflater.inflate(R.layout.fragment_resumen, container, false);
         mesesPageAdapter = new MesesPageAdapter(getFragmentManager(), getActivity(), actionBar, cuenta);
@@ -85,6 +86,9 @@ public class ResumenFragment extends Fragment{
                 // We can also use ActionBar.Tab#select() to do this if we have a reference to the
                 // Tab.
                 actionBar.setSelectedNavigationItem(position);
+                StringBuffer title = new StringBuffer(cuenta.getNombre());
+                title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+                actionBar.setTitle(cuenta.getNombre());
             }
         });
 

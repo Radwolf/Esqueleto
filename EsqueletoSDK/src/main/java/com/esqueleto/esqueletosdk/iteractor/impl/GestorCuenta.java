@@ -42,6 +42,16 @@ public class GestorCuenta implements CuentaInteractor {
     }
 
     @Override
+    public Cuenta updateCuentaSeleccionada(Cuenta cuenta, String email){
+        Cuenta cuentaExSeleccionada = getCuentaSeleccionada(email);
+        cuenta.setSeleccionada(true);
+        cuentaExSeleccionada.setSeleccionada(false);
+        cuentaRepositoryDB.update(cuentaExSeleccionada);
+        cuentaRepositoryDB.update(cuenta);
+        return cuenta;
+    }
+
+    @Override
     public Cuenta getCuenta(Context ctx, Integer id) {
         return cuentaRepositoryDB.getCuenta(id);
     }
