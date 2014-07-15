@@ -223,11 +223,12 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     }
 
     private void loadFragment(Fragment fragment, String tag, String title) {
+        getFragmentManager().enableDebugLogging(true);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
 
         transaction.replace(R.id.content_frame, fragment);
-        transaction.addToBackStack(tag);
+        transaction.addToBackStack(null);
 
         getActivity().setTitle(title);
         transaction.commit();

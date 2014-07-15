@@ -1,25 +1,16 @@
 package com.esqueleto.esqueletoui.ui.fragment.form;
 
-import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCuenta;
-import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
-import com.esqueleto.esqueletosdk.command.impl.UpdateCuenta;
 import com.esqueleto.esqueletosdk.command.impl.UpdateCuentaSeleccionada;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
@@ -27,11 +18,8 @@ import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.MesesPageAdapter;
 import com.esqueleto.esqueletoui.listener.TabResumenListener;
 import com.esqueleto.esqueletoui.ui.activity.MainActivity;
-import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
 
 import java.util.Calendar;
-
-import butterknife.OnClick;
 
 /**
  * Created by Raúl on 29/06/2014.
@@ -47,6 +35,7 @@ public class ResumenFragment extends Fragment{
     GestorCuenta gestorCuenta;
     GetCuenta getCuenta;
     private Cuenta cuenta;
+    UpdateCuentaSeleccionada updateCuentaSeleccionada;
 
     private FragmentIterationListener mCallback = null;
 
@@ -65,7 +54,6 @@ public class ResumenFragment extends Fragment{
     public ResumenFragment() {
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         actionBar = getActivity().getActionBar();
@@ -73,6 +61,7 @@ public class ResumenFragment extends Fragment{
         cuenta = getArguments().getParcelable("cuenta");
         gestorCuenta = new GestorCuenta(getActivity());
         updateCuentaSeleccionada = new UpdateCuentaSeleccionada(gestorCuenta, cuenta, "raul.gomo@gmail.com");
+        updateCuentaSeleccionada.execute(getActivity());
 
         final View rootView = inflater.inflate(R.layout.fragment_resumen, container, false);
         mesesPageAdapter = new MesesPageAdapter(getFragmentManager(), getActivity(), actionBar, cuenta);
@@ -87,7 +76,7 @@ public class ResumenFragment extends Fragment{
                 actionBar.setSelectedNavigationItem(position);
                 StringBuffer title = new StringBuffer(cuenta.getNombre());
                 title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
-                actionBar.setTitle(cuenta.getNombre());
+                actionBar.setTitle(title);
             }
         });
 

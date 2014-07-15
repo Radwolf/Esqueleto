@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletoui.ui.activity;
 
 import android.app.ActionBar;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -104,7 +104,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         dataList.add(new DrawerItem(true)); // adding a spinner to the list
 
         dataList.add(new DrawerItem("Acciones"));// adding a header to the list
-        dataList.add(new DrawerItem("Resumen", R.drawable.ic_action_view_as_grid));
+        dataList.add(new DrawerItem("Movimientos", R.drawable.ic_action_view_as_grid));
         dataList.add(new DrawerItem("Importar / Exportar", R.drawable.ic_action_import_export));
 
         //TODO: recuperar el email de usuario de account
@@ -266,7 +266,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
 
         transaction.replace(R.id.content_frame, fragment);
-        transaction.addToBackStack(tag);
 
         setTitle(title);
         transaction.commit();
@@ -297,4 +296,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onBackPressed() {
+
+        // If the fragment exists and has some back-stack entry
+        if (getFragmentManager() != null && getFragmentManager().getBackStackEntryCount() > 0){
+            // Get the fragment fragment manager - and pop the backstack
+            getFragmentManager().popBackStack();
+        }
+        // Else, nothing in the direct fragment back stack
+        else{
+            // Let super handle the back press
+            super.onBackPressed();
+        }
+    }
 }

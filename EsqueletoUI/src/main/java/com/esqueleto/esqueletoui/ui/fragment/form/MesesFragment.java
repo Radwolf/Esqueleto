@@ -143,19 +143,19 @@ public class MesesFragment extends Fragment{
 
                 loadFragment(formFragment, FormMovimientoFragment.TAG, titulo);
                 break;
-            case R.id.action_get_movimientos:
-                //TODO: Movimientos habría que ponerlo en el drawer personalizado
-                Bundle listArguments = new Bundle();
-                listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_ANYMES);
-                String[] filtros = {anyMes};
-                listArguments.putStringArray("filtros", filtros);
-                listArguments.putParcelable("cuenta", cuenta);
-                ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
-                StringBuffer title = new StringBuffer(cuenta.getNombre());
-                title.append(" (").append(anyMes).append(")");
-
-                loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
-                break;
+//            case R.id.action_get_movimientos:
+//                //TODO: Movimientos habría que ponerlo en el drawer personalizado
+//                Bundle listArguments = new Bundle();
+//                listArguments.putString("tipoSearch", GetMovimientos.SEARCH_BY_ANYMES);
+//                String[] filtros = {anyMes};
+//                listArguments.putStringArray("filtros", filtros);
+//                listArguments.putParcelable("cuenta", cuenta);
+//                ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
+//                StringBuffer title = new StringBuffer(cuenta.getNombre());
+//                title.append(" (").append(anyMes).append(")");
+//
+//                loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
+//                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -168,7 +168,7 @@ public class MesesFragment extends Fragment{
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
 
         transaction.replace(R.id.content_frame, fragment);
-        transaction.addToBackStack(tag);
+        transaction.addToBackStack(null);
 
         getActivity().setTitle(title);
         transaction.commit();
