@@ -2,7 +2,6 @@ package com.esqueleto.esqueletoui.ui.fragment.form;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
@@ -46,7 +45,7 @@ public class ResumenFragment extends Fragment{
     private ActionBar actionBar;
 
     GestorCuenta gestorCuenta;
-    UpdateCuentaSeleccionada updateCuentaSeleccionada;
+    GetCuenta getCuenta;
     private Cuenta cuenta;
 
     private FragmentIterationListener mCallback = null;

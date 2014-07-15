@@ -1,8 +1,6 @@
 package com.esqueleto.esqueletoui.ui.activity;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -106,7 +104,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         dataList.add(new DrawerItem(true)); // adding a spinner to the list
 
         dataList.add(new DrawerItem("Acciones"));// adding a header to the list
-        dataList.add(new DrawerItem("Movimientos", R.drawable.ic_action_view_as_grid));
+        dataList.add(new DrawerItem("Resumen", R.drawable.ic_action_view_as_grid));
         dataList.add(new DrawerItem("Importar / Exportar", R.drawable.ic_action_import_export));
 
         //TODO: recuperar el email de usuario de account
@@ -167,10 +165,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         }
     }
 
+    @OnItemSelected(R.id.drawerSpinner)
+    void onClickIngreso(Spinner drawerSpinner){
+        Toast.makeText(this, ((SpinnerItem)drawerSpinner.getSelectedItem()).getName(), Toast.LENGTH_SHORT);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -179,9 +181,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        //TODO:Recuperar todas las opciones de menú para ocultarlas si se abre el drawer, o recuperarlo desde el fragment
 //        menu.findItem(R.id.action_add_movimiento).setVisible(!drawerOpen);
+        ocultarMenuItems(menu, !MainActivity.shouldGoInvisible);
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void ocultarMenuItems(Menu menu, boolean visible){
+        for(int i = 0; i < menu.size(); i++){
+            menu.getItem(i).setVisible(visible);
+        }
     }
 
     @Override
@@ -290,4 +298,3 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     }
 
 }
-
