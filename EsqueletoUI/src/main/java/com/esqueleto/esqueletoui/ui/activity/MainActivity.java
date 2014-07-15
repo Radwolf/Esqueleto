@@ -9,13 +9,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCuentaSeleccionada;
 import com.esqueleto.esqueletosdk.command.impl.GetCuentas;
@@ -29,8 +26,6 @@ import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.OnItemSelected;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
@@ -62,6 +57,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nd);
+//        ButterKnife.inject(this);
 
         inicializarCommands();
         inicializarNavigationActionBar();
@@ -163,15 +159,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         }
     }
 
-    @OnItemSelected(R.id.drawerSpinner)
-    void onClickIngreso(Spinner drawerSpinner){
-        Toast.makeText(this, ((SpinnerItem)drawerSpinner.getSelectedItem()).getName(), Toast.LENGTH_SHORT);
-    }
+//    @OnItemSelected(R.id.drawerSpinner)
+//    void onClickIngreso(Spinner drawerSpinner){
+//        Toast.makeText(this, ((SpinnerItem)drawerSpinner.getSelectedItem()).getName(), Toast.LENGTH_SHORT).show();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -180,9 +175,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        //TODO:Recuperar todas las opciones de menú para ocultarlas si se abre el drawer, o recuperarlo desde el fragment
 //        menu.findItem(R.id.action_add_movimiento).setVisible(!drawerOpen);
+        ocultarMenuItems(menu, !MainActivity.shouldGoInvisible);
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void ocultarMenuItems(Menu menu, boolean visible){
+        for(int i = 0; i < menu.size(); i++){
+            menu.getItem(i).setVisible(visible);
+        }
     }
 
     @Override
@@ -224,21 +225,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
                 // Reemplazar lo que esté en el fragment_container view con este fragmento,
                 // y añadir transacción al back stack
-                transaction2.replace(R.id.content_frame, newFragment2, ResumenFragment.TAG);
-                transaction2.addToBackStack(null);
-
-                //commit la trasacción
-                transaction2.commit();
+                transaction2.replace(R.id.content_frame, newFragment2).commit();
                 break;
             case 3:
                 break;
         }
-//        // update the main content by replacing fragments
-//        Fragment fragment = new PlanetFragment();
-//        Bundle args = new Bundle();
-//        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-//        fragment.setArguments(args);
-
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawer(mDrawerList);

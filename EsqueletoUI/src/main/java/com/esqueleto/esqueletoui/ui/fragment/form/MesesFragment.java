@@ -107,7 +107,7 @@ public class MesesFragment extends Fragment{
         listArguments.putStringArray("filtros", filtros);
         ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
         StringBuffer title = new StringBuffer(cuenta.getNombre());
-        title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+        title.append(" (").append(anyMes).append(")");
 
         loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
     }
@@ -152,7 +152,7 @@ public class MesesFragment extends Fragment{
                 listArguments.putParcelable("cuenta", cuenta);
                 ListaMovimientosFragment listFragment = ListaMovimientosFragment.newInstance(listArguments);
                 StringBuffer title = new StringBuffer(cuenta.getNombre());
-                title.append(" (").append(actionBar.getSelectedTab().getText()).append(")");
+                title.append(" (").append(anyMes).append(")");
 
                 loadFragment(listFragment, ListaMovimientosFragment.TAG, title.toString());
                 break;

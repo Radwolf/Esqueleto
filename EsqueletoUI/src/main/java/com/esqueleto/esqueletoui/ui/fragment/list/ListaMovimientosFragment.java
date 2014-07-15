@@ -139,9 +139,15 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
     }
 
     private void ocultarMenuItems(Menu menu, boolean visible){
+        if(visible) {
+            getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        }else{
+            getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        }
         for(int i = 0; i < menu.size(); i++){
             menu.getItem(i).setVisible(visible);
         }
+
     }
 
     private void inicializarCommands() {

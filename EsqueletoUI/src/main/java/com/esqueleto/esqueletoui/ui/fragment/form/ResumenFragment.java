@@ -3,33 +3,21 @@ package com.esqueleto.esqueletoui.ui.fragment.form;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.command.impl.GetCuenta;
-import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.iteractor.impl.GestorCuenta;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.MesesPageAdapter;
-import com.esqueleto.esqueletoui.listener.TabResumenListener;
 import com.esqueleto.esqueletoui.ui.activity.MainActivity;
-import com.esqueleto.esqueletoui.ui.fragment.list.ListaMovimientosFragment;
-
-import java.util.Calendar;
-
-import butterknife.OnClick;
 
 /**
  * Created by Raúl on 29/06/2014.
@@ -84,36 +72,40 @@ public class ResumenFragment extends Fragment{
                 // When swiping between different app sections, select the corresponding tab.
                 // We can also use ActionBar.Tab#select() to do this if we have a reference to the
                 // Tab.
-                actionBar.setSelectedNavigationItem(position);
+                StringBuffer titulo = new StringBuffer(cuenta.getNombre()).append(" (")
+                        .append(mesesPageAdapter.getPageTitle(position)).append(")");
+                actionBar.setTitle(titulo.toString());
+//                actionBar.setSelectedNavigationItem(position);
             }
         });
 
-        inicializarTabNavigation();
+//        inicializarTabNavigation();
         setHasOptionsMenu(true);
         return rootView;
     }
 
-    private void inicializarTabNavigation() {
-        // Set up the dropdown list navigation in the action bar.
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        Calendar calendar = Calendar.getInstance();
-        int any = calendar.get(Calendar.YEAR);
-        for(int i = 1; actionBar.getTabCount() < 12 && i <= 12; i++) {
-            StringBuffer nombreTab = new StringBuffer();
-            nombreTab.append(any).append("/").append((i<10)?"0":"").append(i);
-            ActionBar.Tab tab = actionBar.newTab();
-            tab.setText(nombreTab);
-            tab.setTabListener(new TabResumenListener(getActivity(), new MesesFragment(), mViewPager, cuenta));
-//            tab.setCustomView(R.layout.tab_resumen_mes);
-            actionBar.addTab(tab);
-            if("2014/06".equals(nombreTab.toString())) {
-                actionBar.selectTab(tab);
-            }
-        }
-    }
+//    private void inicializarTabNavigation() {
+//        // Set up the dropdown list navigation in the action bar.
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+//        Calendar calendar = Calendar.getInstance();
+//        int any = calendar.get(Calendar.YEAR);
+//        for(int i = 1; actionBar.getTabCount() < 12 && i <= 12; i++) {
+//            StringBuffer nombreTab = new StringBuffer();
+//            nombreTab.append(any).append("/").append((i<10)?"0":"").append(i);
+//            ActionBar.Tab tab = actionBar.newTab();
+//            tab.setText(nombreTab);
+//            tab.setTabListener(new TabResumenListener(getActivity(), new MesesFragment(), mViewPager, cuenta));
+////            tab.setCustomView(R.layout.tab_resumen_mes);
+//            actionBar.addTab(tab);
+//            if("2014/06".equals(nombreTab.toString())) {
+//                actionBar.selectTab(tab);
+//            }
+//        }
+//    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         inflater.inflate(R.menu.resumen_mensual, menu);
     }
 

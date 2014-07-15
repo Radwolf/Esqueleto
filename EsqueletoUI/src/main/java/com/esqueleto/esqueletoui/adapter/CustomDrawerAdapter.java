@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.adapter.item.DrawerItem;
@@ -91,7 +92,8 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
                         @Override
                         public void onItemSelected(AdapterView<?> arg0,
                                                    View arg1, int arg2, long arg3) {
-                            TextView tv = (TextView) arg1.findViewById(R.id.text_main_name);
+//                            TextView tv = (TextView) arg1.findViewById(R.id.text_main_name);
+                            Toast.makeText(context, "position: " + arg2, Toast.LENGTH_SHORT).show();
 //                            Bundle arguments = new Bundle();
 //                            //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
 //                            arguments.putInt("cuentaId", (Integer) tv.getTag());

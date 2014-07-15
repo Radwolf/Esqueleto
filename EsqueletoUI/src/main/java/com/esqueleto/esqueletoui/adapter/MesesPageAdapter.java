@@ -5,12 +5,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v13.app.FragmentStatePagerAdapter;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletoui.ui.fragment.form.MesesFragment;
-import com.esqueleto.esqueletoui.ui.fragment.form.ResumenFragment;
+
+import java.util.Calendar;
 
 /**
  * Created by rgonzalez on 10/07/2014.
@@ -37,9 +37,14 @@ public class MesesPageAdapter extends FragmentStatePagerAdapter{
 //                return new MesesFragment();
 //
 //            default:
+                Calendar calendar = Calendar.getInstance();
+                int any = calendar.get(Calendar.YEAR);
+                int mes = i+1;
+                StringBuffer nombreTab = new StringBuffer();
+                nombreTab.append(any).append("/").append((mes<10)?"0":"").append(mes);
                 Bundle arguments = new Bundle();
                 arguments.putParcelable("cuenta", cuenta);
-                arguments.putCharSequence("anyMes", actionBar.getTabAt(i).getText());
+                arguments.putCharSequence("anyMes", nombreTab);
                 MesesFragment fragment = MesesFragment.newInstance(arguments);
                 return fragment;
 //        }
@@ -54,7 +59,12 @@ public class MesesPageAdapter extends FragmentStatePagerAdapter{
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return actionBar.getTabAt(position).getText();
+        Calendar calendar = Calendar.getInstance();
+        int any = calendar.get(Calendar.YEAR);
+        int mes = position+1;
+        StringBuffer nombreTab = new StringBuffer();
+        nombreTab.append(any).append("/").append((mes<10)?"0":"").append(mes);
+        return nombreTab;
     }
 
 }
