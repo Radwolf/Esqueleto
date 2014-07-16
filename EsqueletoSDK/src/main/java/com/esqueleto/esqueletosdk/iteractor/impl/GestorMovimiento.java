@@ -10,10 +10,12 @@ import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 import com.esqueleto.esqueletosdk.model.TipoMovimiento;
 import com.esqueleto.esqueletosdk.repository.CategoriaRepositoryDB;
+import com.esqueleto.esqueletosdk.repository.CuentaRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.ResumenRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.TipoMovimientoRepositoryDB;
 import com.esqueleto.esqueletosdk.repository.impl.CategoriaRepositoryDBImpl;
+import com.esqueleto.esqueletosdk.repository.impl.CuentaRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.MovimientoRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.ResumenRepositoryDBImpl;
 import com.esqueleto.esqueletosdk.repository.impl.TipoMovimientoRepositoryDBImpl;
@@ -30,12 +32,14 @@ public class GestorMovimiento implements MovimientoInteractor {
     public static ResumenRepositoryDB resumenRepositoryDB;
     public static CategoriaRepositoryDB categoriaRepositoryDB;
     public static TipoMovimientoRepositoryDB tipoMovimientoRepositoryDB;
+    public static CuentaRepositoryDB cuentaRepositoryDB;
 
     public GestorMovimiento(Context ctx) {
         movimientoRepositoryDB = new MovimientoRepositoryDBImpl(ctx);
         resumenRepositoryDB = new ResumenRepositoryDBImpl(ctx);
         categoriaRepositoryDB = new CategoriaRepositoryDBImpl(ctx);
         tipoMovimientoRepositoryDB = new TipoMovimientoRepositoryDBImpl(ctx);
+        cuentaRepositoryDB = new CuentaRepositoryDBImpl(ctx);
     }
 
     @Override
@@ -50,10 +54,55 @@ public class GestorMovimiento implements MovimientoInteractor {
         movimiento.setResumen(resumen);
         movimiento.setFechaEstimada(fechaEstimada);
         movimiento.setFechaMovimiento(fechaMovimiento);
-        movimiento.setImporte(importe);
-        //TODO: Faltará la lógica para actualizar el resumen.
+        if(fechaMovimiento==null){
+            movimiento.setImporteEstimado(importe);
+        }else{
+            movimiento.setImporte(importe);
+        }
         movimientoRepositoryDB.create(movimiento);
+        updatearResumen(resumen, dTipoMovimiento, importe, fechaMovimiento);
         return movimiento;
+    }
+
+    private void updatearResumen(Resumen resumen, TipoMovimiento tipoMovimiento, double importeValue, Date dFechaMovimiento) {
+        String clave = tipoMovimiento.getClave();
+        double saldo = 0;
+        double saldoEstimado = 0;
+        //TODO: Tenemos que asegurarnos que resumen exista.
+        if("TIPO_INGRESO".equals(clave)){
+            if(dFechaMovimiento==null) {
+                resumen.setIngresoEstimado(resumen.getIngresoEstimado() + importeValue);
+                saldoEstimado = resumen.getSaldoEstimado() + importeValue;
+            }else{
+                resumen.setIngreso(resumen.getIngreso() + importeValue);
+                saldo = resumen.getSaldo() + importeValue;
+            }
+        }else if("TIPO_GASTO".equals(clave)){
+            if(dFechaMovimiento==null) {
+                resumen.setGastoEstimado(resumen.getGastoEstimado() + importeValue);
+                saldoEstimado = resumen.getSaldoEstimado() - importeValue;
+            }else{
+                resumen.setGasto(resumen.getGasto() + importeValue);
+                saldo = resumen.getSaldo() - importeValue;
+            }
+        }else if("TIPO_AHORRO".equals(clave)){
+            if(dFechaMovimiento==null) {
+                resumen.setAhorroEstimado(resumen.getAhorroEstimado() + importeValue);
+                saldoEstimado = resumen.getSaldoEstimado() - importeValue;
+            }else{
+                resumen.setAhorro(resumen.getAhorro() + importeValue);
+                saldo = resumen.getSaldo() - importeValue;
+            }
+        }
+
+        resumen.setSaldo(saldo + resumen.getSaldoAnterior());
+        resumen.setSaldoEstimado(saldoEstimado +  resumen.getSaldoAnterior());
+        //TODO: como calcular o para que registrar el saldo anterior?
+        //TODO: habria que actualizar el saldo del siguiente resumen, o sino en el momento de la consulta
+        resumenRepositoryDB.update(resumen);
+        Cuenta cuenta = cuentaRepositoryDB.getCuenta(resumen.getCuenta().get_id());
+        cuenta.setDateSinc(new Date());
+        cuentaRepositoryDB.update(cuenta);
     }
 
     @Override

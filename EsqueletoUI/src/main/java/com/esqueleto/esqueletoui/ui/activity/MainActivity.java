@@ -201,7 +201,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         }
 
         return super.onOptionsItemSelected(item);
-
     }
 
     @Override
@@ -241,11 +240,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             case 3:
                 String anyMesResumen = "2014/07";
                 if(actionBar.getSelectedTab()!=null){
-                    anyMes = actionBar.getSelectedTab().getText().toString();
+                    anyMesResumen = actionBar.getSelectedTab().getText().toString();
                 }
                 Bundle argumentsResumen = new Bundle();
                 //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer
                 argumentsResumen.putParcelable("cuenta", cuentaSeleccionada);
+                argumentsResumen.putString("anyMes", anyMesResumen);
                 // Crear un nuevo fragmento y transacción
                 ResumenFragment newFragment2 = ResumenFragment.newInstance(argumentsResumen);
                 FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
@@ -302,6 +302,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         // If the fragment exists and has some back-stack entry
         if (getFragmentManager() != null && getFragmentManager().getBackStackEntryCount() > 0){
             // Get the fragment fragment manager - and pop the backstack
+            getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
             getFragmentManager().popBackStack();
         }
         // Else, nothing in the direct fragment back stack

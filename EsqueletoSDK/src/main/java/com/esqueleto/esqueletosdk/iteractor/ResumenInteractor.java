@@ -12,10 +12,11 @@ import java.util.List;
  * Created by rgonzalez on 23/06/2014.
  */
 public interface ResumenInteractor {
-    Resumen addResumen(Context ctx, Cuenta cuenta, String anyMes, Date inicioPeriodo,
-                    Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
-                    double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
-                    double saldoAnterior, double saldoEstimado);
+    Resumen addResumen(Context ctx, Cuenta cuenta, String anyMes);
+    Resumen addResumenCompleto(Context ctx, Cuenta cuenta, String anyMes, Date inicioPeriodo,
+                       Date finPeriodo, double ahorro, double ahorroEstimado, double gasto,
+                       double gastoEstimado, double ingreso, double ingresoEstimado, double saldo,
+                       double saldoAnterior, double saldoEstimado);
     Resumen updateResumen(Resumen resumen);
     Resumen getResumen(Context ctx, Integer id);
 

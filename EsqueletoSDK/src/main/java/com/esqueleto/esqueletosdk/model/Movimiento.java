@@ -16,6 +16,7 @@ public class Movimiento implements Parcelable{
 
     public static final String COLUMN_NAME_ID = "movimiento_id";
     public static final String COLUMN_NAME_IMPORTE = "importe";
+    public static final String COLUMN_NAME_IMPORTEESTIMADO = "importe_estimado";
     public static final String COLUMN_NAME_FECHAESTIMADA = "fecha_estimada";
     public static final String COLUMN_NAME_FECHAMOVIMIENTO = "fecha_movimiento";
     public static final String COLUMN_NAME_CONCEPTO = "concepto";
@@ -29,6 +30,8 @@ public class Movimiento implements Parcelable{
     private TipoMovimiento tipoMovimiento;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_IMPORTE)
     private double importe;
+    @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_IMPORTEESTIMADO)
+    private double importeEstimado;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FECHAESTIMADA)
     private Date fechaEstimada;
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_FECHAMOVIMIENTO)
@@ -65,6 +68,7 @@ public class Movimiento implements Parcelable{
         this._id = parcel.readInt();
         this.tipoMovimiento = parcel.readParcelable(TipoMovimiento.class.getClassLoader());
         this.importe = parcel.readDouble();
+        this.importeEstimado = parcel.readDouble();
         this.fechaEstimada = (Date) parcel.readSerializable();
         this.fechaMovimiento = (Date) parcel.readSerializable();
         this.categoria = parcel.readParcelable(Categoria.class.getClassLoader());
@@ -72,10 +76,13 @@ public class Movimiento implements Parcelable{
         this.resumen = parcel.readParcelable(Resumen.class.getClassLoader());
     }
 
-    public Movimiento(int _id, TipoMovimiento tipoMovimiento, double importe, Date fechaEstimada, Date fechaMovimiento, Categoria categoria, String concepto, Resumen resumen) {
+    public Movimiento(int _id, TipoMovimiento tipoMovimiento, double importe, double importeEstimado,
+                      Date fechaEstimada, Date fechaMovimiento, Categoria categoria, String concepto,
+                      Resumen resumen) {
         this._id = _id;
         this.tipoMovimiento = tipoMovimiento;
         this.importe = importe;
+        this.importeEstimado = importeEstimado;
         this.fechaEstimada = fechaEstimada;
         this.fechaMovimiento = fechaMovimiento;
         this.categoria = categoria;
@@ -94,6 +101,10 @@ public class Movimiento implements Parcelable{
 
     public double getImporte() {
         return importe;
+    }
+
+    public double getImporteEstimado() {
+        return importeEstimado;
     }
 
     public Date getFechaEstimada() {
@@ -130,6 +141,10 @@ public class Movimiento implements Parcelable{
         this.importe = importe;
     }
 
+    public void setImporteEstimado(double importeEstimado) {
+        this.importeEstimado = importeEstimado;
+    }
+
     public void setFechaEstimada(Date fechaEstimada) {
         this.fechaEstimada = fechaEstimada;
     }
@@ -161,6 +176,7 @@ public class Movimiento implements Parcelable{
         parcel.writeInt(this._id);
         parcel.writeParcelable(this.tipoMovimiento, flags);
         parcel.writeDouble(this.importe);
+        parcel.writeDouble(this.importeEstimado);
         parcel.writeSerializable(this.fechaEstimada);
         parcel.writeSerializable(this.fechaMovimiento);
         parcel.writeParcelable(this.categoria, flags);

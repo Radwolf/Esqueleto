@@ -35,6 +35,7 @@ public class ResumenFragment extends Fragment{
     GestorCuenta gestorCuenta;
     GetCuenta getCuenta;
     private Cuenta cuenta;
+    private String anyMes;
     UpdateCuentaSeleccionada updateCuentaSeleccionada;
 
     private FragmentIterationListener mCallback = null;
@@ -59,6 +60,7 @@ public class ResumenFragment extends Fragment{
         actionBar = getActivity().getActionBar();
         //TODO: Crear tratamiento para recuperar el usuario
         cuenta = getArguments().getParcelable("cuenta");
+        anyMes = getArguments().getString("anyMes");
         gestorCuenta = new GestorCuenta(getActivity());
         updateCuentaSeleccionada = new UpdateCuentaSeleccionada(gestorCuenta, cuenta, "raul.gomo@gmail.com");
         updateCuentaSeleccionada.execute(getActivity());
@@ -90,16 +92,24 @@ public class ResumenFragment extends Fragment{
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         Calendar calendar = Calendar.getInstance();
         int any = calendar.get(Calendar.YEAR);
-        for(int i = 1; actionBar.getTabCount() < 12 && i <= 12; i++) {
-            StringBuffer nombreTab = new StringBuffer();
-            nombreTab.append(any).append("/").append((i<10)?"0":"").append(i);
-            ActionBar.Tab tab = actionBar.newTab();
-            tab.setText(nombreTab);
-            tab.setTabListener(new TabResumenListener(getActivity(), new MesesFragment(), mViewPager, cuenta));
+        if( actionBar.getTabCount()<12) {
+            for (int i = 1; i <= 12; i++) {
+                StringBuffer nombreTab = new StringBuffer();
+                nombreTab.append(any).append("/").append((i < 10) ? "0" : "").append(i);
+                ActionBar.Tab tab = actionBar.newTab();
+                tab.setText(nombreTab);
+                tab.setTabListener(new TabResumenListener(getActivity(), new MesesFragment(), mViewPager, cuenta));
 //            tab.setCustomView(R.layout.tab_resumen_mes);
-            actionBar.addTab(tab);
-            if("2014/06".equals(nombreTab.toString())) {
-                actionBar.selectTab(tab);
+                actionBar.addTab(tab);
+                if (anyMes.equals(nombreTab.toString())) {
+                    actionBar.selectTab(tab);
+                }
+            }
+        }else{
+            for(int i = 1; i < 12; i++) {
+                if(actionBar.getTabAt(i).getText().toString().equals(anyMes)){
+                    actionBar.setSelectedNavigationItem(i);
+                }
             }
         }
     }

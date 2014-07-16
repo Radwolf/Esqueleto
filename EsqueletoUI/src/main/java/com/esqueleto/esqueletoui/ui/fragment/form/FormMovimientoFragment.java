@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.command.impl.AddMovimiento;
+import com.esqueleto.esqueletosdk.command.impl.AddResumen;
 import com.esqueleto.esqueletosdk.command.impl.GetCategorias;
 import com.esqueleto.esqueletosdk.command.impl.GetMovimientos;
 import com.esqueleto.esqueletosdk.command.impl.GetResumen;
@@ -63,6 +64,7 @@ public class FormMovimientoFragment extends Fragment {
     GestorResumen gestorResumen;
     GetResumen getResumen;
     UpdateResumen updateResumen;
+    AddResumen addResumen;
 
     GestorTipoDato gestorTipoDato;
     GetCategorias getCategorias;
@@ -137,6 +139,10 @@ public class FormMovimientoFragment extends Fragment {
         String sConcepto = concepto.getText().toString();
 
         Resumen resumen = getResumen.execute(ctx);
+        if(resumen==null){
+            addResumen = new AddResumen(gestorResumen, cuenta, anyMes);
+            resumen = addResumen.execute(ctx);
+        }
         addMovimiento = new AddMovimiento(gestorMovimiento, resumen, tipoMovimiento.getClave(), importeValue,
                 dFechaEstimada, dFechaMovimiento, categoria.getClave(), sConcepto);
         Movimiento movimiento = addMovimiento.execute(getActivity());

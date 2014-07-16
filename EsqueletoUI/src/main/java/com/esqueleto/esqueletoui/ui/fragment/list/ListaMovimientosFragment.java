@@ -180,17 +180,17 @@ public class ListaMovimientosFragment extends ListFragment implements ActionBar.
                 TipoMovimiento tvTipoMovimiento = (TipoMovimiento) dropDownActionBar.getItem(position);
                 claveTipoMovimiento = tvTipoMovimiento.getClave();
                 if ("TIPO_INGRESO".equals(claveTipoMovimiento)) {
-                    String[] filtros = {claveTipoMovimiento, "2014/06"};
+                    String[] filtros = {claveTipoMovimiento, anyMes};
                     getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
                 } else if ("TIPO_GASTO".equals(claveTipoMovimiento)) {
-                    String[] filtros = {claveTipoMovimiento, "2014/06"};
+                    String[] filtros = {claveTipoMovimiento, anyMes};
                     getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
                 } else if ("TIPO_AHORRO".equals(claveTipoMovimiento)) {
-                    String[] filtros = {claveTipoMovimiento, "2014/06"};
+                    String[] filtros = {claveTipoMovimiento, anyMes};
                     getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_TIPO_ANYMES, filtros);
                 }
             } else {
-                String[] filtros = {"2014/06"};
+                String[] filtros = {anyMes};
                 getMovimientos = new GetMovimientos(gestorMovimiento, GetMovimientos.SEARCH_BY_ANYMES, filtros);
             }
 
