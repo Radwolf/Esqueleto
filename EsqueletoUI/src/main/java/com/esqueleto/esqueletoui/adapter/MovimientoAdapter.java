@@ -1,10 +1,6 @@
 package com.esqueleto.esqueletoui.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,8 +10,7 @@ import android.widget.TextView;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletoui.R;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,8 +42,10 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         TextView tvConcepto;
         @InjectView(R.id.tv_otros_datos)
         TextView tvOtrosDatos;
-        @InjectView(R.id.tv_importe_movimiento)
-        TextView tvImporteMovimiento;
+        @InjectView(R.id.tv_importe)
+        TextView tvImporte;
+        @InjectView(R.id.tv_importe_estimado)
+        TextView tvImporteEstimado;
         @InjectView(R.id.layout_movimiento_importe)
         LinearLayout lMovimientoImporte;
 
@@ -73,7 +70,14 @@ public class MovimientoAdapter extends ArrayAdapter<Movimiento> {
         holder.tvDataMovimiento.setText(dateToString(getFechaMovimientoCalculada(movimiento)));
         holder.tvConcepto.setText(movimiento.getConcepto());
         holder.tvOtrosDatos.setText(movimiento.getCategoria().getNombre());
-        holder.tvImporteMovimiento.setText(BigDecimal.valueOf(movimiento.getImporte()).toString());
+        Double dImporte = Double.valueOf(movimiento.getImporte());
+        DecimalFormat dec = new DecimalFormat("0.00");
+        dec.setMinimumFractionDigits(2);
+        String importe = dec.format(dImporte);
+        holder.tvImporte.setText(importe);
+        Double dImporteEstimado = Double.valueOf(movimiento.getImporteEstimado());
+        String importeEstimado = dec.format(dImporteEstimado);
+        holder.tvImporteEstimado.setText(importeEstimado);
         if("TIPO_GASTO".equals(movimiento.getTipoMovimiento().getClave())) {
             holder.lMovimientoImporte.setBackgroundResource(R.drawable.bg_corner_gasto);
         }else if("TIPO_INGRESO".equals(movimiento.getTipoMovimiento().getClave())){

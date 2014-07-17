@@ -106,9 +106,10 @@ public class ResumenFragment extends Fragment{
                 }
             }
         }else{
-            for(int i = 1; i < 12; i++) {
-                if(actionBar.getTabAt(i).getText().toString().equals(anyMes)){
-                    actionBar.setSelectedNavigationItem(i);
+            for(int i = 0; i < 12; i++) {
+                ActionBar.Tab tab = actionBar.getTabAt(i);
+                if(tab.getText().toString().equals(anyMes)){
+                    actionBar.selectTab(tab);
                 }
             }
         }

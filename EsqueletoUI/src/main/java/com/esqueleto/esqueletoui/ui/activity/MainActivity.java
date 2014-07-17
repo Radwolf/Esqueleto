@@ -220,6 +220,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     private void selectItem(int position) {
         switch (position) {
+            case 0:
+                Spinner sCuenta = (Spinner) findViewById(R.id.drawerSpinner);
+                SpinnerItem spinnerItem = (SpinnerItem) sCuenta.getSelectedItem();
             case 2:
                 Bundle arguments = new Bundle();
                 //TODO: El id de la cuenta lo obtendremos del spinner del navigation drawer

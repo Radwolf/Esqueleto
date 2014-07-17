@@ -27,6 +27,7 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
     List<DrawerItem> drawerItemList;
     int layoutResID;
     List<SpinnerItem> cuentasList;
+    Spinner spinner;
 
     public CustomDrawerAdapter(Context context, int layoutResourceID,
                                List<DrawerItem> listItems, List<SpinnerItem> cuentasList) {

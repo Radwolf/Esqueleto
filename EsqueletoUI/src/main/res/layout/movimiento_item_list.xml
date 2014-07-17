@@ -53,15 +53,29 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_gravity="center_vertical">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="2.250,00"
-            android:id="@+id/tv_importe_movimiento"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:id="@+id/tv_importe"
             android:textAlignment="center"
+            android:text="1345"
             android:gravity="center_vertical|center_horizontal"
             android:textStyle="bold"
             android:textColor="@color/texto_normal"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:id="@+id/tv_importe_estimado"
+            android:textAlignment="center"
+            android:text="12"
+            android:textStyle="bold"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/texto_estimado"/>
     </LinearLayout>
 </LinearLayout>

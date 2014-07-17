@@ -56,8 +56,10 @@ public class GestorMovimiento implements MovimientoInteractor {
         movimiento.setFechaMovimiento(fechaMovimiento);
         if(fechaMovimiento==null){
             movimiento.setImporteEstimado(importe);
+            movimiento.setImporte(0.00);
         }else{
             movimiento.setImporte(importe);
+            movimiento.setImporteEstimado(0.00);
         }
         movimientoRepositoryDB.create(movimiento);
         updatearResumen(resumen, dTipoMovimiento, importe, fechaMovimiento);
@@ -95,8 +97,8 @@ public class GestorMovimiento implements MovimientoInteractor {
             }
         }
 
-        resumen.setSaldo(saldo + resumen.getSaldoAnterior());
-        resumen.setSaldoEstimado(saldoEstimado +  resumen.getSaldoAnterior());
+        resumen.setSaldo(saldo);
+        resumen.setSaldoEstimado(saldoEstimado);
         //TODO: como calcular o para que registrar el saldo anterior?
         //TODO: habria que actualizar el saldo del siguiente resumen, o sino en el momento de la consulta
         resumenRepositoryDB.update(resumen);
