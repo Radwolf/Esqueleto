@@ -2,8 +2,8 @@ apply plugin: 'android'
 
 android {
 
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 'android-L'
+    buildToolsVersion '19.1.0'
 
     defaultConfig {
         minSdkVersion 14
@@ -41,13 +41,13 @@ android {
         debug {
 
             runProguard false
-            packageNameSuffix ".debug"
+            applicationIdSuffix ".debug"
             signingConfig signingConfigs.debug
             versionNameSuffix "-debug"
         }
 
         staging {
-            packageNameSuffix ".staging"
+            applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
         }
     }
@@ -70,14 +70,12 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile project(':EsqueletoSDK')
-    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:appcompat-v7:21.+'
     compile 'org.apache.commons:commons-lang3:3.0'
-    compile ('ly.apps:android-rest:1.2.1-SNAPSHOT@aar') {
-        transitive = true
-        changing = true
-    }
+    compile 'ly.apps:android-rest:1.2.1-SNAPSHOT@aar'
     compile 'com.github.pedrovgs:renderers:1.0.9'
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'com.squareup.dagger:dagger:1.2.1'
     compile 'com.squareup.dagger:dagger-compiler:1.2.1'
+    compile 'com.android.support:support-v13:+'
 }
