@@ -5,10 +5,6 @@ import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.command.GetCommand;
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
-import com.esqueleto.esqueletosdk.model.Movimiento;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by rgonzalez on 25/04/2014.

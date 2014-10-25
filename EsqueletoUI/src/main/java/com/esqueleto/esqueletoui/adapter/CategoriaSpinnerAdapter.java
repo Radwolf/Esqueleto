@@ -4,20 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.esqueleto.esqueletosdk.model.Categoria;
-import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletoui.R;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by rgonzalez on 19/06/2014.

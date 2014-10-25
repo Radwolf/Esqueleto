@@ -5,13 +5,9 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ListView;
 
 import com.esqueleto.esqueletoui.R;
 import com.esqueleto.esqueletoui.ui.pager.TabsPagerAdapter;
-
-import butterknife.InjectView;
 
 public class MainActivityViewPager extends FragmentActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 

@@ -49,6 +49,8 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
     private Dao<Categoria, Integer> categoriaDao = null;
     private RuntimeExceptionDao<Categoria, Integer> categoriaRuntimeDao = null;
 
+    Usuario usuario;
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
@@ -84,7 +86,11 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
         loadDataDiccionarios(getTipoMovimientoDataDao(), getCategoriaDataDao());
 
-        createDataTest();
+        //createDataTest();
+        RuntimeExceptionDao<Usuario, Integer> usuarioDao = getUsuarioDataDao();
+        usuario = new Usuario();
+        usuario.setEmail("raul.gomo@gmail.com");
+        usuarioDao.create(usuario);
 
 //        // here we try inserting data in the on-create as a test
 //        RuntimeExceptionDao<Cuenta, Integer> dao = getCuentaDataDao();
@@ -98,13 +104,8 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
         double CERO_DOUBLE = 0.00;
 
         RuntimeExceptionDao<Cuenta, Integer> cuentaDao = getCuentaDataDao();
-        RuntimeExceptionDao<Usuario, Integer> usuarioDao = getUsuarioDataDao();
         RuntimeExceptionDao<Resumen, Integer> resumenDao = getResumenDataDao();
         RuntimeExceptionDao<Movimiento, Integer> movimientoDao = getMovimientoDataDao();
-
-        Usuario usuario = new Usuario();
-        usuario.setEmail("raul.gomo@gmail.com");
-        usuarioDao.create(usuario);
 
         Cuenta cuenta = new Cuenta();
         cuenta.setDateSinc(new Date());
@@ -208,8 +209,8 @@ public class DatabaseHelper<T, ID>  extends OrmLiteSqliteOpenHelper {
 
     private void loadDataDiccionarios(RuntimeExceptionDao<TipoMovimiento, Integer> tipoMovimientoDao, RuntimeExceptionDao<Categoria, Integer> categoriaDao) {
         //TODO: Faltará tratamiento de acento para las claves
-        String[] tipoMovimientos = new String[]{"Ingreso", "Gasto", "Ahorro"};
-        String[] categorias = new String[]{"Nomina", "Recibo", "Prestamo", "Combustible", "Farmacia"};
+        String[] tipoMovimientos = new String[]{"Ingreso", "Gasto", "Ahorro", "Presupuesto"};
+        String[] categorias = new String[]{"Nomina", "Recibo", "Prestamo", "Combustible", "Farmacia", "Ahorro"};
 
         for (String tipoMovimiento: tipoMovimientos){
             TipoMovimiento eTipoMovimiento = new TipoMovimiento(

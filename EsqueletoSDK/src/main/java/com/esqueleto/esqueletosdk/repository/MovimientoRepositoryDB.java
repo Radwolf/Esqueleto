@@ -3,6 +3,7 @@ package com.esqueleto.esqueletosdk.repository;
 import android.database.Cursor;
 
 import com.esqueleto.esqueletosdk.model.Movimiento;
+import com.esqueleto.esqueletosdk.model.Resumen;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface MovimientoRepositoryDB {
     int update(Movimiento movimiento);
 
     int delete(Movimiento movimiento);
+
+    void deleteAllByResumen(Resumen resumen);
 
     Movimiento getMovimiento(Integer id);
 

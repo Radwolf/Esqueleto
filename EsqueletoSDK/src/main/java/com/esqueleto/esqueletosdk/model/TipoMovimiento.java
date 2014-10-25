@@ -23,8 +23,8 @@ public class TipoMovimiento implements Parcelable{
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_NOMBRE)
     private String nombre;
 
-    public static final Parcelable.Creator<TipoMovimiento> CREATOR =
-        new Parcelable.Creator<TipoMovimiento>()
+    public static final Creator<TipoMovimiento> CREATOR =
+        new Creator<TipoMovimiento>()
         {
             @Override
             public TipoMovimiento createFromParcel(Parcel parcel)

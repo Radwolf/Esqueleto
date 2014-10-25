@@ -4,13 +4,9 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletoui.R;
-import com.esqueleto.esqueletoui.ui.fragment.form.MesesFragment;
 
 /**
  * Created by rgonzalez on 08/07/2014.

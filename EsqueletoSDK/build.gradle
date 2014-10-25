@@ -40,13 +40,13 @@ android {
         debug {
             resValue "string", "authority", PROVIDER_DEBUG
             runProguard false
-            packageNameSuffix ".debug"
+            applicationIdSuffix ".debug"
             signingConfig signingConfigs.debug
             versionNameSuffix "-debug"
         }
 
         staging {
-            packageNameSuffix ".staging"
+            applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
         }
     }

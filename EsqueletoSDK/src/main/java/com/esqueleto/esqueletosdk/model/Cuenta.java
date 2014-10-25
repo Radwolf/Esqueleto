@@ -32,8 +32,8 @@ public class Cuenta implements Parcelable{
     @DatabaseField(columnName = COLUMN_NAME_SELECCIONADA)
     private boolean seleccionada;
 
-    public static final Parcelable.Creator<Cuenta> CREATOR =
-        new Parcelable.Creator<Cuenta>()
+    public static final Creator<Cuenta> CREATOR =
+        new Creator<Cuenta>()
         {
             @Override
             public Cuenta createFromParcel(Parcel parcel)

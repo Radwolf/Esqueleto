@@ -43,8 +43,8 @@ public class Movimiento implements Parcelable{
     @DatabaseField(foreign = true, columnName = COLUMN_NAME_RESUMEN, foreignAutoRefresh=true, canBeNull=true, maxForeignAutoRefreshLevel=2)
     private Resumen resumen;
 
-    public static final Parcelable.Creator<Movimiento> CREATOR =
-        new Parcelable.Creator<Movimiento>()
+    public static final Creator<Movimiento> CREATOR =
+        new Creator<Movimiento>()
         {
             @Override
             public Movimiento createFromParcel(Parcel parcel)

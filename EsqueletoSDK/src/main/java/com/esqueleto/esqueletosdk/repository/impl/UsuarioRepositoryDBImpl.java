@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletosdk.repository.impl;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
 
+    public static final String ERROR_SQL = "ERROR_SQL";
     private DatabaseHelper db;
     Dao<Usuario, Integer> usuarioDao;
 
@@ -27,6 +29,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
 
     }
@@ -38,6 +41,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return 0;
     }
@@ -48,6 +52,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return 0;
     }
@@ -58,6 +63,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return 0;
     }
@@ -69,6 +75,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return null;
     }
@@ -79,6 +86,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
             return usuarioDao.queryForId(idUsuario);
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return null;
     }
@@ -92,6 +100,7 @@ public class UsuarioRepositoryDBImpl implements UsuarioRepositoryDB {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return null;
     }

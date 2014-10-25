@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="android-rest-1.2.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/EsqueletoUI/build/exploded-aar/ly.apps/android-rest/1.2.1-SNAPSHOT/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/EsqueletoUI/build/exploded-aar/ly.apps/android-rest/1.2.1-SNAPSHOT/res" />
+      <root url="jar://$PROJECT_DIR$/EsqueletoUI/build/intermediates/exploded-aar/ly.apps/android-rest/1.2.1-SNAPSHOT/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/EsqueletoUI/build/intermediates/exploded-aar/ly.apps/android-rest/1.2.1-SNAPSHOT/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

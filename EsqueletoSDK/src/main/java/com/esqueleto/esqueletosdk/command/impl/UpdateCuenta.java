@@ -4,9 +4,7 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.UpdateCommand;
 import com.esqueleto.esqueletosdk.iteractor.CuentaInteractor;
-import com.esqueleto.esqueletosdk.iteractor.ResumenInteractor;
 import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletosdk.model.Resumen;
 
 /**
  * Created by rgonzalez on 24/04/2014.

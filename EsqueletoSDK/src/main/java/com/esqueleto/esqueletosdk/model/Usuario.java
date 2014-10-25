@@ -20,8 +20,8 @@ public class Usuario implements Parcelable{
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_EMAIL)
     private String email;
 
-    public static final Parcelable.Creator<Usuario> CREATOR =
-        new Parcelable.Creator<Usuario>()
+    public static final Creator<Usuario> CREATOR =
+        new Creator<Usuario>()
         {
             @Override
             public Usuario createFromParcel(Parcel parcel)
@@ -49,6 +49,14 @@ public class Usuario implements Parcelable{
     public Usuario(int _id, String email, String dateCreate, String dateUpdate, String userCreate, String userUpdate) {
         this._id = _id;
         this.email = email;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public String getEmail() {

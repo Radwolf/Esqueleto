@@ -23,8 +23,8 @@ public class Categoria implements Parcelable {
     @DatabaseField(canBeNull = false, columnName = COLUMN_NAME_NOMBRE)
     private String nombre;
 
-    public static final Parcelable.Creator<Categoria> CREATOR =
-            new Parcelable.Creator<Categoria>()
+    public static final Creator<Categoria> CREATOR =
+            new Creator<Categoria>()
             {
                 @Override
                 public Categoria createFromParcel(Parcel parcel)

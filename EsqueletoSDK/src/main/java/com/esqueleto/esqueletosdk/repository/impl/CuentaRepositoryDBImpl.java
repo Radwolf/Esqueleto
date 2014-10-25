@@ -1,6 +1,7 @@
 package com.esqueleto.esqueletosdk.repository.impl;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
 
+    public static final String ERROR_SQL = "ERROR_SQL";
     private DatabaseHelper db;
     Dao<Cuenta, Integer> cuentaDao;
     Dao<Usuario, Integer> usuarioDao;
@@ -32,6 +34,7 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
 
     }
@@ -43,6 +46,7 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
         } catch (SQLException e) {
             // TODO: Exception Handling
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return 0;
     }
@@ -53,6 +57,7 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
             return cuentaDao.update(cuenta);
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return 0;
     }
@@ -69,6 +74,7 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
             return cuenta;
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return null;
     }
@@ -85,6 +91,7 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
             cuentas = cuentaQb.join(usuarioQb).query();
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return cuentas;
     }
@@ -93,17 +100,18 @@ public class CuentaRepositoryDBImpl implements CuentaRepositoryDB {
     public Cuenta getCuentaSeleccionada(String email){
         List<Cuenta> cuentas = new ArrayList<Cuenta>();
         try {
-            QueryBuilder<Usuario, Integer> usuarioQb = usuarioDao.queryBuilder();
-            usuarioQb.where().eq(Usuario.COLUMN_NAME_EMAIL, email);
+//            QueryBuilder<Usuario, Integer> usuarioQb = usuarioDao.queryBuilder();
             QueryBuilder<Cuenta, Integer> cuentaQb = cuentaDao.queryBuilder();
+            cuentaQb.where().eq(Usuario.COLUMN_NAME_EMAIL, email);
             cuentaQb.where().eq(Cuenta.COLUMN_NAME_SELECCIONADA, true);
             // join with the order query
-            cuentas = cuentaQb.join(usuarioQb).query();
+            cuentas = cuentaQb.query();
             if(cuentas.size() > 0){
                 return cuentas.get(0);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.e(ERROR_SQL, e.getMessage());
         }
         return null;
     }

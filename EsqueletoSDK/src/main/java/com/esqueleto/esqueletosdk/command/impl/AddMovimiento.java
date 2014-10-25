@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.esqueleto.esqueletosdk.command.AddCommand;
 import com.esqueleto.esqueletosdk.iteractor.MovimientoInteractor;
-import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Movimiento;
 import com.esqueleto.esqueletosdk.model.Resumen;
 

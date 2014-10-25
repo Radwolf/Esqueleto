@@ -7,8 +7,6 @@ import com.esqueleto.esqueletosdk.iteractor.ResumenInteractor;
 import com.esqueleto.esqueletosdk.model.Cuenta;
 import com.esqueleto.esqueletosdk.model.Resumen;
 
-import java.util.Date;
-
 /**
  * Created by rgonzalez on 24/04/2014.
  */

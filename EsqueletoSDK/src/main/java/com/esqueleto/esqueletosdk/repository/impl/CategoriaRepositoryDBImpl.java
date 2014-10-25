@@ -5,10 +5,7 @@ import android.content.Context;
 import com.esqueleto.esqueletosdk.database.DatabaseHelper;
 import com.esqueleto.esqueletosdk.database.DatabaseManager;
 import com.esqueleto.esqueletosdk.model.Categoria;
-import com.esqueleto.esqueletosdk.model.Cuenta;
-import com.esqueleto.esqueletosdk.model.Usuario;
 import com.esqueleto.esqueletosdk.repository.CategoriaRepositoryDB;
-import com.esqueleto.esqueletosdk.repository.CuentaRepositoryDB;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 

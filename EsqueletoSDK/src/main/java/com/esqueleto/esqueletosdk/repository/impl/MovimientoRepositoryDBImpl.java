@@ -14,7 +14,13 @@ import com.esqueleto.esqueletosdk.repository.MovimientoRepositoryDB;
 import com.j256.ormlite.android.AndroidDatabaseResults;
 import com.j256.ormlite.dao.CloseableIterator;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.PreparedDelete;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.StatementBuilder;
+import com.j256.ormlite.support.CompiledStatement;
+import com.j256.ormlite.support.DatabaseConnection;
+import com.j256.ormlite.support.DatabaseResults;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -64,6 +70,16 @@ public class MovimientoRepositoryDBImpl implements MovimientoRepositoryDB {
     @Override
     public int delete(Movimiento movimiento) {
         return 0;
+    }
+
+    public void deleteAllByResumen(Resumen resumen){
+        try {
+            DeleteBuilder<Movimiento, Integer> deleteBuilder = movimientoDao.deleteBuilder();
+            deleteBuilder.where().eq(Movimiento.COLUMN_NAME_RESUMEN, resumen);
+            deleteBuilder.delete();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

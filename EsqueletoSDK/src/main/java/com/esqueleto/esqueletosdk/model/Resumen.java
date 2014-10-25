@@ -82,6 +82,14 @@ public class Resumen implements Parcelable{
         this.saldoAnterior = saldoAnterior;
     }
 
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
     //<editor-fold desc="SETTERS Y GETTERS">
     public Cuenta getCuenta() {
         return cuenta;
